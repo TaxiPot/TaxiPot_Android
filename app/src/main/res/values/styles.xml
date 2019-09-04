@@ -1,11 +1,32 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor">#060809</item>
+    </style>
+
+    <style name="idEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">#747474</item>
+        <item name="android:colorControlActivated">#747474</item>
+        <!--추후 수정-->
+        <item name="android:textColorHint">#707070</item>
+        <item name="android:inputType">text</item>
+        <item name="android:drawableLeft">@drawable/ic_person_outline_black_24dp</item>
+    </style>
+
+    <style name="passwordEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">#747474</item>
+        <item name="android:colorControlActivated">#747474</item>
+        <!--추후 수정-->
+        <item name="android:textColorHint">#707070</item>
+        <item name="android:inputType">text</item>
+        <item name="android:drawableLeft">@drawable/ic_lock_outline_black_24dp</item>
+
     </style>
 
 </resources>
