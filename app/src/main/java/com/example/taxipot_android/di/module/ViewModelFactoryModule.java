@@ -31,6 +31,11 @@ public class ViewModelFactoryModule {
             }
         };
     }
+
+    @Provides
+    public String provideStringForTest(){
+        return "OK";
+    }
 }
 
 
