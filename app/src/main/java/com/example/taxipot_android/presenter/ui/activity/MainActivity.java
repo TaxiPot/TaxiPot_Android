@@ -1,14 +1,15 @@
-package com.example.taxipot_android;
+package com.example.taxipot_android.presenter.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class SignInActivity extends AppCompatActivity {
+import com.example.taxipot_android.R;
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_main);
     }
 }
