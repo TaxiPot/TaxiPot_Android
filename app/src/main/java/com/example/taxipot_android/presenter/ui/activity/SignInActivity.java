@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.taxipot_android.R;
+import com.example.taxipot_android.presenter.ui.BaseActivity;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
