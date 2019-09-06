@@ -1,7 +1,5 @@
 package com.example.taxipot_android.presenter.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
