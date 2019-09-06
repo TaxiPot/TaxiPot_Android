@@ -37,16 +37,3 @@ public class ViewModelFactoryModule {
         return "OK";
     }
 }
-
-
-/*
-@Module
-class ViewModelFactoryModule {
-    @Provides
-    fun provideViewModelFactory() = object : ViewModelProvider.Factory{
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return modelClass.getConstructor().newInstance()
-        }
-    }
-}
- */
