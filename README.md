@@ -10,8 +10,8 @@ MVP 패턴을 사용할 예정입니다.
 + RxJava : https://github.com/ReactiveX/RxJava
 
 ### 개발 관련
-+ 코딩 컨벤션 : https://www.notion.so/taxipotandroid/Coding-Convenction-789092b693c14b8484163d4e5f2d8ef5
-+ 개발 TODO : https://www.notion.so/taxipotandroid/2e42606178b5464dafe8d7808b740708?v=eaea82c76b5740f1b9e948761e5aad2f
++ [코딩 컨벤션](https://www.notion.so/taxipotandroid/Coding-Convenction-789092b693c14b8484163d4e5f2d8ef5)
++ [개발 TODO](https://www.notion.so/taxipotandroid/2e42606178b5464dafe8d7808b740708?v=eaea82c76b5740f1b9e948761e5aad2f)
 
 ### 개발 인원
 + [전승민](https://github.com/nwar-Jeon)
