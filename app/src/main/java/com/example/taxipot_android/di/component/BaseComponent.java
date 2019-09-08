@@ -24,18 +24,3 @@ public interface BaseComponent extends AndroidInjector<BaseApplication> {
         BaseComponent create(@BindsInstance BaseApplication application);
     }
 }
-
-
-/*
-@Component(modules = [
-    AndroidInjectionModule::class,
-    ViewModelFactoryModule::class
-])
-interface BaseComponent : AndroidInjector<BaseApplication>{
-
-    @Component.Factory
-    interface Factory{
-        fun build(@BindsInstance application : BaseApplication) : BaseComponent
-    }
-}
- */

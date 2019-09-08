@@ -29,4 +29,13 @@
 
     </style>
 
+    <style name="ageEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">#747474</item>
+        <item name="android:colorControlActivated">#747474</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColorHint">#707070</item>
+        <item name="android:inputType">number</item>
+
+    </style>
+
 </resources>

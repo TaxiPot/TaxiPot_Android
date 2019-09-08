@@ -1,4 +1,4 @@
-package com.example.taxipot_android.di.module.SignIn;
+package com.example.taxipot_android.di.module.activity;
 
 import dagger.Module;
 import dagger.Provides;
