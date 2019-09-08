@@ -20,11 +20,12 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_in);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
+        binding.setActivity(this);
     }
 
     public void doSignUp(View v) {
         Log.i("doSignUp","why..?");
-        startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+        startActivity(new Intent(this, SignUpActivity.class));
     }
 }
