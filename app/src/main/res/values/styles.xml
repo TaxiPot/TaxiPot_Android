@@ -38,4 +38,8 @@
 
     </style>
 
+    <style name="navigationLabel" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">8sp</item>
+    </style>
+
 </resources>
