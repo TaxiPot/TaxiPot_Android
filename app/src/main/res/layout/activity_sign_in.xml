@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="activity"
+            type="com.example.taxipot_android.presenter.ui.activity.SignInActivity" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradation"
@@ -106,6 +113,8 @@
         android:text="가입하기"
         android:textColor="#ffffff"
         android:textSize="14sp"
+        android:onClick="@{(v)->activity.doSignUp(v)}"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintHorizontal_bias="0.0"
@@ -127,3 +136,4 @@
         app:layout_constraintVertical_bias="0.91" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

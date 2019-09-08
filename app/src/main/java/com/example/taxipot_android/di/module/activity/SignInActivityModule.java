@@ -5,8 +5,4 @@ import dagger.Provides;
 
 @Module
 public class SignInActivityModule {
-    @Provides
-    String provideString() {
-        return "Aa";
-    }
 }
