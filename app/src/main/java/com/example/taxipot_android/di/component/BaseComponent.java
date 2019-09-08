@@ -3,7 +3,6 @@ package com.example.taxipot_android.di.component;
 import com.example.taxipot_android.di.application.BaseApplication;
 import com.example.taxipot_android.di.module.ActivityBindModule;
 import com.example.taxipot_android.di.module.AppModule;
-import com.example.taxipot_android.di.module.ViewModelFactoryModule;
 
 import javax.inject.Singleton;
 
