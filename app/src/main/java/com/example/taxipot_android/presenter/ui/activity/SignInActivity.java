@@ -17,7 +17,7 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_in);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         binding.setActivity(this);
     }
 
