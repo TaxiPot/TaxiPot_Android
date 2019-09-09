@@ -2,7 +2,6 @@ package com.example.taxipot_android.presenter.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -10,8 +9,6 @@ import androidx.databinding.DataBindingUtil;
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.ActivitySignInBinding;
 import com.example.taxipot_android.presenter.ui.BaseActivity;
-
-import javax.inject.Inject;
 
 public class SignInActivity extends BaseActivity {
 
