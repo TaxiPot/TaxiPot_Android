@@ -15,6 +15,7 @@ public class HistoryFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_history, container, false);
+        setFragmentLayout(R.layout.fragment_history);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

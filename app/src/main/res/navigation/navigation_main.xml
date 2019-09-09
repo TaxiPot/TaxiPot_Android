@@ -2,12 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_main"
-    app:startDestination="@id/main_home_fragment">
+    app:startDestination="@id/main_home_menu">
 
     <fragment
-        android:id="@+id/main_home_fragment"
+        android:id="@+id/main_home_menu"
         android:name="com.example.taxipot_android.presenter.ui.fragment.HomeFragment"
         tools:layout="@layout/fragment_home">
     </fragment>
+    <fragment
+        android:id="@+id/main_history_menu"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/main_mypage_menu"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.MyPageFragment"
+        android:label="fragment_mypage"
+        tools:layout="@layout/fragment_mypage" />
+    <fragment
+        android:id="@+id/main_setting_menu"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
 
 </navigation>

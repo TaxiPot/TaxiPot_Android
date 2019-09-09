@@ -15,6 +15,7 @@ public class SettingFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_setting, container, false);
+        setFragmentLayout(R.layout.fragment_setting);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

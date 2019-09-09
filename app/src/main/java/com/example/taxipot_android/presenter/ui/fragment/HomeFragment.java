@@ -16,9 +16,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_home);
-
-return super.onCreateView(inflater,container,savedInstanceState);
-
-}
-
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
 }

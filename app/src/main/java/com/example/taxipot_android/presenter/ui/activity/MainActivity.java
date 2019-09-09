@@ -1,8 +1,12 @@
 package com.example.taxipot_android.presenter.ui.activity;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.ActivityMainBinding;
@@ -17,5 +21,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_fragment_space_fragment);
+        if(fragment instanceof NavHostFragment) {
+            Log.i("fragment", "instanceofNavHost");
+            NavigationUI.setupWithNavController(binding.mainBottomnavigation,((NavHostFragment) fragment).getNavController());
+        }
+
     }
 }
