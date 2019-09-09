@@ -6,4 +6,5 @@
     <color name="barColor">#66bc9e</color>
     <color name="themeGray">#747474</color>
     <color name="dark_themeGray">#5b5e5e</color>
+    <color name="transParent">#00000000</color>
 </resources>
