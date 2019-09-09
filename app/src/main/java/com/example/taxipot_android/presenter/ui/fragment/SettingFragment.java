@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.taxipot_android.R;
+import com.example.taxipot_android.presenter.ui.BaseFragment;
 
-public class MainHomeFragment extends Fragment {
+public class SettingFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home_main,container,false);
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 }

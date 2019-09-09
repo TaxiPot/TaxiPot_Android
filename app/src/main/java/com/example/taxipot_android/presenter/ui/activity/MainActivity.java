@@ -23,11 +23,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
         binding.setHandler(new BottomNavigationHandler(getSupportFragmentManager()));
     }
-
-
-
 }
