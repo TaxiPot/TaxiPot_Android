@@ -2,7 +2,7 @@ package com.example.taxipot_android.di.module.activity;
 
 import com.example.taxipot_android.di.ActivityScope;
 import com.example.taxipot_android.di.FragmentScope;
-import com.example.taxipot_android.presenter.ui.fragment.MainHomeFragment;
+import com.example.taxipot_android.presenter.ui.fragment.HomeFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -13,5 +13,5 @@ public abstract class MainActivityModule {
 
     @FragmentScope
     @ContributesAndroidInjector
-    abstract MainHomeFragment provideMainHomeFragment();
+    abstract HomeFragment provideMainHomeFragment();
 }

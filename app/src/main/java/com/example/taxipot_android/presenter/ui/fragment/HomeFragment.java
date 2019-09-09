@@ -11,11 +11,11 @@ import androidx.annotation.Nullable;
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 
-public class MainHomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setFragmentLayout(R.layout.fragment_home_main);
+        setFragmentLayout(R.layout.fragment_home);
 
 return super.onCreateView(inflater,container,savedInstanceState);
 

@@ -20,7 +20,7 @@
         android:layout_marginBottom="56dp"
         android:orientation="horizontal"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        tools:layout="@layout/fragment_home_main"
+        tools:layout="@layout/fragment_home"
         app:navGraph="@navigation/navigation_main"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"

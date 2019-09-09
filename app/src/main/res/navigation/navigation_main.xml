@@ -6,8 +6,8 @@
 
     <fragment
         android:id="@+id/main_home_fragment"
-        android:name="com.example.taxipot_android.presenter.ui.fragment.MainHomeFragment"
-        tools:layout="@layout/fragment_home_main">
+        android:name="com.example.taxipot_android.presenter.ui.fragment.HomeFragment"
+        tools:layout="@layout/fragment_home">
     </fragment>
 
 </navigation>

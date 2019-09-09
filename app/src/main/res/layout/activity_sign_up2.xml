@@ -12,6 +12,7 @@
             type="com.example.taxipot_android.presenter.viewModel.SignUp2ViewModel" />
         <import type="androidx.core.content.ContextCompat"/>
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
