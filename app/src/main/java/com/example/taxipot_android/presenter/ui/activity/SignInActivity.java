@@ -16,16 +16,18 @@ import javax.inject.Inject;
 public class SignInActivity extends BaseActivity {
 
     ActivitySignInBinding binding;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         binding.setActivity(this);
     }
-
-    public void doSignUp(View v) {
-        Log.i("doSignUp","why..?");
-        startActivity(new Intent(this, SignUpActivity.class));
+        public void doSignUp(View v) {
+            startActivity(new Intent(this, SignUpActivity.class));    
+            }
+        public void doSignIn(View v) {
+        startActivity(new Intent(SignInActivity.this, MainActivity.class));
     }
+    
 }
