@@ -2,12 +2,8 @@ package com.example.taxipot_android.presenter.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Pair;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.core.content.ContextCompat;
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;

@@ -63,4 +63,10 @@ dependencies {
     // if you use the support libraries
     annotationProcessor "com.google.dagger:dagger-android-processor:${dagger_version}"
 
+    //navigation
+    def nav_version = "2.1.0"
+
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
 }

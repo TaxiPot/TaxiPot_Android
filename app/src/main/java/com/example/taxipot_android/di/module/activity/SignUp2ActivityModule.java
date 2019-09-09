@@ -5,10 +5,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-
-import com.example.taxipot_android.presenter.ui.activity.SignUp2Activity;
-import com.example.taxipot_android.presenter.viewModel.SignUp2ViewModel;
 
 import java.lang.reflect.InvocationTargetException;
 

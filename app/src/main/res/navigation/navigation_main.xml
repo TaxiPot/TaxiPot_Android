@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_main"
+    app:startDestination="@id/main_home_fragment">
+
+    <fragment
+        android:id="@+id/main_home_fragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.MainHomeFragment"
+        tools:layout="@layout/fragment_home_main">
+    </fragment>
+
+</navigation>

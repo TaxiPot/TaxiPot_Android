@@ -1,4 +1,4 @@
-package com.example.taxipot_android.presenter.ui.fragment;
+package com.example.taxipot_android.presenter.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,14 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.taxipot_android.R;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
+import dagger.android.support.DaggerFragment;
 
-public class MainHomeFragment extends BaseFragment {
+public class BaseFragment extends DaggerFragment {
+    private int fragmentLayout;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setFragmentLayout(R.layout.fragment_home_main);
-        return super.onCreateView(inflater,container,savedInstanceState);
+        return inflater.inflate(fragmentLayout,container,false);
+    }
+
+    public void setFragmentLayout(int fragmentLayout) {
+        this.fragmentLayout = fragmentLayout;
     }
 }

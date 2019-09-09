@@ -7,21 +7,22 @@
         <variable
             name="activity"
             type="com.example.taxipot_android.presenter.ui.activity.MainActivity" />
-        <variable
-            name="handler"
-            type="com.example.taxipot_android.util.BottomNavigationHandler" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presenter.ui.activity.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/main_fragment_space_layout"
+    <fragment
+        android:id="@+id/main_fragment_space_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
         android:orientation="horizontal"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        tools:layout="@layout/fragment_home_main"
+        app:navGraph="@navigation/navigation_main"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottomnavigation_menu_main"
-        app:onNavigationItemSelected="@{handler::onNavigationItemSelected}" />
+        app:menu="@menu/bottomnavigation_menu_main"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
