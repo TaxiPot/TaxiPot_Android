@@ -9,9 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.taxipot_android.R;
+import com.example.taxipot_android.databinding.FragmentMypageBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 
-public class MyPageFragment extends BaseFragment {
+public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

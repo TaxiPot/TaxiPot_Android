@@ -9,9 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.taxipot_android.R;
+import com.example.taxipot_android.databinding.FragmentHomeBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
