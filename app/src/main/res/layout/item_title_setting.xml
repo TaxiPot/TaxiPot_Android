@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="adapter"
+            type="com.example.taxipot_android.presenter.ui.adapter.SettingAdapter.TitleViewHolder" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="Title"
+        android:text="@{adapter.title}"
         android:textColor="@color/barColor"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/view5"
@@ -28,3 +34,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

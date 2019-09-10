@@ -17,7 +17,7 @@ import dagger.android.support.DaggerFragment;
 @ActivityScope
 public class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
     private int fragmentLayout;
-    T binding;
+    protected T binding;
 
     @Nullable
     @Override
@@ -30,4 +30,5 @@ public class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
     public void setFragmentLayout(int fragmentLayout) {
         this.fragmentLayout = fragmentLayout;
     }
+
 }
