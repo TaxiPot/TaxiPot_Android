@@ -57,6 +57,7 @@
         android:letterSpacing="0.02"
         android:lineSpacingExtra="9sp"
         android:textStyle="bold"
+        android:fontFamily="@font/nanumgothic"
         android:text="SignUp"
         android:textColor="#ffffff"
         android:textSize="54sp"

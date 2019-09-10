@@ -45,6 +45,7 @@
             android:letterSpacing="0.04"
             android:lineSpacingExtra="3sp"
             android:text="TaxiPot"
+            android:fontFamily=""
             android:textColor="#ffffff"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/textView"
