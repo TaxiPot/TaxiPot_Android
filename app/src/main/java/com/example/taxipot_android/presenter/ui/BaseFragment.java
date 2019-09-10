@@ -13,11 +13,6 @@ import dagger.android.support.DaggerFragment;
 public class BaseFragment extends DaggerFragment {
     private int fragmentLayout;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
