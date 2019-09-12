@@ -1,7 +1,6 @@
 package com.example.taxipot_android.presenter.ui.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -21,15 +20,15 @@ public class SettingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     List<Object> items;
-    private final static int TITLEITEM = 0;
-    private final static int CONTENTITEM = 1;
+    private final static int TITLE_ITEM = 0;
+    private final static int CONTENT_ITEM = 1;
 
     @Override
     public int getItemViewType(int position) {
         if(items.get(position) instanceof String) {
-            return TITLEITEM;
+            return TITLE_ITEM;
         } else if(items.get(position) instanceof SettingContent){
-            return CONTENTITEM;
+            return CONTENT_ITEM;
         } else {
             return -1;
         }
@@ -39,10 +38,10 @@ public class SettingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewDataBinding binding;
-        if(viewType==TITLEITEM) {
+        if(viewType== TITLE_ITEM) {
             binding = ItemTitleSettingBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
             return new TitleViewHolder(binding);
-        } else if(viewType==CONTENTITEM) {
+        } else if(viewType== CONTENT_ITEM) {
             binding = ItemContentSettingBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
             return new ContentViewHolder(binding);
         } else {
