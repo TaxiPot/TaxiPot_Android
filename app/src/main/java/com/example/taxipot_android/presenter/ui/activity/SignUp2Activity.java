@@ -32,24 +32,15 @@ public class SignUp2Activity extends BaseActivity {
         binding.setVm(viewModel);
         binding.setActivity(this);
 
-        viewModel.canMan.observe(this, new Observer<Boolean>() {
+        viewModel.isMan.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if(aBoolean) {
                     binding.signup2GenderIsManRb.setTextColor(Color.WHITE);
+                    binding.signup2GenderIsWomanRb.setTextColor(ContextCompat.getColor(SignUp2Activity.this,R.color.barColor));
                 } else {
                     binding.signup2GenderIsManRb.setTextColor(ContextCompat.getColor(SignUp2Activity.this,R.color.barColor));
-                }
-            }
-        });
-
-        viewModel.canWoman.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
                     binding.signup2GenderIsWomanRb.setTextColor(Color.WHITE);
-                } else {
-                    binding.signup2GenderIsWomanRb.setTextColor(ContextCompat.getColor(SignUp2Activity.this,R.color.barColor));
                 }
             }
         });

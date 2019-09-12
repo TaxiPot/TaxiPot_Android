@@ -10,7 +10,6 @@
         <variable
             name="vm"
             type="com.example.taxipot_android.presenter.viewModel.SignUp2ViewModel" />
-        <import type="androidx.core.content.ContextCompat"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,35 +106,36 @@
             app:layout_constraintStart_toEndOf="@+id/view9"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <CheckBox
-            android:id="@+id/signup2_gender_is_man_rb"
-            android:layout_width="32dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/view_select_gender"
-            android:button="@null"
-            android:checked="@={vm.canMan}"
-            android:text="남"
-            android:gravity="center"
-            android:textColor="@color/barColor"
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="@+id/view8"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <CheckBox
-            android:id="@+id/signup2_gender_is_woman_rb"
-            android:layout_width="32dp"
-            android:layout_height="27dp"
-            android:background="@drawable/view_select_gender"
-            android:layout_marginStart="12dp"
-            android:button="@null"
-            android:text="여"
-            android:gravity="center"
-            android:textColor="@color/barColor"
-            android:checked="@={vm.canWoman}"
-            app:layout_constraintStart_toEndOf="@+id/signup2_gender_is_man_rb"
-            app:layout_constraintTop_toTopOf="@+id/signup2_gender_is_man_rb" />
+            <RadioButton
+                android:id="@+id/signup2_gender_is_man_rb"
+                android:layout_width="32dp"
+                android:layout_height="27dp"
+                android:background="@drawable/view_select_gender"
+                android:button="@null"
+                android:checked="@={vm.isMan}"
+                android:gravity="center"
+                android:text="남" />
+
+            <RadioButton
+                android:id="@+id/signup2_gender_is_woman_rb"
+                android:layout_width="32dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/view_select_gender"
+                android:button="@null"
+                android:checked="@={!vm.isMan}"
+                android:gravity="center"
+                android:text="여" />
+
+        </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/appCompatEditText2"
