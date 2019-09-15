@@ -13,18 +13,18 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class MainActivityModule {
 
     @FragmentScope
-    @ContributesAndroidInjector
-    abstract HomeFragment provideMainHomeFragment();
+    @ContributesAndroidInjector(modules = HomeFragmentModule.class)
+    abstract HomeFragment provideHomeFragment();
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = SettingFragmentModule.class)
     abstract SettingFragment provideSettingFragment();
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = MyPageFragmentModule.class)
     abstract MyPageFragment provideMyPageFragment();
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = HistoryFragmentModule.class)
     abstract HistoryFragment provideHistoryFragment();
 }
