@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="fragment"
+            type="com.example.taxipot_android.presenter.ui.fragment.HomeFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,17 +40,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="36dp"
-            android:src="@drawable/ic_search_black_24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view4"
-            app:layout_constraintEnd_toStartOf="@+id/view4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view4" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +49,20 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/view4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/newRoomButton" />
+
+        <ImageView
+            android:id="@+id/newRoomButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="36dp"
+            android:src="@drawable/ic_search_black_24dp"
+            android:onClick="@{(v) -> fragment.onNewRoomClick(v)}"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/view4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
 
         <View
             android:id="@+id/view4"
