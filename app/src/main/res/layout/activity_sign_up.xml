@@ -124,11 +124,11 @@
         app:layout_constraintTop_toBottomOf="@+id/signup_pw_et" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:clickable="true"
         android:onClick="@{activity::requestSignUpActivity}"
-        android:src="@drawable/ic_arrow_forward_white_24dp"
+        android:src="@drawable/ic_arrow_white_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
