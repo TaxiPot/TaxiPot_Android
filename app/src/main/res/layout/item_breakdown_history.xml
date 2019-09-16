@@ -2,14 +2,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vh"
+            type="com.example.taxipot_android.presenter.ui.adapter.HistoryAdapter.HistoryViewHolder" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/transParent"
         android:orientation="vertical" android:layout_width="match_parent"
         android:clickable="true"
+        android:onClick="@{vh::onClick}"
         android:layout_height="70dp">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/history_item_start_to_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -21,11 +27,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/history_item_depart_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="09/10 15:33"
+            android:layout_marginBottom="8dp"
+            android:text="09/15 14:11"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/view7"
