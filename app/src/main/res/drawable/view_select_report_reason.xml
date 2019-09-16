@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="10dp" />
-            <stroke android:width="2dp" android:color="@android:color/white" />
-        </shape>
+    <item android:state_checked="true" android:drawable="@drawable/btn_report_reason_checked">
+    </item>
+    <item android:state_checked="false" android:drawable="@drawable/btn_report_reason_unchecked">
     </item>
 </selector>

@@ -31,7 +31,7 @@ dependencies {
     def rxandroid = '2.0.2'
     def okhttp = '4.1.0'
     def retrofit = '2.6.1'
-    def navigation = '2.2.0-alpha02'
+    def navigation = '2.1.0'
     def viewmodel = '2.1.0'
     def dagger_version = '2.24'
     def nav_version = "2.1.0"

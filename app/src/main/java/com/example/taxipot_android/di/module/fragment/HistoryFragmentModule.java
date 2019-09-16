@@ -1,4 +1,4 @@
-package com.example.taxipot_android.di.module.activity;
+package com.example.taxipot_android.di.module.fragment;
 import com.example.taxipot_android.presenter.viewModelFactory.HistoryViewModelFactory;
 
 import dagger.Module;
