@@ -5,7 +5,7 @@ clean Architecture 패턴을 사용할 예정입니다.
 ### Library
 
 + Retrofit : https://square.github.io/retrofit/
-+ GsonConverter :　https://github.com/square/retrofit/tree/master/retrofit-converters/gson
++ GsonConverter : https://github.com/square/retrofit/tree/master/retrofit-converters/gson
 + RxAndroid : https://github.com/ReactiveX/RxAndroid
 + RxJava : https://github.com/ReactiveX/RxJava
 + LifeCycle(LiveData) : https://developer.android.com/topic/libraries/architecture/livedata
