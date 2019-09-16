@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@drawable/bg_gradation">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/barColor"
+        android:text="사유를 선택하세요"
+        android:textSize="22sp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/view_select_report_reason"
+        android:paddingLeft="5dp"
+        android:text="말이 너무 많아요"
+        android:layout_marginBottom="16dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/view_select_report_reason"
+        android:paddingLeft="5dp"
+        android:text="너무 못생겼어요"
+        android:layout_marginBottom="16dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/view_select_report_reason"
+        android:paddingLeft="5dp"
+        android:text="프로필 정보와 달라요"
+        android:layout_marginBottom="16dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/view_select_report_reason"
+        android:paddingLeft="5dp"
+        android:text="돈을 안내요"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/view_select_report_reason"
+        android:paddingLeft="5dp"
+        android:text="늦게 왔어요"
+        android:textSize="17sp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@android:color/white"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/view_select_report_reason"
+        android:paddingLeft="5dp"
+        android:text="그냥 싫어요"
+        android:textSize="17sp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@android:color/white"
+        />
+
+</LinearLayout>
+</layout>
