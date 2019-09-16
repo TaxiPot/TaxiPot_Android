@@ -24,6 +24,7 @@ public class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,fragmentLayout,container,false);
         binding.setLifecycleOwner(this);
+
         return binding.getRoot();
     }
 

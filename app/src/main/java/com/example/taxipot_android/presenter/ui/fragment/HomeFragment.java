@@ -20,12 +20,13 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_home);
+        View inflate = super.onCreateView(inflater, container, savedInstanceState);
+        binding.setFragment(this);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflate;
     }
 
-    public void onNewRoomClick(View v) {
-        Log.d("onNewRoomClick", "click!");
+    public void newRoomListener(View v) {
         startActivity(new Intent(getActivity(), MakePartyActivity.class));
     }
 }
