@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presenter.ui.activity.MakePartyActivity"></activity>
-        <activity android:name=".presenter.ui.activity.SignUpActivity"></activity>
-        <activity android:name=".presenter.ui.activity.ReportActivity"></activity>
+        <activity android:name=".presenter.ui.activity.SignUpActivity" />
+        <activity android:name=".presenter.ui.activity.ReportActivity" />
         <activity android:name=".presenter.ui.activity.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

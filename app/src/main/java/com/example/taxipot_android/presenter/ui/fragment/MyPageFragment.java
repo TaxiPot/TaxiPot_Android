@@ -17,6 +17,7 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_mypage);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View v = super.onCreateView(inflater, container, savedInstanceState);
+        return v;
     }
 }
