@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="activity"
-            type="com.example.taxipot_android.presenter.ui.activity.MakePartyActivity" />
+            name="fragment"
+            type="com.example.taxipot_android.presenter.ui.fragment.MakePartyFragment" />
 
         <variable
             name="vm"
