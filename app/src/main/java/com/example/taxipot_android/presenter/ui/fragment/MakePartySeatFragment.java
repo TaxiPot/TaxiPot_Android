@@ -8,16 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.taxipot_android.R;
-import com.example.taxipot_android.databinding.FragmentMypageBinding;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
+import com.example.taxipot_android.util.BaseSeatFragment;
 
-public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
+public class MakePartySeatFragment extends BaseSeatFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setFragmentLayout(R.layout.fragment_mypage);
         View v = super.onCreateView(inflater, container, savedInstanceState);
+        binding.setUi(this);
         return v;
     }
 }
