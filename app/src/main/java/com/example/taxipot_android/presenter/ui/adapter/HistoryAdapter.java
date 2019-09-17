@@ -1,5 +1,6 @@
 package com.example.taxipot_android.presenter.ui.adapter;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.ItemBreakdownHistoryBinding;
 import com.example.taxipot_android.domain.entity.TaxiPot;
+import com.example.taxipot_android.presenter.ui.BaseFragment;
+import com.example.taxipot_android.presenter.ui.activity.ReportActivity;
 
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+    private BaseFragment activity;
     ArrayList<LiveData<TaxiPot>> items;
-    public HistoryAdapter(ArrayList<LiveData<TaxiPot>> list) {
+    public HistoryAdapter(BaseFragment activity, ArrayList<LiveData<TaxiPot>> list) {
+        this.activity = activity;
         this.items = list;
     }
 
@@ -54,7 +58,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             binding.historyItemStartToFinish.setText(item.getValue().startToFinish());
         }
         public void onClick(View v) {
-            Log.i("historyList","Click");
+            activity.startActivity(new Intent(activity.getActivity(), ReportActivity.class));
         }
     }
 }

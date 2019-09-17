@@ -1,4 +1,4 @@
-package com.example.taxipot_android.di.module.activity;
+package com.example.taxipot_android.di.module.fragment;
 
 import dagger.Module;
 

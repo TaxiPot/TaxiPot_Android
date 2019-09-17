@@ -2,9 +2,11 @@ package com.example.taxipot_android.di.module;
 
 import com.example.taxipot_android.di.ActivityScope;
 import com.example.taxipot_android.di.module.activity.MainActivityModule;
+import com.example.taxipot_android.di.module.activity.ReportActivityModule;
 import com.example.taxipot_android.di.module.activity.SignInActivityModule;
 import com.example.taxipot_android.di.module.activity.SignUpActivityModule;
 import com.example.taxipot_android.presenter.ui.activity.MainActivity;
+import com.example.taxipot_android.presenter.ui.activity.ReportActivity;
 import com.example.taxipot_android.presenter.ui.activity.SignInActivity;
 import com.example.taxipot_android.presenter.ui.activity.SignUpActivity;
 
@@ -24,4 +26,8 @@ public abstract class ActivityBindModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = MainActivityModule.class)
     abstract MainActivity provideMainActivity();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = ReportActivityModule.class)
+    abstract ReportActivity provideReportActivity();
 }

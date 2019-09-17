@@ -32,7 +32,7 @@ public class HistoryFragment extends BaseFragment<FragmentHistoryBinding> {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         this.viewModel = ViewModelProviders.of(this,factory).get(HistoryViewModel.class);
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        binding.historyRecyclerview.setAdapter(new HistoryAdapter(viewModel.getTaxipotList()));
+        binding.historyRecyclerview.setAdapter(new HistoryAdapter(this,viewModel.getTaxipotList()));
         return v;
     }
 }
