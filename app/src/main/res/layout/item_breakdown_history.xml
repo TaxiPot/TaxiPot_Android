@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/transParent"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:clickable="true"
-        android:onClick="@{vh::onClick}"
+        tools:background="@drawable/bg_gradation"
         android:layout_height="70dp">
 
         <TextView
@@ -38,6 +37,17 @@
             app:layout_constraintBottom_toTopOf="@+id/view7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/ic_warning_white_24dp"
+            android:clickable="true"
+            android:onClick="@{vh::onClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view7"
