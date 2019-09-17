@@ -186,7 +186,7 @@
         app:layout_constraintStart_toEndOf="@+id/view9"
         app:layout_constraintTop_toTopOf="@+id/view9" />
 
-    <RadioGroup
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -218,7 +218,7 @@
             android:gravity="center"
             android:text="여" />
 
-    </RadioGroup>
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/signup_age_et"
