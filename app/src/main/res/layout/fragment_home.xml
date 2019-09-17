@@ -23,6 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="WELCOME"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="7sp"
             android:textColor="@color/barColor"
             android:textSize="36sp"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
