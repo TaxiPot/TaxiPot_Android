@@ -348,6 +348,7 @@
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
             android:text="만들기"
+            android:onClick="@{fragment::applySeatSelect}"
             android:textColor="#ffffff"
             android:textSize="14sp"
             android:fontFamily="@font/nanumgothicextrabold"

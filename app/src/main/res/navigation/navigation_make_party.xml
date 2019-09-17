@@ -10,5 +10,14 @@
         android:name="com.example.taxipot_android.presenter.ui.fragment.MakePartyFragment"
         android:label="MakePartyFragment"
         tools:layout="@layout/fragment_make_party"
-        />
+        >
+        <action
+            android:id="@+id/action_makePartyFragment_to_makePartySeatFragment"
+            app:destination="@id/makePartySeatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/makePartySeatFragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.MakePartySeatFragment"
+        android:label="MakePartySeatFragment"
+        tools:layout="@layout/fragment_select_reportreason"/>
 </navigation>
