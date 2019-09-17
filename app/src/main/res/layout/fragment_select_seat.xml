@@ -55,7 +55,7 @@
         android:id="@+id/checkBox3"
         android:layout_width="80dp"
         android:layout_height="100dp"
-        android:background="@drawable/btn_round_one_corner"
+        android:background="@drawable/btn_round_no_corner"
         android:button="@null"
         app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
         app:layout_constraintEnd_toStartOf="@+id/checkBox2"

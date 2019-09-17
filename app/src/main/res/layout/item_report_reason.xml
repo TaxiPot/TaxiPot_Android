@@ -2,9 +2,7 @@
 <layout>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:background="@drawable/bg_gradation">
+    android:layout_height="wrap_content">
     <CheckBox
         android:id="@+id/report_reason_checkreason_cb"
         android:layout_marginTop="16dp"
@@ -18,7 +16,6 @@
         android:text="말이 너무 많아요"
         android:layout_marginBottom="16dp"
         android:textSize="17sp"
-        android:textColor="@android:color/white"
-        tools:checked="true"/>
+        android:textColor="@android:color/white" />
 </LinearLayout>
 </layout>

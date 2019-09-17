@@ -186,7 +186,7 @@
         app:layout_constraintStart_toEndOf="@+id/view9"
         app:layout_constraintTop_toTopOf="@+id/view9" />
 
-    <LinearLayout
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -202,7 +202,6 @@
             android:background="@drawable/view_select_gender"
             android:button="@null"
             android:checked="@={vm.isMan}"
-            android:textColor="@{vm.isMan ? @android:color/white : @color/barColor}"
             android:gravity="center"
             android:text="남" />
 
@@ -214,11 +213,10 @@
             android:background="@drawable/view_select_gender"
             android:button="@null"
             android:checked="@={!vm.isMan}"
-            android:textColor="@{vm.isMan ? @color/barColor : @android:color/white}"
             android:gravity="center"
             android:text="여" />
 
-    </LinearLayout>
+    </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/signup_age_et"
