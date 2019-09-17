@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="fragment"
-            type="com.example.taxipot_android.presenter.ui.fragment.MakePartyFragment" />
+            name="activity"
+            type="com.example.taxipot_android.presenter.ui.activity.MakePartyActivity" />
 
         <variable
             name="vm"
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradation"
-        tools:context=".presenter.ui.fragment.MakePartyFragment">
+        tools:context=".presenter.ui.activity.MakePartyActivity">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/makePartyGuideLine"
@@ -80,24 +80,41 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.2825" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <TextView
             android:id="@+id/editText3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="출발지를 등록해주세요"
-            android:inputType="textPersonName"
+            android:text="출발지를 등록해주세요"
+            android:textColor="@android:color/white"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:textColor="#FFFFFF"
             android:textSize="13sp"
             android:fontFamily="@font/nanumgothicbold"
-            android:theme="@style/normalEditTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/makePartyGuideLine2"
             app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3305" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/themeGray"
+            app:layout_constraintEnd_toStartOf="@+id/makePartyGuideLine2"
+            app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/themeGray"
+            app:layout_constraintEnd_toStartOf="@+id/makePartyGuideLine2"
+            app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
         <TextView
             android:id="@+id/textView21"
@@ -131,19 +148,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.4125" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <TextView
             android:id="@+id/editText4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:fontFamily="@font/nanumgothicbold"
-            android:hint="도착지를 등록해주세요"
-            android:inputType="textPersonName"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
+            android:text="도착지를 등록해주세요"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
-            android:theme="@style/normalEditTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/makePartyGuideLine2"
             app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
@@ -348,7 +362,6 @@
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
             android:text="만들기"
-            android:onClick="@{fragment::applySeatSelect}"
             android:textColor="#ffffff"
             android:textSize="14sp"
             android:fontFamily="@font/nanumgothicextrabold"
