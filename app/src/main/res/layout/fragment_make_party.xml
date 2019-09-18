@@ -365,6 +365,7 @@
             android:textColor="#ffffff"
             android:textSize="14sp"
             android:fontFamily="@font/nanumgothicextrabold"
+            android:onClick="@{fragment::applySeatSelect}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

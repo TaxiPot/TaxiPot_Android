@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.taxipot_android.R;
 import com.example.taxipot_android.util.BaseSeatFragment;
 
 public class MakePartySeatFragment extends BaseSeatFragment {
@@ -16,6 +17,7 @@ public class MakePartySeatFragment extends BaseSeatFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         binding.setUi(this);
+        setActionId(R.id.action_makePartySeatFragment_to_chattingFragment);
         return v;
     }
 }

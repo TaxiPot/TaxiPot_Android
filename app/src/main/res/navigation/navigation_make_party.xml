@@ -9,8 +9,7 @@
         android:id="@+id/makePartyFragment"
         android:name="com.example.taxipot_android.presenter.ui.fragment.MakePartyFragment"
         android:label="MakePartyFragment"
-        tools:layout="@layout/fragment_make_party"
-        >
+        tools:layout="@layout/fragment_make_party">
         <action
             android:id="@+id/action_makePartyFragment_to_makePartySeatFragment"
             app:destination="@id/makePartySeatFragment" />
@@ -19,5 +18,14 @@
         android:id="@+id/makePartySeatFragment"
         android:name="com.example.taxipot_android.presenter.ui.fragment.MakePartySeatFragment"
         android:label="MakePartySeatFragment"
-        tools:layout="@layout/fragment_select_reportreason"/>
+        tools:layout="@layout/fragment_select_reportreason">
+        <action
+            android:id="@+id/action_makePartySeatFragment_to_chattingFragment"
+            app:destination="@id/chattingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chattingFragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.ChattingFragment"
+        android:label="ChattingFragment"
+        tools:layout="@layout/fragment_chatting"/>
 </navigation>
