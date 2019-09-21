@@ -28,6 +28,6 @@ public class MakePartyFragment extends BaseFragment<FragmentMakePartyBinding> {
     }
 
     public void applySeatSelect(View v) {
-        NavHostFragment.findNavController(this).navigate(R.id.makePartySeatFragment);
+        NavHostFragment.findNavController(this).navigate(R.id.action_makePartyFragment_to_makePartySeatFragment);
     }
 }

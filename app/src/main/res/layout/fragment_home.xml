@@ -53,15 +53,14 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/view4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newRoomButton" />
+            app:layout_constraintTop_toBottomOf="@+id/findRoomButton" />
 
         <ImageView
-            android:id="@+id/newRoomButton"
+            android:id="@+id/findRoomButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="36dp"
             android:src="@drawable/ic_search_black_24dp"
-            android:onClick="@{fragment::newRoomListener}"
             app:layout_constraintBottom_toBottomOf="@+id/view4"
             app:layout_constraintEnd_toStartOf="@+id/view4"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,11 +78,12 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/newRoomButton"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginBottom="36dp"
             android:src="@drawable/ic_add_black_24dp"
+            android:onClick="@{fragment::newRoomListener}"
             app:layout_constraintBottom_toBottomOf="@+id/view4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/view4"
@@ -99,7 +99,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/view4"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/newRoomButton" />
 
         <TextView
             android:layout_width="80dp"
