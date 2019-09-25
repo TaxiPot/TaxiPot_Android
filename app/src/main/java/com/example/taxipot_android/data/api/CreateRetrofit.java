@@ -5,7 +5,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CreateRetrofit {
-    final static String BaseURL = "";
+    final static String BaseURL = "http://192.168.0.8:8080/";
     final static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BaseURL)
             .addConverterFactory(GsonConverterFactory.create())
