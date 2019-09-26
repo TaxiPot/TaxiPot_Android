@@ -1,6 +1,5 @@
 package com.example.taxipot_android.presenter.ui.fragment;
 
-
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
