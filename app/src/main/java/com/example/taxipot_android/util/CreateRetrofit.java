@@ -1,4 +1,4 @@
-package com.example.taxipot_android.data.api;
+package com.example.taxipot_android.util;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
