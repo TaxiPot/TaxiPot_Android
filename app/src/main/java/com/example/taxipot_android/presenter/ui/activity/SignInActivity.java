@@ -27,5 +27,6 @@ public class SignInActivity extends BaseActivity {
 
     public void doSignIn(View v) {
         startActivity(new Intent(SignInActivity.this, MainActivity.class));
+        finish();
     }
 }

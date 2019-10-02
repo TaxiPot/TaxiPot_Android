@@ -12,8 +12,13 @@ import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.ActivityMainBinding;
 import com.example.taxipot_android.presenter.ui.BaseActivity;
 
+import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.Subject;
+
 public class MainActivity extends BaseActivity {
 
+    private Subject<Long> backButtonSubject = BehaviorSubject.createDefault(0L);
+    // 더블클릭으로 앱 종료.
     ActivityMainBinding binding;
 
     @Override
