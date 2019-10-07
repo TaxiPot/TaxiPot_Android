@@ -64,6 +64,7 @@ public class SignUpActivity extends BaseActivity {
 
     public void requestSignUpActivity(View v) {
         Toast.makeText(this, "회원가입 완료", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void changeTextColorRadioButton(RadioButton selView, RadioButton view) {
