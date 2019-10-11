@@ -35,6 +35,7 @@ dependencies {
     def viewmodel = '2.1.0'
     def dagger_version = '2.24'
     def nav_version = "2.1.0"
+    def map_version = "17.0.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -69,7 +70,11 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${dagger_version}"
     annotationProcessor "com.google.dagger:dagger-android-processor:${dagger_version}"
 
+    // navigation
     implementation "androidx.navigation:navigation-fragment:${nav_version}"
     implementation "androidx.navigation:navigation-ui:{Ze$nav_version}"
 
+    // google map
+    implementation "com.google.android.gms:play-services-maps:${map_version}"
+    implementation "com.google.android.gms:play-services-location:${map_version}"
 }

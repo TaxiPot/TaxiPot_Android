@@ -12,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key_name" />
+
         <activity android:name=".presenter.ui.activity.MakePartyActivity"/>
         <activity android:name=".presenter.ui.activity.SignUpActivity" />
         <activity android:name=".presenter.ui.activity.ReportActivity" />
