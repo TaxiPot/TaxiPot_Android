@@ -6,15 +6,16 @@ import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface UserApi {
-    @POST
+    @POST("/api/users/signin")
     Observable<User> requestSignIn(@Body User user);
 
-    @POST
+    @POST("/api/users/signup")
     Observable<User> requestSignUp(@Body User user);
 
-    @PATCH
-    Observable<Void> changePassword(@Query("fromPW") String fromPW, @Query("toPW") String toPW, @Query("user_id") String id);
+    @PATCH("/api/users/{user_id}/change_pw")
+    Observable<Void> changePassword(@Query("fromPW") String fromPW, @Query("toPW") String toPW, @Path("user_id") String user_id);
 }
