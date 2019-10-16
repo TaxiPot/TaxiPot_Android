@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,4 +33,7 @@ public class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
         this.fragmentLayout = fragmentLayout;
     }
 
+    protected void showToast(String string) {
+        Toast.makeText(this.getContext(), string,Toast.LENGTH_SHORT).show();
+    }
 }
