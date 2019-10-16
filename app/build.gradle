@@ -48,7 +48,11 @@ dependencies {
     // RxJava, RxAndroid
     implementation "io.reactivex.rxjava2:rxjava:${rxjava}"
     implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2" // Retrofit with rx
+    // RxJava - RxAndroid Adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
+    // RxLifecycle
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
 
     // Retrofit2, GsonConverter
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
