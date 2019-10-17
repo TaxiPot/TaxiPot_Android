@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 
@@ -24,6 +25,8 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class SignUpActivity extends BaseActivity {
@@ -32,8 +35,6 @@ public class SignUpActivity extends BaseActivity {
     @Inject
     SignUpViewModelFactory factory;
     SignUpViewModel viewModel;
-
-    CompositeDisposable cDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +48,11 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void liveDataObserve() {
-        viewModel.isMan.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    changeTextColorRadioButton(binding.signup2GenderIsManRb, binding.signup2GenderIsWomanRb);
-                } else {
-                    changeTextColorRadioButton(binding.signup2GenderIsWomanRb, binding.signup2GenderIsManRb);
-                }
+        viewModel.isMan.observe(this, aBoolean -> {
+            if (aBoolean) {
+                changeTextColorRadioButton(binding.signup2GenderIsManRb, binding.signup2GenderIsWomanRb);
+            } else {
+                changeTextColorRadioButton(binding.signup2GenderIsWomanRb, binding.signup2GenderIsManRb);
             }
         });
         viewModel.ageLimit.observe(this, new Observer<String>() {
@@ -70,13 +68,27 @@ public class SignUpActivity extends BaseActivity {
     }
 
     public void requestSignUpActivity(View v) {
-        Disposable disposable = CreateRetrofit.createRetrofit(UserApi.class)
+        CreateRetrofit.createRetrofit(UserApi.class)
                 .requestSignUp(new User(50, false, "00l3", "pass"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(new DisposableSingleObserver<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        makeToast("회원가입에 성공했습니다.");
+                        Log.d("success", "success");
+                    }
 
-        cDisposable.add(disposable);
+                    @Override
+                    public void onError(Throwable e) {
+                        viewModel.visibility.setValue(true);
+                        switch (e.getMessage()) {
+                            case "HTTP 400" : { break; }
+                            case "timeout" : { makeToast("인터넷 상태를 확인 후 다시 시도해주세요."); }
+                        }
+                        viewModel.visibility.setValue(false);
+                    }
+                });
     }
 
     private void changeTextColorRadioButton(RadioButton selView, RadioButton view) {
@@ -87,6 +99,5 @@ public class SignUpActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        cDisposable.dispose();
     }
 }
