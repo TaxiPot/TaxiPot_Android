@@ -1,267 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="activity"
             type="com.example.taxipot_android.presenter.ui.activity.SignUpActivity" />
+
         <variable
             name="vm"
             type="com.example.taxipot_android.presenter.viewModel.SignUpViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_gradation"
-    tools:context=".presenter.ui.activity.SignUpActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.097" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradation"
+        tools:context=".presenter.ui.activity.SignUpActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.903" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.097" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="26dp"
-        android:layout_height="3dp"
-        android:layout_marginBottom="8dp"
-        android:background="#66bc9e"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.903" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:letterSpacing="0.04"
-        android:lineSpacingExtra="3sp"
-        android:text="TaxiPot"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/view2" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="26dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="8dp"
+            android:background="#66bc9e"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/guideline" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:letterSpacing="0.02"
-        android:lineSpacingExtra="9sp"
-        android:textStyle="bold"
-        android:text="SignUp"
-        android:textColor="#ffffff"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="3sp"
+            android:text="TaxiPot"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/view2" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="7dp"
-        android:layout_marginTop="150dp"
-        android:background="#FFF"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:letterSpacing="0.02"
+            android:lineSpacingExtra="9sp"
+            android:text="SignUp"
+            android:textColor="#ffffff"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/guideline" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/signup_id_et"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:hint="아이디를 입력해주세요"
-        android:inputType="text"
-        android:paddingLeft="4dp"
-        android:paddingBottom="15dp"
-        android:textColor="#FFFFFF"
-        android:theme="@style/idEditTextStyle"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="7dp"
+            android:layout_marginTop="150dp"
+            android:background="#FFF"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/signup_pw_et"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="비밀번호를 입력해주세요"
-        android:inputType="textPassword"
-        android:paddingLeft="4dp"
-        android:paddingBottom="15dp"
-        android:textColor="#FFFFFF"
-        android:theme="@style/passwordEditTextStyle"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/signup_id_et" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/signup_id_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:hint="아이디를 입력해주세요"
+            android:inputType="text"
+            android:paddingLeft="4dp"
+            android:paddingBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:theme="@style/idEditTextStyle"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/signup_pwcheck_et"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="비밀번호를 확인해주세요"
-        android:inputType="textPassword"
-        android:paddingLeft="4dp"
-        android:paddingBottom="15dp"
-        android:textColor="#FFFFFF"
-        android:theme="@style/passwordEditTextStyle"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/signup_pw_et" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/signup_pw_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="비밀번호를 입력해주세요"
+            android:inputType="textPassword"
+            android:paddingLeft="4dp"
+            android:paddingBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:theme="@style/passwordEditTextStyle"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/signup_id_et" />
 
-    <ImageView
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:clickable="true"
-        android:onClick="@{activity::requestSignUpActivity}"
-        android:src="@drawable/ic_arrow_white_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/signup_pwcheck_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="비밀번호를 확인해주세요"
+            android:inputType="textPassword"
+            android:paddingLeft="4dp"
+            android:paddingBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:theme="@style/passwordEditTextStyle"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/signup_pw_et" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="중복 확인"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/signup_id_et"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/signup_id_et" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:clickable="true"
+            android:onClick="@{activity::requestSignUpActivity}"
+            android:src="@drawable/ic_arrow_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
 
-    <View
-        android:id="@+id/view8"
-        android:layout_width="10dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="18dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/signup_pwcheck_et" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="중복 확인"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/signup_id_et"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/signup_id_et" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="성별"
-        android:textColor="@color/barColor"
-        app:layout_constraintBottom_toBottomOf="@+id/view8"
-        app:layout_constraintStart_toEndOf="@+id/view8"
-        app:layout_constraintTop_toTopOf="@+id/view8" />
+        <View
+            android:id="@+id/view8"
+            android:layout_width="10dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwcheck_et" />
 
-    <View
-        android:id="@+id/view9"
-        android:layout_width="10dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="18dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_pwcheck_et" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="성별"
+            android:textColor="@color/barColor"
+            app:layout_constraintBottom_toBottomOf="@+id/view8"
+            app:layout_constraintStart_toEndOf="@+id/view8"
+            app:layout_constraintTop_toTopOf="@+id/view8" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="나이"
-        android:textColor="@color/barColor"
-        app:layout_constraintBottom_toBottomOf="@+id/view9"
-        app:layout_constraintStart_toEndOf="@+id/view9"
-        app:layout_constraintTop_toTopOf="@+id/view9" />
+        <View
+            android:id="@+id/view9"
+            android:layout_width="10dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_pwcheck_et" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="나이"
+            android:textColor="@color/barColor"
+            app:layout_constraintBottom_toBottomOf="@+id/view9"
+            app:layout_constraintStart_toEndOf="@+id/view9"
+            app:layout_constraintTop_toTopOf="@+id/view9" />
 
-        <RadioButton
-            android:id="@+id/signup2_gender_is_man_rb"
-            android:layout_width="32dp"
-            android:layout_height="27dp"
-            android:background="@drawable/view_select_gender"
-            android:button="@null"
-            android:checked="@={vm.isMan}"
-            android:gravity="center"
-            android:text="남" />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <RadioButton
-            android:id="@+id/signup2_gender_is_woman_rb"
-            android:layout_width="32dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/view_select_gender"
-            android:button="@null"
-            android:checked="@={!vm.isMan}"
-            android:gravity="center"
-            android:text="여" />
+            <RadioButton
+                android:id="@+id/signup2_gender_is_man_rb"
+                android:layout_width="32dp"
+                android:layout_height="27dp"
+                android:background="@drawable/view_select_gender"
+                android:button="@null"
+                android:checked="@={vm.isMan}"
+                android:gravity="center"
+                android:text="남" />
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/signup2_gender_is_woman_rb"
+                android:layout_width="32dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/view_select_gender"
+                android:button="@null"
+                android:checked="@={!vm.isMan}"
+                android:gravity="center"
+                android:text="여" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/signup_age_et"
-        android:layout_width="35dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@={vm.ageLimit}"
-        android:textColor="@color/barColor"
-        android:textSize="16sp"
-        android:theme="@style/ageEditTextStyle"
-        android:paddingLeft="8dp"
-        app:layout_constraintStart_toStartOf="@+id/view9"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        </RadioGroup>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/appCompatEditText3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="37dp"
-        android:hint="사용할 닉네임을 입력하세요"
-        android:inputType="text"
-        android:paddingLeft="4dp"
-        android:paddingBottom="15dp"
-        android:textColor="#FFFFFF"
-        android:theme="@style/idEditTextStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_age_et" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/signup_age_et"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="8dp"
+            android:text="@={vm.ageLimit}"
+            android:textColor="@color/barColor"
+            android:textSize="16sp"
+            android:theme="@style/ageEditTextStyle"
+            app:layout_constraintStart_toStartOf="@+id/view9"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/appCompatEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:hint="핸드폰 번호를 입력하세요"
-        android:inputType="phone"
-        android:textColor="#FFFFFF"
-        android:theme="@style/idEditTextStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatEditText3" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/appCompatEditText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="37dp"
+            android:hint="사용할 닉네임을 입력하세요"
+            android:inputType="text"
+            android:paddingLeft="4dp"
+            android:paddingBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:theme="@style/idEditTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_age_et" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/appCompatEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:hint="핸드폰 번호를 입력하세요"
+            android:inputType="phone"
+            android:textColor="#FFFFFF"
+            android:theme="@style/idEditTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatEditText3" />
+
+        <ProgressBar
+            android:id="@+id/progress_signup"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{vm.visibility ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

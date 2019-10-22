@@ -35,6 +35,7 @@ dependencies {
     def viewmodel = '2.1.0'
     def dagger_version = '2.24'
     def nav_version = "2.1.0"
+    def map_version = "17.0.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -47,7 +48,11 @@ dependencies {
     // RxJava, RxAndroid
     implementation "io.reactivex.rxjava2:rxjava:${rxjava}"
     implementation "io.reactivex.rxjava2:rxandroid:${rxandroid}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2" // Retrofit with rx
+    // RxJava - RxAndroid Adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
+    // RxLifecycle
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
 
     // Retrofit2, GsonConverter
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
@@ -69,7 +74,11 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${dagger_version}"
     annotationProcessor "com.google.dagger:dagger-android-processor:${dagger_version}"
 
+    // navigation
     implementation "androidx.navigation:navigation-fragment:${nav_version}"
     implementation "androidx.navigation:navigation-ui:{Ze$nav_version}"
 
+    // google map
+    implementation "com.google.android.gms:play-services-maps:${map_version}"
+    implementation "com.google.android.gms:play-services-location:${map_version}"
 }

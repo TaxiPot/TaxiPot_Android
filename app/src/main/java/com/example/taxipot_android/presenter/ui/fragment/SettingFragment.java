@@ -64,7 +64,5 @@ public class SettingFragment extends BaseFragment<FragmentSettingBinding> {
         return array;
     }
 
-    private void showToast(String string) {
-        Toast.makeText(this.getContext(),string,Toast.LENGTH_SHORT).show();
-    }
+
 }
