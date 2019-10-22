@@ -39,7 +39,6 @@ public class SignUpActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
-
         viewModel = ViewModelProviders.of(this, factory).get(SignUpViewModel.class);
         binding.setVm(viewModel);
         binding.setActivity(this);
