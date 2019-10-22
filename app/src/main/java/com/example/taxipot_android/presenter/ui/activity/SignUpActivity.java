@@ -1,5 +1,6 @@
 package com.example.taxipot_android.presenter.ui.activity;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -23,11 +24,9 @@ import com.example.taxipot_android.util.CreateRetrofit;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 public class SignUpActivity extends BaseActivity {
 
@@ -55,38 +54,46 @@ public class SignUpActivity extends BaseActivity {
                 changeTextColorRadioButton(binding.signup2GenderIsWomanRb, binding.signup2GenderIsManRb);
             }
         });
-        viewModel.ageLimit.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                if (Integer.parseInt(s) > 99) {
-                    viewModel.ageLimit.postValue("99");
-                } else if (Integer.parseInt(s) < 0) {
-                    viewModel.ageLimit.postValue("00");
-                }
-            }
-        });
     }
 
     public void requestSignUpActivity(View v) {
+        @Nullable
+        String age = viewModel.ageLimit.getValue();
+        boolean isMan = viewModel.isMan.getValue();
+        String userId = viewModel.userId.getValue();
+        String userPassword = viewModel.userPassword.getValue();
+        String userPasswordCheck = viewModel.userPasswordCheck.getValue();
+
+        if (userId == null) {
+            makeToast("아이디를 입력해주세요.");
+        } else if (userPassword == null) {
+            makeToast("비밀번호를 입력해주세요.");
+        } else if (userPasswordCheck == null) {
+            makeToast("비밀번호 확인을 입력해주세요.");
+        } else if (userPassword == userPasswordCheck) {
+            makeToast("비밀번호가 동일하지 않습니다.");
+        } else if (age.isEmpty()) {
+            makeToast("나이를 입력해주세요.");
+        }
+
+        User user = new User(Integer.valueOf(age), isMan, userId, userPassword);
+        Log.d("user", user.toString());
+
         CreateRetrofit.createRetrofit(UserApi.class)
-                .requestSignUp(new User(50, false, "00l3", "pass"))
+                .requestSignUp(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<Void>() {
+                .subscribe(new DisposableSingleObserver<ResponseBody>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
+                    public void onSuccess(ResponseBody responseBody) {
                         makeToast("회원가입에 성공했습니다.");
                         Log.d("success", "success");
+                        finish();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        viewModel.visibility.setValue(true);
-                        switch (e.getMessage()) {
-                            case "HTTP 400" : { break; }
-                            case "timeout" : { makeToast("인터넷 상태를 확인 후 다시 시도해주세요."); }
-                        }
-                        viewModel.visibility.setValue(false);
+                        makeToast("서버와 통신할 수 없습니다. 인터넷을 확인하세요.");
                     }
                 });
     }
