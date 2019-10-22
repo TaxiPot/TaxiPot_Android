@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface UserApi {
     @POST("/api/users/signin")
-    Observable<User> requestSignIn(@Body User user);
+    Single<User> requestSignIn(@Body User user);
 
     @POST("/api/users/signup")
     Single<ResponseBody> requestSignUp(@Body User user);

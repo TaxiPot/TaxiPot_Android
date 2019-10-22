@@ -16,6 +16,11 @@ public class User {
     @SerializedName("user_password")
     private String userPassword;
 
+    public User(String userId, String userPassword) {
+        this.userId = userId;
+        this.userPassword = userPassword;
+    }
+
     public User(int age, boolean isMan, String userId, String userPassword) {
         this.age = age;
         this.isMan = isMan;

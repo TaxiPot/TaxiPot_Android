@@ -3,7 +3,6 @@ package com.example.taxipot_android.presenter.ui.activity;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.graphics.Color;

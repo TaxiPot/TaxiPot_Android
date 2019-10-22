@@ -7,6 +7,10 @@
         <variable
             name="activity"
             type="com.example.taxipot_android.presenter.ui.activity.SignInActivity" />
+
+        <variable
+            name="vm"
+            type="com.example.taxipot_android.presenter.viewModel.SignInViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -80,6 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@={vm.userId}"
             android:hint="아이디를 입력해주세요"
             android:inputType="text"
             android:paddingLeft="4dp"
@@ -96,6 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@={vm.userPassword}"
             android:hint="비밀번호를 입력해주세요"
             android:inputType="text"
             android:paddingLeft="4dp"
