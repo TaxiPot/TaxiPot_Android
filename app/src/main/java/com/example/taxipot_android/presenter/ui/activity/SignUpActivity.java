@@ -53,10 +53,16 @@ public class SignUpActivity extends BaseActivity {
         viewModel.ageLimit.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if(Integer.parseInt(s) > 99) {
-                    viewModel.ageLimit.postValue("99");
-                } else if(Integer.parseInt(s) < 0){
+                if(s.length()==0){
                     viewModel.ageLimit.postValue("00");
+                } else {
+                    if (Integer.parseInt(s) > 99) {
+                        viewModel.ageLimit.postValue("99");
+                        binding.signupAgeEt.setText("99");
+                    } else if (Integer.parseInt(s) < 0) {
+                        viewModel.ageLimit.postValue("00");
+                        binding.signupAgeEt.setText("00");
+                    }
                 }
             }
         });
