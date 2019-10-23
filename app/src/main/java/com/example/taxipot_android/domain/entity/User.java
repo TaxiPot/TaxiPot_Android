@@ -73,4 +73,10 @@ public class User {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "age : " + age + "\nisMan : " + isMan + "\ntrustpoint : " + trustPoint + "\nuserId : " + userId + "\npassword : " + userPassword;
+    }
 }

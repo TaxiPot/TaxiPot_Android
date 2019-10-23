@@ -8,5 +8,5 @@ import retrofit2.http.Query;
 
 public interface BugApi {
     @POST
-    Observable<Void> postBug(@Query("bugReport") Bug bug);
+    Observable<Bug> postBug(@Query("bugReport") Bug bug);
 }

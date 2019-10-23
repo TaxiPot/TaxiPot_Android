@@ -33,7 +33,7 @@ public class SignUpActivity extends BaseActivity {
     @Inject
     SignUpViewModelFactory factory;
     SignUpViewModel viewModel;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +43,41 @@ public class SignUpActivity extends BaseActivity {
         binding.setActivity(this);
         liveDataObserve();
     }
-
+    
     private void liveDataObserve() {
-        viewModel.isMan.observe(this, aBoolean -> {
-            if (aBoolean) {
-                changeTextColorRadioButton(binding.signup2GenderIsManRb, binding.signup2GenderIsWomanRb);
-            } else {
-                changeTextColorRadioButton(binding.signup2GenderIsWomanRb, binding.signup2GenderIsManRb);
+            viewModel.isMan.observe(this, aBoolean -> {
+                if (aBoolean) {
+                    changeTextColorRadioButton(binding.signup2GenderIsManRb, binding.signup2GenderIsWomanRb);
+                } else {
+   changeTextColorRadioButton(binding.signup2GenderIsWomanRb, binding.signup2GenderIsManRb);
+
+        viewModel.isMan.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    changeTextColorRadioButton(binding.signup2GenderIsManRb, binding.signup2GenderIsWomanRb);
+                } else {
+                    changeTextColorRadioButton(binding.signup2GenderIsWomanRb, binding.signup2GenderIsManRb);
+                }
             }
         });
-    }
-
+        viewModel.ageLimit.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s.length()==0){
+                    viewModel.ageLimit.postValue("00");
+                } else {
+                    if (Integer.parseInt(s) > 99) {
+                        viewModel.ageLimit.postValue("99");
+                        binding.signupAgeEt.setText("99");
+                    } else if (Integer.parseInt(s) < 0) {
+                        viewModel.ageLimit.postValue("00");
+                        binding.signupAgeEt.setText("00");
+                    }
+                }
+                }
+            });
+        }
     public void requestSignUpActivity(View v) {
         @Nullable
         String age = viewModel.ageLimit.getValue();
@@ -61,7 +85,7 @@ public class SignUpActivity extends BaseActivity {
         String userId = viewModel.userId.getValue();
         String userPassword = viewModel.userPassword.getValue();
         String userPasswordCheck = viewModel.userPasswordCheck.getValue();
-
+    
         if (userId == null) {
             makeToast("아이디를 입력해주세요.");
         } else if (userPassword == null) {
@@ -73,10 +97,10 @@ public class SignUpActivity extends BaseActivity {
         } else if (age.isEmpty()) {
             makeToast("나이를 입력해주세요.");
         }
-
+    
         User user = new User(Integer.valueOf(age), isMan, userId, userPassword);
         Log.d("user", user.toString());
-
+    
         CreateRetrofit.createRetrofit(UserApi.class)
                 .requestSignUp(user)
                 .subscribeOn(Schedulers.io())
@@ -88,19 +112,19 @@ public class SignUpActivity extends BaseActivity {
                         Log.d("success", "success");
                         finish();
                     }
-
+    
                     @Override
                     public void onError(Throwable e) {
                         makeToast("서버와 통신할 수 없습니다. 인터넷을 확인하세요.");
                     }
                 });
     }
-
+    
     private void changeTextColorRadioButton(RadioButton selView, RadioButton view) {
         selView.setTextColor(Color.WHITE);
         view.setTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.barColor));
     }
-
+    
     @Override
     protected void onDestroy() {
         super.onDestroy();

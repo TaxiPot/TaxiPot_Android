@@ -4,7 +4,6 @@ import com.example.taxipot_android.domain.entity.User;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
-import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
@@ -12,12 +11,12 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface UserApi {
-    @POST("/api/users/signin")
-    Single<User> requestSignIn(@Body User user);
+    @POST
+    Observable<User> requestSignIn(@Body User user);
 
     @POST("/api/users/signup")
-    Single<ResponseBody> requestSignUp(@Body User user);
-
+    Single<User> requestSignUp(@Body User user);
+    
     @PATCH("/api/users/{user_id}/change_pw")
-    Observable<Void> changePassword(@Query("fromPW") String fromPW, @Query("toPW") String toPW, @Path("user_id") String user_id);
+    Observable<User> changePassword(@Path("user_id") String user_id, @Query("fromPW") String fromPW, @Query("toPW") String toPW);
 }

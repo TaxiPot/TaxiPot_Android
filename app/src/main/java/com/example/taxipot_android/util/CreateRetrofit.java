@@ -10,9 +10,8 @@ public class CreateRetrofit {
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build();
 
-    public static <C> C createRetrofit(Class<C> clazz) {
-        return retrofit.create(clazz);
-    }
+​            .build();
+
 }
+
