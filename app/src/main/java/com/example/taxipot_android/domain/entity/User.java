@@ -1,5 +1,7 @@
 package com.example.taxipot_android.domain.entity;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class User {
@@ -14,11 +16,22 @@ public class User {
     @SerializedName("user_password")
     private String userPassword;
 
+    public User(String userId, String userPassword) {
+        this.userId = userId;
+        this.userPassword = userPassword;
+    }
+
     public User(int age, boolean isMan, String userId, String userPassword) {
         this.age = age;
         this.isMan = isMan;
         this.userId = userId;
         this.userPassword = userPassword;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "age : " + age + " isMan : " + isMan + " userId : " + userId + " userPassword : " + userPassword;
     }
 
     public int getAge() {
