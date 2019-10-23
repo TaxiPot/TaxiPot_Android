@@ -28,12 +28,6 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "age : " + age + " isMan : " + isMan + " userId : " + userId + " userPassword : " + userPassword;
-    }
-
     public int getAge() {
         return age;
     }
