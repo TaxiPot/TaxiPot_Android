@@ -2,6 +2,7 @@ package com.example.taxipot_android.presenter.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -35,6 +36,7 @@ public class SignInActivity extends BaseActivity {
         viewModel = ViewModelProviders.of(this, factory).get(SignInViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         binding.setActivity(this);
+        binding.setVm(viewModel);
     }
 
     public void doSignUp(View v) {
@@ -45,13 +47,17 @@ public class SignInActivity extends BaseActivity {
         String userId = viewModel.userId.getValue();
         String userPassword = viewModel.userPassword.getValue();
 
-        if (userId.isEmpty()) {
+        if (userId == null) {
             makeToast("아이디를 입력해주세요.");
-        } else if (userPassword.isEmpty()) {
+            return;
+        } else if (userPassword == null) {
             makeToast("비밀번호를 입력해주세요.");
+            return;
         }
 
         User user = new User(userId, userPassword);
+
+        Log.d("user Data", user.toString());
 
         CreateRetrofit.createRetrofit(UserApi.class)
                 .requestSignIn(user)
@@ -67,7 +73,12 @@ public class SignInActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        makeToast("로그인에 실패했습니다.");
+                        switch (e.getMessage()) {
+                            case "HTTP 404":
+                                makeToast("아이디를 찾을 수 없습니다.");
+                            case "HTTP 409":
+                                makeToast("이미 존재하는 아이디입니다.");
+                        }
                     }
                 });
     }

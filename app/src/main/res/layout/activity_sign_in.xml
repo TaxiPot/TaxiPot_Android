@@ -79,7 +79,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.42" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -96,14 +96,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.581" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@={vm.userPassword}"
             android:hint="비밀번호를 입력해주세요"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:paddingLeft="4dp"
             android:textColor="#FFFFFF"
             android:theme="@style/passwordEditTextStyle"
