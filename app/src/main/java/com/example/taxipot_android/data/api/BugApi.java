@@ -2,11 +2,11 @@ package com.example.taxipot_android.data.api;
 
 import com.example.taxipot_android.domain.entity.Bug;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface BugApi {
     @POST
-    Observable<Bug> postBug(@Query("bugReport") Bug bug);
+    Single<Bug> postBug(@Body Bug bug);
 }

@@ -3,6 +3,7 @@ package com.example.taxipot_android.data.api;
 import com.example.taxipot_android.domain.entity.TaxiPot;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
@@ -13,11 +14,17 @@ import retrofit2.http.Query;
 public interface TaxipotApi {
 
     @PATCH("/api/rooms/{roomId}/join")
-    Observable<TaxiPot> joinToTaxipot(@Path("roomId") String roomId, @Query("seat_num") String seatNum, @Query("user_id") String userId);
+    Single<TaxiPot> joinToTaxipot(@Path("roomId") int roomId,  @Query("user_id") String userId,@Query("seat_num") int seatNum);
     
     @GET("/api/rooms/findRoom")
-    Observable<TaxiPot> findTaxipotList();
+    Observable<TaxiPot> findTaxipotList(@Query("depart_time") long departTime,
+                                        @Query("start_latitude") double startLatitude,
+                                        @Query("start_longitude") double startLongitude,
+                                        @Query("end_latitude") double endLatitude,
+                                        @Query("end_longitude") double endLongitude,
+                                        @Query("radius") float radius,
+                                        @Query("age") int age);
     
     @POST("/api/rooms/makeroom")
-    Observable<TaxiPot> makeTaxipot(@Body TaxiPot taxiPot);
+    Single<TaxiPot> makeTaxipot(@Body TaxiPot taxiPot);
     }

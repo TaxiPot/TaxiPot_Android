@@ -5,14 +5,16 @@ import com.example.taxipot_android.domain.entity.History;
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface HistoryApi {
-    @GET
-    Observable<List<History>> findHistoryById(@Query("id") String userId);
+    @GET("/{id}/history")
+    Observable<List<History>> findHistoryById(@Path("id") String userId);
 
-    @POST
-    Observable<Boolean> sendHistoryList(@Query("historyList") List<History> historyList, @Query("id") String id);
+    @POST("{id}/history")
+    Observable<Integer> sendHistoryList(@Path("id") String id, @Body List<History> historyList);
 }

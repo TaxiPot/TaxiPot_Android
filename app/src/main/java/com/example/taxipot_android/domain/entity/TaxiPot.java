@@ -56,4 +56,24 @@ public class TaxiPot {
     public String dateFormat() {
         return format.format(departTime.getTime());
     }
+
+    public double getStartLongtitude() {
+        return startLongtitude;
+    }
+
+    public double getStartLatitude() {
+        return startLatitude;
+    }
+
+    public double getEndLongtitude() {
+        return endLongtitude;
+    }
+
+    public double getEndLatitude() {
+        return endLatitude;
+    }
+
+    public Calendar getDepartTime() {
+        return departTime;
+    }
 }
