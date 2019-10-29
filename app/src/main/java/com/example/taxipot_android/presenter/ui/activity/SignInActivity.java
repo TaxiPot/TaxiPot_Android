@@ -67,6 +67,7 @@ public class SignInActivity extends BaseActivity {
                     @Override
                     public void onSuccess(User user) {
                         makeToast("로그인에 성공했습니다.");
+                        setUser(user);
                         startActivity(new Intent(SignInActivity.this, MainActivity.class));
                         finish();
                     }
