@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface UserApi {
-    @POST
+    @POST("/api/users/signin")
     Single<User> requestSignIn(@Body User user);
 
     @POST("/api/users/signup")
