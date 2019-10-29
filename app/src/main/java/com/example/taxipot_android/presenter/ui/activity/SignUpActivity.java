@@ -92,14 +92,19 @@ public class SignUpActivity extends BaseActivity {
 
         if (userId == null) {
             makeToast("아이디를 입력해주세요.");
+            return;
         } else if (userPassword == null) {
             makeToast("비밀번호를 입력해주세요.");
+            return;
         } else if (userPasswordCheck == null) {
             makeToast("비밀번호 확인을 입력해주세요.");
+            return;
         } else if (userPassword == userPasswordCheck) {
             makeToast("비밀번호가 동일하지 않습니다.");
+            return;
         } else if (age.isEmpty()) {
             makeToast("나이를 입력해주세요.");
+            return;
         }
 
         User user = new User(Integer.valueOf(age), isMan, userId, userPassword);
