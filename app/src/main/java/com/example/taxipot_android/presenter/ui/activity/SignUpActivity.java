@@ -110,22 +110,6 @@ public class SignUpActivity extends BaseActivity {
         User user = new User(Integer.valueOf(age), isMan, userId, userPassword);
         Log.d("user", user.toString());
 
-        CreateRetrofit.createRetrofit(UserApi.class)
-                .requestSignUp(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<User>() {
-                    @Override
-                    public void onSuccess(User responseBody) {
-                        makeToast("회원가입에 성공했습니다.");
-                        Log.d("success", "success");
-                        finish();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        makeToast("서버와 통신할 수 없습니다. 인터넷을 확인하세요.");
-                    }
-                });
+        // TODO: 2019-10-29 서버통신 코드 작성하기
     }
 }
