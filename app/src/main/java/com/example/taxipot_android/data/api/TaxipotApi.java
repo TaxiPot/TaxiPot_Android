@@ -14,8 +14,8 @@ import retrofit2.http.Query;
 public interface TaxipotApi {
 
     @PATCH("/api/rooms/{roomId}/join")
-    Single<TaxiPot> joinToTaxipot(@Path("roomId") int roomId,  @Query("user_id") String userId,@Query("seat_num") int seatNum);
-    
+    Single<TaxiPot> joinToTaxipot(@Path("roomId") int roomId, @Query("user_id") String userId, @Query("seat_num") int seatNum);
+
     @GET("/api/rooms/findRoom")
     Observable<TaxiPot> findTaxipotList(@Query("depart_time") long departTime,
                                         @Query("start_latitude") double startLatitude,
@@ -24,7 +24,7 @@ public interface TaxipotApi {
                                         @Query("end_longitude") double endLongitude,
                                         @Query("radius") float radius,
                                         @Query("age") int age);
-    
+
     @POST("/api/rooms/makeroom")
     Single<TaxiPot> makeTaxipot(@Body TaxiPot taxiPot);
-    }
+}
