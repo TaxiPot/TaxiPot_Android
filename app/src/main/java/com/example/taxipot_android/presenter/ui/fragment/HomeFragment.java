@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentHomeBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
+import com.example.taxipot_android.presenter.ui.activity.FindPartyActivity;
 import com.example.taxipot_android.presenter.ui.activity.MakePartyActivity;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
@@ -23,6 +24,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         binding.setFragment(this);
 
         return inflate;
+    }
+
+    public void findRoomListener(View v) {
+        startActivity(new Intent(getActivity(), FindPartyActivity.class));
     }
 
     public void newRoomListener(View v) {

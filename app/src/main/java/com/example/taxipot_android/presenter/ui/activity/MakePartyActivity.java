@@ -1,6 +1,5 @@
 package com.example.taxipot_android.presenter.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;

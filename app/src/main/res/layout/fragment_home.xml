@@ -61,6 +61,7 @@
             android:layout_height="100dp"
             android:layout_marginBottom="36dp"
             android:src="@drawable/ic_search_black_24dp"
+            android:onClick="@{fragment::findRoomListener}"
             app:layout_constraintBottom_toBottomOf="@+id/view4"
             app:layout_constraintEnd_toStartOf="@+id/view4"
             app:layout_constraintStart_toStartOf="parent"

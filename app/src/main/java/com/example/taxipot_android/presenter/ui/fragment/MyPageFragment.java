@@ -39,8 +39,8 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
         this.viewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel.class);
         binding.setFragment(this);
         binding.setVm(viewModel);
+
         getUserData();
-        setUserDataInUI();
         return v;
     }
 
@@ -54,6 +54,7 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
                     @Override
                     public void onSuccess(User user) {
                         setUser(user);
+                        setUserDataInUI();
                     }
 
                     @Override

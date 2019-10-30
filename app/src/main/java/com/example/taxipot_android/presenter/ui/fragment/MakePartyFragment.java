@@ -28,8 +28,9 @@ public class MakePartyFragment extends BaseFragment<FragmentMakePartyBinding> {
     public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_make_party);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        this.viewModel = ViewModelProviders.of(this, factory).get(MakePartyViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(MakePartyViewModel.class);
         binding.setFragment(this);
+        binding.setVm(viewModel);
         return v;
     }
 
