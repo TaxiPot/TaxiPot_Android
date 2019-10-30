@@ -36,11 +36,11 @@ public class User {
         this.age = age;
     }
 
-    public boolean isMan() {
+    public boolean getIsMan() {
         return isMan;
     }
 
-    public void setMan(boolean man) {
+    public void setIsMan(boolean man) {
         isMan = man;
     }
 
@@ -71,6 +71,6 @@ public class User {
     @NonNull
     @Override
     public String toString() {
-        return "age : " + age + "\nisMan : " + isMan + "\ntrustpoint : " + trustPoint + "\nuserId : " + userId + "\npassword : " + userPassword;
+        return "age : " + age + "\ngetIsMan : " + isMan + "\ntrustpoint : " + trustPoint + "\nuserId : " + userId + "\npassword : " + userPassword;
     }
 }

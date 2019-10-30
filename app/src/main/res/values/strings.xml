@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TaxiPot_Android</string>
+    <string name="man">남자</string>
+    <string name="woman">여자</string>
 </resources>

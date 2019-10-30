@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class SignInViewModelFactory implements ViewModelProvider.Factory {
+public class MyPageViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
@@ -16,9 +16,9 @@ public class SignInViewModelFactory implements ViewModelProvider.Factory {
         try {
             obj = modelClass.getConstructor().newInstance();
         } catch (NoSuchMethodException nsme) {
-            Log.e("SignInViewModelFactory", "getConstructor");
+            Log.e("MyPageViewModelFactory", "getConstructor");
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            Log.e("SignInViewModelFactory", "newInstance");
+            Log.e("MyPageViewModelFactory", "newInstance");
         }
         return obj;
     }
