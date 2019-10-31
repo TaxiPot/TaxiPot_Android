@@ -34,10 +34,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
+        initDoubleBackButton();
 
         fragment = getSupportFragmentManager().findFragmentById(R.id.main_fragment_space_fragment);
-
-        initDoubleBackButton();
 
         if (fragment instanceof NavHostFragment) {
             Log.i("fragment", "instanceofNavHost");

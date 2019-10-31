@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="activity"
             type="com.example.taxipot_android.presenter.ui.activity.MainActivity" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_gradation"
-    tools:context=".presenter.ui.activity.MainActivity">
 
-    <fragment
-        android:id="@+id/main_fragment_space_fragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
-        android:orientation="horizontal"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        tools:layout="@layout/fragment_home"
-        app:navGraph="@navigation/navigation_main"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/bg_gradation"
+        tools:context=".presenter.ui.activity.MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/main_bottomnavigation"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:itemBackground="@drawable/bg_bottomnavigation_main"
-        app:itemIconTint="@color/color_bottomnavigation"
-        app:itemTextAppearanceActive="@style/navigationLabel"
-        app:itemTextAppearanceInactive="@style/navigationLabel"
-        app:itemTextColor="@color/color_bottomnavigation"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottomnavigation_menu_main"/>
+        <fragment
+            android:id="@+id/main_fragment_space_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="56dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/navigation_main"
+            tools:layout="@layout/fragment_home" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bottomnavigation"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:itemBackground="@drawable/bg_bottomnavigation_main"
+            app:itemIconTint="@color/color_bottomnavigation"
+            app:itemTextAppearanceActive="@style/navigationLabel"
+            app:itemTextAppearanceInactive="@style/navigationLabel"
+            app:itemTextColor="@color/color_bottomnavigation"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottomnavigation_menu_main" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
