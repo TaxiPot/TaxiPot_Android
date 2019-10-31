@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.example.taxipot_android.presenter.ui.fragment.SelectDepartureFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transParent"
+        tools:background="@drawable/bg_gradation"
+        tools:context=".presenter.ui.fragment.SelectDepartureFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.175" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.825" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.373" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.74" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.103" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.908" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothicbold"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="3sp"
+            android:text="파티를 구하세요!"
+            android:textColor="#74e0b5"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothicbold"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:text="출발지를 선택해주세요"
+            android:textColor="#74e0b5"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2575" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nanumgothicbold"
+            android:hint="출발지를 입력해주세요."
+            android:inputType="text"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="13sp"
+            android:theme="@style/normalEditTextStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.307" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/selfrg_mapview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#2F2F2F"
+            app:layout_constraintBottom_toTopOf="@+id/selfrg_guide4"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide1"
+            app:layout_constraintTop_toTopOf="@+id/selfrg_guide3" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/selfrg_guide4"
+            app:layout_constraintVertical_bias="0.1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumgothicbold"
+                android:letterSpacing="0.07"
+                android:lineSpacingExtra="2sp"
+                android:text="반경 "
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+
+            <EditText
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/nanumgothicbold"
+                android:inputType="number"
+                android:letterSpacing="0.07"
+                android:lineSpacingExtra="2sp"
+                android:maxLength="3"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="13sp"
+                android:theme="@style/normalEditTextStyle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumgothicbold"
+                android:letterSpacing="0.07"
+                android:lineSpacingExtra="2sp"
+                android:text=" m"
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothicextrabold"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:text="만들기"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8845" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

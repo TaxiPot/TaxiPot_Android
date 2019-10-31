@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface BugApi {
-    @POST
+    @POST("/api/postbug")
     Single<Bug> postBug(@Body Bug bug);
 }

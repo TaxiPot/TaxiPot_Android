@@ -5,20 +5,21 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:name=".di.application.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".presenter.ui.activity.FindPartyActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key_name" />
 
-        <activity android:name=".presenter.ui.activity.MakePartyActivity"/>
+        <activity android:name=".presenter.ui.activity.MakePartyActivity" />
         <activity android:name=".presenter.ui.activity.SignUpActivity" />
         <activity android:name=".presenter.ui.activity.ReportActivity" />
         <activity android:name=".presenter.ui.activity.SignInActivity">

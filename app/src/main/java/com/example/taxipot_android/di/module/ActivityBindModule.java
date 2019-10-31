@@ -1,11 +1,13 @@
 package com.example.taxipot_android.di.module;
 
 import com.example.taxipot_android.di.ActivityScope;
+import com.example.taxipot_android.di.module.activity.FindPartyActivityModule;
 import com.example.taxipot_android.di.module.activity.MainActivityModule;
 import com.example.taxipot_android.di.module.activity.MakePartyActivityModule;
 import com.example.taxipot_android.di.module.activity.ReportActivityModule;
 import com.example.taxipot_android.di.module.activity.SignInActivityModule;
 import com.example.taxipot_android.di.module.activity.SignUpActivityModule;
+import com.example.taxipot_android.presenter.ui.activity.FindPartyActivity;
 import com.example.taxipot_android.presenter.ui.activity.MainActivity;
 import com.example.taxipot_android.presenter.ui.activity.MakePartyActivity;
 import com.example.taxipot_android.presenter.ui.activity.ReportActivity;
@@ -36,4 +38,8 @@ public abstract class ActivityBindModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = MakePartyActivityModule.class)
     abstract MakePartyActivity provideMakePartyActivity();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = FindPartyActivityModule.class)
+    abstract FindPartyActivity provideFindPartyActivity();
 }

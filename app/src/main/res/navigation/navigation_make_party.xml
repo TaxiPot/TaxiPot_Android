@@ -27,5 +27,5 @@
         android:id="@+id/chattingFragment"
         android:name="com.example.taxipot_android.presenter.ui.fragment.ChattingFragment"
         android:label="ChattingFragment"
-        tools:layout="@layout/fragment_chatting"/>
+        tools:layout="@layout/fragment_chatting" />
 </navigation>
