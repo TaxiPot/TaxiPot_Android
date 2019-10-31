@@ -1,6 +1,6 @@
 package com.example.taxipot_android.di.module.activity;
 
-import com.example.taxipot_android.data.datasource.UserDataSource;
+import com.example.taxipot_android.data.remote.RemoteAPI;
 import com.example.taxipot_android.data.repository.SignInRepositoryImpl;
 import com.example.taxipot_android.domain.repository.SignInRepository;
 import com.example.taxipot_android.presenter.viewModelFactory.SignInViewModelFactory;
@@ -16,7 +16,7 @@ public class SignInActivityModule {
     }
 
     @Provides
-    public SignInRepository provideRepository(UserDataSource dataSource) {
-        return new SignInRepositoryImpl(dataSource);
+    public SignInRepository provideRepository(RemoteAPI api) {
+        return new SignInRepositoryImpl(api);
     }
 }

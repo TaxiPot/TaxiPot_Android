@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BugDataSource {
     private BugApi api;
-    BugDataSource(BugApi api) {
+    public BugDataSource(BugApi api) {
         this.api = api;
     }
 

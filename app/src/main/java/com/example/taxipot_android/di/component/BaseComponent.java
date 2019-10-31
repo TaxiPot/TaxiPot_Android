@@ -2,6 +2,7 @@ package com.example.taxipot_android.di.component;
 
 import com.example.taxipot_android.di.application.BaseApplication;
 import com.example.taxipot_android.di.module.ActivityBindModule;
+import com.example.taxipot_android.di.module.ApiModule;
 import com.example.taxipot_android.di.module.AppModule;
 
 import javax.inject.Singleton;
@@ -15,7 +16,8 @@ import dagger.android.AndroidInjector;
 @Component(modules = {
         AndroidInjectionModule.class,
         AppModule.class,
-        ActivityBindModule.class
+        ActivityBindModule.class,
+        ApiModule.class
 })
 public interface BaseComponent extends AndroidInjector<BaseApplication> {
 
