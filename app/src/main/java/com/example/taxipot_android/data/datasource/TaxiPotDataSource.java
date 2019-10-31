@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class TaxiPotDataSource {
     TaxipotApi api;
-    TaxiPotDataSource(TaxipotApi api) {
+    public TaxiPotDataSource(TaxipotApi api) {
         this.api = api;
     }
 

@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class HistoryDataSource {
     private HistoryApi api;
-    HistoryDataSource(HistoryApi api) {
+    public HistoryDataSource(HistoryApi api) {
         this.api = api;
     }
 

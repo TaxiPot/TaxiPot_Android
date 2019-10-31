@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ReportDataSource {
     private ReportApi api;
-    ReportDataSource(ReportApi api) {
+    public ReportDataSource(ReportApi api) {
         this.api = api;
     }
 
