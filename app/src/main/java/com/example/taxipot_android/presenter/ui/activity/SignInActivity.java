@@ -17,6 +17,8 @@ import com.example.taxipot_android.presenter.viewModel.SignInViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.SignInViewModelFactory;
 import com.example.taxipot_android.util.CreateRetrofit;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -28,6 +30,7 @@ public class SignInActivity extends BaseActivity {
     ActivitySignInBinding binding;
 
     SignInViewModel viewModel;
+    @Inject
     SignInViewModelFactory factory;
 
     @Override
