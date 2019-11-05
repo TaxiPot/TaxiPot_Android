@@ -62,7 +62,7 @@ public class SignInActivity extends BaseActivity {
 
         Log.d("user Data", user.toString());
 
-        CreateRetrofit.createRetrofit(UserApi.class)
+        /*CreateRetrofit.createRetrofit(UserApi.class)
                 .requestSignIn(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -84,6 +84,10 @@ public class SignInActivity extends BaseActivity {
                                 makeToast("이미 존재하는 아이디입니다.");
                         }
                     }
-                });
+                });*/
+        setUser(user);
+        startActivity(new Intent(SignInActivity.this, MainActivity.class));
     }
+
+
 }

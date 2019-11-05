@@ -18,4 +18,5 @@ public class FindPartyActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_find_party);
         binding.setActivity(this);
     }
+
 }
