@@ -67,4 +67,8 @@ public class MainActivity extends BaseActivity {
         backButtonSubjectDisposable.dispose();
     }
 
+    @Override
+    protected void showToast() {
+
+    }
 }
