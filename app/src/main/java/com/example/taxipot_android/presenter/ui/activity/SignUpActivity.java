@@ -38,8 +38,8 @@ public class SignUpActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         viewModel = ViewModelProviders.of(this, factory).get(SignUpViewModel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         binding.setVm(viewModel);
         binding.setActivity(this);
         liveDataObserve();
@@ -82,34 +82,8 @@ public class SignUpActivity extends BaseActivity {
         });
     }
 
-    public void requestSignUpActivity(View v) {
-        @Nullable
-        String age = viewModel.ageLimit.getValue();
-        boolean isMan = viewModel.isMan.getValue();
-        String userId = viewModel.userId.getValue();
-        String userPassword = viewModel.userPassword.getValue();
-        String userPasswordCheck = viewModel.userPasswordCheck.getValue();
-
-        if (userId == null) {
-            makeToast("아이디를 입력해주세요.");
-            return;
-        } else if (userPassword == null) {
-            makeToast("비밀번호를 입력해주세요.");
-            return;
-        } else if (userPasswordCheck == null) {
-            makeToast("비밀번호 확인을 입력해주세요.");
-            return;
-        } else if (userPassword == userPasswordCheck) {
-            makeToast("비밀번호가 동일하지 않습니다.");
-            return;
-        } else if (age.isEmpty()) {
-            makeToast("나이를 입력해주세요.");
-            return;
-        }
-
-        User user = new User(Integer.valueOf(age), isMan, userId, userPassword);
-        Log.d("user", user.toString());
-
-        // TODO: 2019-10-29 서버통신 코드 작성하기
+    @Override
+    protected void showToast() {
+        viewModel.getToast().observe(this, toastObserver);
     }
 }

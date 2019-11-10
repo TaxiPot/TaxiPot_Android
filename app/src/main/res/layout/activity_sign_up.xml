@@ -136,7 +136,7 @@
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:clickable="true"
-            android:onClick="@{activity::requestSignUpActivity}"
+            android:onClick="@{vm::signIn}"
             android:src="@drawable/ic_arrow_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"

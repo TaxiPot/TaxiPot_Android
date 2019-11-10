@@ -8,15 +8,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.taxipot_android.data.repository.SignInRepositoryImpl;
 import com.example.taxipot_android.domain.repository.SignInRepository;
+import com.example.taxipot_android.domain.usecase.SignInUseCase;
 import com.example.taxipot_android.presenter.viewModel.SignInViewModel;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class SignInViewModelFactory implements ViewModelProvider.Factory {
-    SignInRepository repository;
+    SignInUseCase useCase;
 
-    public SignInViewModelFactory(SignInRepository repository) {
-        this.repository = repository;
+    public SignInViewModelFactory(SignInUseCase useCase) {
+        this.useCase = useCase;
     }
 
     @NonNull
@@ -24,7 +25,7 @@ public class SignInViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         T obj = null;
         try {
-            obj = modelClass.getConstructor(SignInRepository.class).newInstance(repository);
+            obj = modelClass.getConstructor(SignInUseCase.class).newInstance(useCase);
         } catch (NoSuchMethodException nsme) {
             Log.e("SignInViewModelFactory", "getConstructor");
             Log.e("SignInViewModelFactory",nsme.getMessage());

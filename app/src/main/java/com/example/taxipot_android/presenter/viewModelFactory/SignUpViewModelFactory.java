@@ -7,15 +7,16 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.taxipot_android.domain.repository.SignUpRepository;
+import com.example.taxipot_android.domain.usecase.SignUpUseCase;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class SignUpViewModelFactory implements ViewModelProvider.Factory {
 
-    private SignUpRepository repository;
+    private SignUpUseCase useCase;
 
-    public SignUpViewModelFactory(SignUpRepository repository) {
-        this.repository = repository;
+    public SignUpViewModelFactory(SignUpUseCase useCase) {
+        this.useCase = useCase;
     }
 
     @NonNull
@@ -23,7 +24,7 @@ public class SignUpViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         T obj = null;
         try {
-            obj = modelClass.getConstructor(SignUpRepository.class).newInstance(repository);
+            obj = modelClass.getConstructor(SignUpUseCase.class).newInstance(useCase);
         } catch (NoSuchMethodException nsme) {
             Log.e("SignUpViewModelFactory", "getConstructor");
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {

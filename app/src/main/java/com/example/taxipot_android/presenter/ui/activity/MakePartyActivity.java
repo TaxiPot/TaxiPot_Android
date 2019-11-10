@@ -18,4 +18,5 @@ public class MakePartyActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_make_party);
         binding.setActivity(this);
     }
+
 }
