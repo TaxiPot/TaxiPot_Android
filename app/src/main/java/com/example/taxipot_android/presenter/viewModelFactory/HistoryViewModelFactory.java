@@ -7,14 +7,15 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.taxipot_android.domain.repository.HistoryRepository;
+import com.example.taxipot_android.domain.usecase.HistoryUseCase;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class HistoryViewModelFactory implements ViewModelProvider.Factory {
-    private HistoryRepository repository;
+    private HistoryUseCase useCase;
 
-    public HistoryViewModelFactory(HistoryRepository repository) {
-        this.repository = repository;
+    public HistoryViewModelFactory(HistoryUseCase useCase) {
+        this.useCase = useCase;
     }
 
     @NonNull
@@ -22,7 +23,7 @@ public class HistoryViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         T obj = null;
         try {
-            obj = modelClass.getConstructor(HistoryRepository.class).newInstance(repository);
+            obj = modelClass.getConstructor(HistoryUseCase.class).newInstance(useCase);
         } catch (NoSuchMethodException nsme) {
             Log.e("HistoryViewModelFactory", "getConstructor");
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {

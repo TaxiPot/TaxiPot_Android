@@ -16,7 +16,7 @@ import com.example.taxipot_android.di.ActivityScope;
 import dagger.android.support.DaggerFragment;
 
 @ActivityScope
-public class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
+public abstract class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
     private int fragmentLayout;
     protected T binding;
 
@@ -33,7 +33,9 @@ public class BaseFragment<T extends ViewDataBinding> extends DaggerFragment {
         this.fragmentLayout = fragmentLayout;
     }
 
-    protected void showToast(String string) {
+    protected void makeToast(String string) {
         Toast.makeText(this.getContext(), string,Toast.LENGTH_SHORT).show();
     }
+
+    //protected abstract void showToast();
 }

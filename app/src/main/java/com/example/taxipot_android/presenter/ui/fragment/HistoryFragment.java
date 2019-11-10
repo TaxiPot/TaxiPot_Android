@@ -13,10 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentHistoryBinding;
+import com.example.taxipot_android.di.application.BaseApplication;
+import com.example.taxipot_android.domain.entity.History;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.ui.adapter.HistoryAdapter;
 import com.example.taxipot_android.presenter.viewModel.HistoryViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.HistoryViewModelFactory;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -32,7 +36,8 @@ public class HistoryFragment extends BaseFragment<FragmentHistoryBinding> {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         this.viewModel = ViewModelProviders.of(this,factory).get(HistoryViewModel.class);
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        binding.historyRecyclerview.setAdapter(new HistoryAdapter(this,viewModel.getTaxipotList()));
+        //List<History> list = viewModel.getTaxipotList(BaseApplication.getUser().getUserId());
+        //binding.historyRecyclerview.setAdapter(new HistoryAdapter(this,list));
         return v;
     }
 }
