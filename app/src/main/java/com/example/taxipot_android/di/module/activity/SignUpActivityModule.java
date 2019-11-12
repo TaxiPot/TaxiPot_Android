@@ -8,6 +8,8 @@ import com.example.taxipot_android.domain.usecase.SignUpUseCase;
 import com.example.taxipot_android.domain.usecase.SignUpUseCaseImpl;
 import com.example.taxipot_android.presenter.viewModelFactory.SignUpViewModelFactory;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 

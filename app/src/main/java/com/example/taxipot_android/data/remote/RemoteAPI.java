@@ -28,7 +28,7 @@ public interface RemoteAPI {
 
     Observable<Report> sendReport(Report report);
 
-    Observable<List<History>> findHistoryById(String userId);
+    Observable<History> findHistoryById(String userId);
 
     Observable<Integer> sendHistoryList(String id, List<History> historyList);
 

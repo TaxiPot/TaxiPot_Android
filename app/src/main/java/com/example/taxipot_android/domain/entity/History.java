@@ -13,4 +13,35 @@ public class History {
     private String fourthSeat;
     @SerializedName("userRoomId")
     private EmbeddedHistory userRoomId;
+
+    public History() {
+    }
+
+    public History(String firstSeat, String secondSeat, String thirdSeat, String fourthSeat, EmbeddedHistory userRoomId) {
+        this.firstSeat = firstSeat;
+        this.secondSeat = secondSeat;
+        this.thirdSeat = thirdSeat;
+        this.fourthSeat = fourthSeat;
+        this.userRoomId = userRoomId;
+    }
+
+    public String getFirstSeat() {
+        return firstSeat;
+    }
+
+    public String getSecondSeat() {
+        return secondSeat;
+    }
+
+    public String getThirdSeat() {
+        return thirdSeat;
+    }
+
+    public String getFourthSeat() {
+        return fourthSeat;
+    }
+
+    public EmbeddedHistory getUserRoomId() {
+        return userRoomId;
+    }
 }

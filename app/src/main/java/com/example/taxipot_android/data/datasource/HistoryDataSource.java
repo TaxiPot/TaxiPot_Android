@@ -15,7 +15,7 @@ public class HistoryDataSource {
         this.api = api;
     }
 
-    public Observable<List<History>> findHistoryById(String userId) {
+    public Observable<History> findHistoryById(String userId) {
         return api.findHistoryById(userId)
                 .observeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread());

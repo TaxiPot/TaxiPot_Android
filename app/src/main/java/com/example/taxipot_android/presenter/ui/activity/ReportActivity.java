@@ -20,5 +20,8 @@ public class ReportActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_report);
     }
+    @Override
+    protected void showToast() {
 
+    }
 }

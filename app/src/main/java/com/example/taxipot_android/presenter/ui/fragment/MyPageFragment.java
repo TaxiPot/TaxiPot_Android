@@ -4,31 +4,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.taxipot_android.R;
-import com.example.taxipot_android.data.api.UserApi;
 import com.example.taxipot_android.databinding.FragmentMypageBinding;
 import com.example.taxipot_android.di.application.BaseApplication;
-import com.example.taxipot_android.domain.entity.User;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.viewModel.MyPageViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.MyPageViewModelFactory;
-import com.example.taxipot_android.util.CreateRetrofit;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
-
-import static com.example.taxipot_android.di.application.BaseApplication.setUser;
+import javax.inject.Inject;
 
 public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
 
     MyPageViewModel viewModel;
+    @Inject
     MyPageViewModelFactory factory;
 
     @Nullable
@@ -40,28 +33,14 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
         binding.setFragment(this);
         binding.setVm(viewModel);
 
-        getUserData();
+        setUserDataInUI();
         return v;
     }
 
-    private void getUserData() {
-        User user = BaseApplication.getUser();
-        CreateRetrofit.createRetrofit(UserApi.class)
-                .requestSignIn(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<User>() {
-                    @Override
-                    public void onSuccess(User user) {
-                        setUser(user);
-                        setUserDataInUI();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(getContext(), "서버 통신 오류 : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+    @Override
+    public void onStart() {
+        super.onStart();
+        viewModel.refreshUserData(BaseApplication.getUser());
     }
 
     private void setUserDataInUI() {

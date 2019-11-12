@@ -37,13 +37,13 @@ public class SettingFragment extends BaseFragment<FragmentSettingBinding> {
         array.add(new SettingContent("비밀번호 확인", "기존 비밀번호를 변경합니다", new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showToast("비밀번호 확인");
+                makeToast("비밀번호 확인");
             }
         }));
         array.add(new SettingContent("비밀번호 변경", "대신 사용할 비밀번호로 변경합니다", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("비밀번호 변경");
+                makeToast("비밀번호 변경");
             }
         }
         ));

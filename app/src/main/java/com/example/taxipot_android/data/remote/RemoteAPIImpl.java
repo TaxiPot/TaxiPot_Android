@@ -67,7 +67,7 @@ public class RemoteAPIImpl implements RemoteAPI {
     }
 
     @Override
-    public Observable<List<History>> findHistoryById(String userId) {
+    public Observable<History> findHistoryById(String userId) {
         return historyDS.findHistoryById(userId);
     }
 

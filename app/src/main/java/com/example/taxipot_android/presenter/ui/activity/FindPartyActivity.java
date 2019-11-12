@@ -19,4 +19,8 @@ public class FindPartyActivity extends BaseActivity {
         binding.setActivity(this);
     }
 
+    @Override
+    protected void showToast() {
+
+    }
 }
