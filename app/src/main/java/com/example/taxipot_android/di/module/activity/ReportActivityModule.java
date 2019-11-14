@@ -7,7 +7,6 @@ import com.example.taxipot_android.presenter.ui.fragment.ReportSelReasonFragment
 import com.example.taxipot_android.presenter.ui.fragment.ReportSelSeatFragment;
 
 import dagger.Module;
-import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
 @Module

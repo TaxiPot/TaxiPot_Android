@@ -1,14 +1,11 @@
 package com.example.taxipot_android.di.module.activity;
 
 import com.example.taxipot_android.data.remote.RemoteAPI;
-import com.example.taxipot_android.data.remote.RemoteAPIImpl;
 import com.example.taxipot_android.data.repository.SignUpRepositoryImpl;
 import com.example.taxipot_android.domain.repository.SignUpRepository;
 import com.example.taxipot_android.domain.usecase.SignUpUseCase;
 import com.example.taxipot_android.domain.usecase.SignUpUseCaseImpl;
 import com.example.taxipot_android.presenter.viewModelFactory.SignUpViewModelFactory;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

@@ -7,5 +7,5 @@ import java.util.List;
 import io.reactivex.Observable;
 
 public interface HistoryRepository {
-    public Observable<List<History>> getHistories(String userId);
+    Observable<List<History>> getHistories(String userId);
 }

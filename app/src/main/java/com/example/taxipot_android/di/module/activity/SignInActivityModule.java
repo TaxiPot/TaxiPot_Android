@@ -7,8 +7,6 @@ import com.example.taxipot_android.domain.usecase.SignInUseCase;
 import com.example.taxipot_android.domain.usecase.SignInUseCaseImpl;
 import com.example.taxipot_android.presenter.viewModelFactory.SignInViewModelFactory;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

@@ -5,8 +5,6 @@ import com.example.taxipot_android.domain.entity.User;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 public class UserDataSource {
     private UserApi api;

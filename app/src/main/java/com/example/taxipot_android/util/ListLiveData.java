@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 
 public class ListLiveData<T> extends MutableLiveData<List<T>> {

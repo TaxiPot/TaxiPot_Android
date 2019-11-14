@@ -5,7 +5,6 @@ import android.view.View;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.taxipot_android.domain.entity.User;
-import com.example.taxipot_android.domain.repository.SignUpRepository;
 import com.example.taxipot_android.domain.usecase.SignUpUseCase;
 import com.example.taxipot_android.util.BaseSingle;
 import com.example.taxipot_android.util.BaseViewModel;

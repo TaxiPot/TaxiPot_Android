@@ -26,11 +26,3 @@ public class BaseApplication extends DaggerApplication {
         return component;
     }
 }
-
-/*
-class BaseApplication() : DaggerApplication(){
-    private val component = DaggerBaseComponent.factory().build(this)
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> = component
-}
- */

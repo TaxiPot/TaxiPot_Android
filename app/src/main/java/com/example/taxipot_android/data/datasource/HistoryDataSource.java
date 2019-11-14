@@ -8,8 +8,6 @@ import com.example.taxipot_android.domain.entity.History;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 public class HistoryDataSource {
     private HistoryApi api;

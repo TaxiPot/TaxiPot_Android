@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.taxipot_android.domain.repository.HistoryRepository;
 import com.example.taxipot_android.domain.usecase.HistoryUseCase;
 
 import java.lang.reflect.InvocationTargetException;

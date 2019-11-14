@@ -1,4 +1,5 @@
 package com.example.taxipot_android.di.module.fragment;
+
 import com.example.taxipot_android.data.remote.RemoteAPI;
 import com.example.taxipot_android.data.repository.HistoryRepositoryImpl;
 import com.example.taxipot_android.domain.repository.HistoryRepository;

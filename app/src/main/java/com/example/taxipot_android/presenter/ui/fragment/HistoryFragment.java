@@ -1,7 +1,6 @@
 package com.example.taxipot_android.presenter.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -21,7 +19,6 @@ import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.ui.adapter.HistoryAdapter;
 import com.example.taxipot_android.presenter.viewModel.HistoryViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.HistoryViewModelFactory;
-import com.example.taxipot_android.util.ListLiveData;
 
 import java.util.ArrayList;
 import java.util.List;

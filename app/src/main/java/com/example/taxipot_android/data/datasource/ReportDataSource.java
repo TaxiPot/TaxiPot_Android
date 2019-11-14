@@ -4,8 +4,6 @@ import com.example.taxipot_android.data.api.ReportApi;
 import com.example.taxipot_android.domain.entity.Report;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 public class ReportDataSource {
     private ReportApi api;
