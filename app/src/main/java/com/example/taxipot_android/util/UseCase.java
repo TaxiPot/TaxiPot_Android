@@ -1,5 +1,7 @@
 package com.example.taxipot_android.util;
 
+import android.util.Log;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -13,15 +15,18 @@ public abstract class UseCase <T> {
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     protected void execute(Observable<T> observable, DisposableObserver disposable) {
-        DisposableObserver observer = observable.observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+        Log.e(this.getClass().getSimpleName(),"execute");
+        DisposableObserver observer = observable
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
                 .subscribeWith(disposable);
         addDisposable(observer);
     }
 
     protected void execute(Single<T> observable, DisposableSingleObserver disposable) {
-        DisposableSingleObserver observer = observable.observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
+        Log.e(this.getClass().getSimpleName(),"execute");
+        DisposableSingleObserver observer = observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
                 .subscribeWith(disposable);
         addDisposable(observer);
     }

@@ -12,8 +12,6 @@ public class MyPageViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> isMan = new MutableLiveData<>(true);
     public MutableLiveData<Integer> age = new MutableLiveData<>(0);
 
-    private SignInUseCase useCase;
-
     public String man = "남자";
     public String woman = "여자";
 
@@ -22,7 +20,7 @@ public class MyPageViewModel extends BaseViewModel {
     }
 
     public void refreshUserData(User user) {
-        useCase.signIn(user,new LoadMyPageObservable());
+        ((SignInUseCase)useCase).signIn(user,new LoadMyPageObservable());
     }
     private class LoadMyPageObservable extends BaseSingle<User> {
         @Override

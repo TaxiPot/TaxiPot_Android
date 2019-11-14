@@ -13,16 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.ItemBreakdownHistoryBinding;
+import com.example.taxipot_android.domain.entity.History;
 import com.example.taxipot_android.domain.entity.TaxiPot;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.ui.activity.ReportActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private BaseFragment activity;
-    ArrayList<LiveData<TaxiPot>> items;
-    public HistoryAdapter(BaseFragment activity, ArrayList<LiveData<TaxiPot>> list) {
+    List<History> items;
+    public HistoryAdapter(BaseFragment activity, List<History> list) {
         this.activity = activity;
         this.items = list;
     }
@@ -41,6 +43,23 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    public void addItem(History history) {
+        items.add(history);
+        notifyItemInserted(items.size());
+    }
+
+    public void addItem(List<History> histories) {
+        int size = items.size()-1;
+        if(size==-1) size = 0;
+        items.addAll(histories);
+        notifyItemRangeChanged(size, histories.size());
+    }
+
+    public void replace(List<History> histories) {
+        items = histories;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return items.size();
@@ -52,10 +71,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(binding.getRoot());
             this.binding = binding;
         }
-        void bind(LiveData<TaxiPot> item) {
+        void bind(History item) {
             binding.setVh(this);
-            binding.historyItemDepartTime.setText(item.getValue().dateFormat());
-            binding.historyItemStartToFinish.setText(item.getValue().startToFinish());
+            binding.historyItemDepartTime.setText(item.dateFormat());
+            binding.historyItemStartToFinish.setText(item.startToFinish());
         }
         public void onClick(View v) {
             activity.startActivity(new Intent(activity.getActivity(), ReportActivity.class));

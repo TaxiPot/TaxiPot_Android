@@ -12,9 +12,9 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface HistoryApi {
-    @GET("/{id}/history")
-    Observable<History> findHistoryById(@Path("id") String userId);
+    @GET("/api/histories/{id}/history")
+    Observable<List<History>> findHistoryById(@Path("id") String userId);
 
-    @POST("{id}/history")
+    @POST("/api/histories/{id}/history")
     Observable<Integer> sendHistoryList(@Path("id") String id, @Body List<History> historyList);
 }

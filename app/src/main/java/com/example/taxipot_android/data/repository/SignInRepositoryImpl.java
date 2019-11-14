@@ -18,23 +18,6 @@ public class SignInRepositoryImpl implements SignInRepository {
     }
 
     public Single<User> signIn(User user) {
-        return api.signIn(user).doOnSuccess(new Consumer<User>() {
-                                                @Override
-                                                public void accept(User user) throws Exception {
-                                                    Log.e(this.getClass().getSimpleName(), "Login 시도");
-                                                }
-                                            }
-
-        ).doOnError(new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) throws Exception {
-                switch (throwable.getMessage()) {
-                    case "HTTP 404" : {Log.e(this.getClass().getSimpleName(),"404"); break;}
-                    default: {
-                        Log.e(this.getClass().getSimpleName(),throwable.getMessage());
-                    }
-                }
-            }
-        });
+        return api.signIn(user);
     }
 }

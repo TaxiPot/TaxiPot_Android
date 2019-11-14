@@ -14,8 +14,6 @@ public class BugDataSource {
     }
 
     public Single<Bug> postBug(Bug bug) {
-        return api.postBug(bug)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());
+        return api.postBug(bug);
     }
 }

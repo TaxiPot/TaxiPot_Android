@@ -1,5 +1,7 @@
 package com.example.taxipot_android.data.remote;
 
+import android.util.Log;
+
 import com.example.taxipot_android.data.datasource.BugDataSource;
 import com.example.taxipot_android.data.datasource.HistoryDataSource;
 import com.example.taxipot_android.data.datasource.ReportDataSource;
@@ -67,7 +69,8 @@ public class RemoteAPIImpl implements RemoteAPI {
     }
 
     @Override
-    public Observable<History> findHistoryById(String userId) {
+    public Observable<List<History>> findHistoryById(String userId) {
+        Log.e(this.getClass().getSimpleName(),"findHistoryById" + userId);
         return historyDS.findHistoryById(userId);
     }
 

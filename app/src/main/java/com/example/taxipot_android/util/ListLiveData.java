@@ -9,11 +9,11 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-public class ListLiveData<T> extends MutableLiveData<List<T>>{
-    ListLiveData() {
+public class ListLiveData<T> extends MutableLiveData<List<T>> {
+    public ListLiveData() {
         setValue(new ArrayList<>());
     }
-    ListLiveData(List<T> list) {
+    public ListLiveData(List<T> list) {
         setValue(list);
     }
 

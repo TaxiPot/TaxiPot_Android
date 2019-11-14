@@ -14,8 +14,6 @@ public class ReportDataSource {
     }
 
     public Observable<Report> sendReport(Report report) {
-        return api.sendReport(report)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());
+        return api.sendReport(report);
     }
 }

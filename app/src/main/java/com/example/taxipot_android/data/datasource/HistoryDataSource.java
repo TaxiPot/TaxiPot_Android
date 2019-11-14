@@ -1,5 +1,7 @@
 package com.example.taxipot_android.data.datasource;
 
+import android.util.Log;
+
 import com.example.taxipot_android.data.api.HistoryApi;
 import com.example.taxipot_android.domain.entity.History;
 
@@ -15,15 +17,12 @@ public class HistoryDataSource {
         this.api = api;
     }
 
-    public Observable<History> findHistoryById(String userId) {
-        return api.findHistoryById(userId)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());
+    public Observable<List<History>> findHistoryById(String userId) {
+        Log.e(this.getClass().getSimpleName(),"findHistoryById");
+        return api.findHistoryById(userId);
     }
 
     public Observable<Integer> sendHistoryList(String userId, List<History> saveList) {
-        return api.sendHistoryList(userId,saveList)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());
+        return api.sendHistoryList(userId,saveList);
     }
 }

@@ -29,10 +29,9 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_mypage);
         View v = super.onCreateView(inflater, container, savedInstanceState);
-        this.viewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(MyPageViewModel.class);
         binding.setFragment(this);
         binding.setVm(viewModel);
-
         setUserDataInUI();
         return v;
     }

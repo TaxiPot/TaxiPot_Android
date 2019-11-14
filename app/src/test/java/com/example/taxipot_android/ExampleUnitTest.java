@@ -5,17 +5,31 @@ import com.example.taxipot_android.data.api.HistoryApi;
 import com.example.taxipot_android.data.api.ReportApi;
 import com.example.taxipot_android.data.api.TaxipotApi;
 import com.example.taxipot_android.data.api.UserApi;
+import com.example.taxipot_android.data.datasource.UserDataSource;
+import com.example.taxipot_android.data.remote.RemoteAPI;
+import com.example.taxipot_android.data.remote.RemoteAPIImpl;
+import com.example.taxipot_android.data.repository.HistoryRepositoryImpl;
+import com.example.taxipot_android.domain.entity.Bug;
+import com.example.taxipot_android.domain.entity.History;
+import com.example.taxipot_android.domain.entity.Report;
 import com.example.taxipot_android.domain.entity.TaxiPot;
 import com.example.taxipot_android.domain.entity.User;
-import com.example.taxipot_android.util.CreateRetrofit;
+import com.example.taxipot_android.domain.usecase.HistoryUseCaseImpl;
 
 import org.junit.Test;
 
 import java.util.Calendar;
+import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.Single;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Predicate;
+import io.reactivex.observers.DisposableObserver;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static org.junit.Assert.*;
 
@@ -35,9 +49,29 @@ public class ExampleUnitTest {
     }
 
     @Test
+    public void historyTest() {
+        new HistoryRepositoryImpl(new RemoteApiImpl()).getHistories("id3").subscribeWith(new DisposableObserver<List<History>>() {
+            @Override
+            public void onNext(List<History> histories) {
+                System.out.println(histories);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    @Test
     public void apiTestStarter() {
 
-        apiTest1(createTaxipotApi().makeTaxipot(new TaxiPot()));
+        apiTest1(createHistoryApi().findHistoryById("id3"));
     }
 
     private <R>void apiTest1(Observable<R> api) {
@@ -91,4 +125,69 @@ public class ExampleUnitTest {
     private BugApi createBugApi() {
         return connect(BugApi.class);
     }
+
+    class RemoteApiImpl implements RemoteAPI {
+        @Override
+        public Single<User> signIn(User user) {
+            return null;
+        }
+
+        @Override
+        public Single<User> signUp(User user) {
+            return null;
+        }
+
+        @Override
+        public Observable<User> changePassWord(String id, String fromPW, String toPW) {
+            return null;
+        }
+
+        @Override
+        public Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seat_num) {
+            return null;
+        }
+
+        @Override
+        public Observable<TaxiPot> findTaxipotList(TaxiPot taxiPot, float radius, int age) {
+            return null;
+        }
+
+        @Override
+        public Single<TaxiPot> makeTaxipot(TaxiPot taxiPot) {
+            return null;
+        }
+
+        @Override
+        public Observable<Report> sendReport(Report report) {
+            return null;
+        }
+
+        @Override
+        public Observable<List<History>> findHistoryById(String userId) {
+            return createHistoryApi().findHistoryById(userId);
+        }
+
+        @Override
+        public Observable<Integer> sendHistoryList(String id, List<History> historyList) {
+            return null;
+        }
+
+        @Override
+        public Single<Bug> postBug(Bug bug) {
+            return null;
+        }
+    }
 }
+
+class CreateRetrofit {
+    private final static String baseUrl = "http://127.0.0.1:8080/";
+    private final static Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build();
+    public static <T> T createRetrofit(Class<T> clazz) {
+        return retrofit.create(clazz);
+    }
+}
+

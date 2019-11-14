@@ -1,46 +1,54 @@
 package com.example.taxipot_android.presenter.viewModel;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import android.util.Log;
 
+import com.example.taxipot_android.data.api.HistoryApi;
 import com.example.taxipot_android.domain.entity.History;
-import com.example.taxipot_android.domain.entity.TaxiPot;
-import com.example.taxipot_android.domain.repository.HistoryRepository;
 import com.example.taxipot_android.domain.usecase.HistoryUseCase;
 import com.example.taxipot_android.util.BaseObservable;
 import com.example.taxipot_android.util.BaseViewModel;
+import com.example.taxipot_android.util.CreateRetrofit;
+import com.example.taxipot_android.util.ListLiveData;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class HistoryViewModel extends BaseViewModel {
 
-    HistoryUseCase useCase;
-    private ArrayList<LiveData<TaxiPot>> taxipotList;
+    private ListLiveData<History> taxipotList = new ListLiveData<>();
 
     public HistoryViewModel(HistoryUseCase useCase) {
         this.useCase = useCase;
     }
 
-    public ArrayList<LiveData<TaxiPot>> getTaxipotList(String userId) {
-        useCase.getHistories(userId, new HistoryObservable());
+    public ListLiveData<History> getTaxipotList() {
         return taxipotList;
     }
-    private class HistoryObservable extends BaseObservable<History> {
-        @Override
-        public void onNext(History history) {
 
+    public void getHistories(String userId) {
+        Log.e(this.getClass().getSimpleName(),"getHistories");
+        ((HistoryUseCase)useCase).getHistories(userId, new HistoryObservable());
+
+    }
+
+    private class HistoryObservable extends BaseObservable<List<History>> {
+
+        @Override
+        public void onNext(List<History> history) {
+            Log.e(this.getClass().getSimpleName(),history.toString());
+            taxipotList.addAll(history);
         }
 
         @Override
         public void onError(Throwable e) {
-
+            setToast(e.getMessage());
         }
 
         @Override
         public void onComplete() {
-
+            setToast("데이터 로딩 성공");
         }
     }
 }

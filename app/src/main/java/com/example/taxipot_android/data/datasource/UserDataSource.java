@@ -15,20 +15,14 @@ public class UserDataSource {
     }
 
     public Single<User> signIn(User user) {
-        return api.requestSignIn(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return api.requestSignIn(user);
     }
 
     public Single<User> signUp(User user) {
-        return api.requestSignUp(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return api.requestSignUp(user);
     }
 
     public Observable<User> changePassword (String id, String fromPW, String toPW) {
-        return api.changePassword(id,fromPW,toPW)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return api.changePassword(id,fromPW,toPW);
     }
 }

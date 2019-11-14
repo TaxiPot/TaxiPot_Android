@@ -1,5 +1,7 @@
 package com.example.taxipot_android.di.module;
 
+import android.util.Log;
+
 import com.example.taxipot_android.data.api.BugApi;
 import com.example.taxipot_android.data.api.HistoryApi;
 import com.example.taxipot_android.data.api.ReportApi;
@@ -24,31 +26,32 @@ public class ApiModule {
     @Provides
     @Singleton
     public UserApi provideUserApi() {
-        return CreateRetrofit.createRetrofit(UserApi.class);
+        return new CreateRetrofit().createRetrofit(UserApi.class);
     }
 
     @Provides
     @Singleton
     public TaxipotApi provideTaxipot() {
-        return CreateRetrofit.createRetrofit(TaxipotApi.class);
+        return new CreateRetrofit().createRetrofit(TaxipotApi.class);
     }
 
     @Provides
     @Singleton
     public ReportApi provideReport() {
-        return CreateRetrofit.createRetrofit(ReportApi.class);
+        return new CreateRetrofit().createRetrofit(ReportApi.class);
     }
 
     @Provides
     @Singleton
     public HistoryApi provideHistory() {
-        return CreateRetrofit.createRetrofit(HistoryApi.class);
+        Log.e(ApiModule.class.getSimpleName(),"provideHistory");
+        return new CreateRetrofit().createRetrofit(HistoryApi.class);
     }
 
     @Provides
     @Singleton
     public BugApi provideBug() {
-        return CreateRetrofit.createRetrofit(BugApi.class);
+        return new CreateRetrofit().createRetrofit(BugApi.class);
     }
 
     @Provides

@@ -25,14 +25,10 @@ public class TaxiPotDataSource {
     }
 
     public Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seatNum) {
-        return api.joinToTaxipot(roomId,userId,seatNum)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());
+        return api.joinToTaxipot(roomId,userId,seatNum);
     }
 
     public Single<TaxiPot> makeTaxiPot(TaxiPot taxiPot) {
-        return api.makeTaxipot(taxiPot)
-                .observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());
+        return api.makeTaxipot(taxiPot);
     }
 }
