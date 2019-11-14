@@ -17,7 +17,9 @@ public class BaseViewModel extends ViewModel {
         return toast;
     }
 
-    public void onDestroy() {
+    @Override
+    public void onCleared() {
+        super.onCleared();
         useCase.dispose();
     }
 }

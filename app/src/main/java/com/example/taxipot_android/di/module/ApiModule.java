@@ -1,5 +1,6 @@
 package com.example.taxipot_android.di.module;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.example.taxipot_android.data.api.BugApi;
@@ -15,6 +16,7 @@ import com.example.taxipot_android.data.datasource.UserDataSource;
 import com.example.taxipot_android.data.remote.RemoteAPI;
 import com.example.taxipot_android.data.remote.RemoteAPIImpl;
 import com.example.taxipot_android.util.CreateRetrofit;
+import com.example.taxipot_android.util.MapPosition;
 
 import javax.inject.Singleton;
 
@@ -23,6 +25,11 @@ import dagger.Provides;
 
 @Module
 public class ApiModule {
+
+    @Provides
+    @Singleton
+    public MapPosition mapPosition(Context context) { return new MapPosition(context); }
+
     @Provides
     @Singleton
     public UserApi provideUserApi() {

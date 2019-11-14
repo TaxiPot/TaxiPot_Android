@@ -14,15 +14,18 @@ import com.example.taxipot_android.databinding.ItemBreakdownHistoryBinding;
 import com.example.taxipot_android.domain.entity.History;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.ui.activity.ReportActivity;
+import com.example.taxipot_android.presenter.viewModel.HistoryViewModel;
 
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private BaseFragment activity;
     List<History> items;
-    public HistoryAdapter(BaseFragment activity, List<History> list) {
+    HistoryViewModel viewModel;
+    public HistoryAdapter(BaseFragment activity, List<History> list, HistoryViewModel viewModel) {
         this.activity = activity;
         this.items = list;
+        this.viewModel = viewModel;
     }
 
     @NonNull
@@ -63,16 +66,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public class HistoryViewHolder extends RecyclerView.ViewHolder {
         ItemBreakdownHistoryBinding binding;
+        History item;
         HistoryViewHolder(ItemBreakdownHistoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
         void bind(History item) {
+            this.item = item;
             binding.setVh(this);
             binding.historyItemDepartTime.setText(item.dateFormat());
             binding.historyItemStartToFinish.setText(item.startToFinish());
         }
         public void onClick(View v) {
+            viewModel.reportOnHistory(item);
             activity.startActivity(new Intent(activity.getActivity(), ReportActivity.class));
         }
     }

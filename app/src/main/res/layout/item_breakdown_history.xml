@@ -11,7 +11,7 @@
         android:background="@color/transParent"
         android:orientation="vertical" android:layout_width="match_parent"
         tools:background="@drawable/bg_gradation"
-        android:layout_height="70dp">
+        android:layout_height="100dp">
 
         <TextView
             android:id="@+id/history_item_start_to_finish"
@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:text="출발지 ~ 목적지"
+            android:text="출발지\n목적지"
+            android:lineSpacingExtra="8dp"
             android:textColor="@color/barColor"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

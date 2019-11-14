@@ -38,7 +38,7 @@ public class HistoryFragment extends BaseFragment<FragmentHistoryBinding> {
         View v = super.onCreateView(inflater, container, savedInstanceState);
         this.viewModel = ViewModelProviders.of(this,factory).get(HistoryViewModel.class);
 
-        HistoryAdapter adapter = new HistoryAdapter(this,new ArrayList<History>());
+        HistoryAdapter adapter = new HistoryAdapter(this,new ArrayList<History>(), viewModel);
 
         binding.historyRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
         binding.historyRecyclerview.setAdapter(adapter);
@@ -54,12 +54,12 @@ public class HistoryFragment extends BaseFragment<FragmentHistoryBinding> {
         });
 
         viewModel.getHistories(BaseApplication.getUser().getUserId());
+        viewModel.getToast().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                makeToast(s);
+            }
+        });
         return v;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        viewModel.onDestroy();
     }
 }

@@ -20,4 +20,9 @@ public class HistoryUseCaseImpl extends HistoryUseCase<List<History>> {
         Log.e(this.getClass().getSimpleName(),"getHistories");
         execute(repository.getHistories(userId),disposable);
     }
+
+    @Override
+    public void reportOnHistory(History history) {
+        repository.saveToReport(history);
+    }
 }

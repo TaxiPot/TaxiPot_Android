@@ -24,8 +24,11 @@ public class History {
     private float end_longtitude;
     @SerializedName("end_latitude")
     private float end_latitude;
-    @SerializedName("depart_time")
+    @SerializedName("departTime")
     private long depart_time;
+
+    private String start;
+    private String finish;
 
     public History() {
     }
@@ -44,6 +47,14 @@ public class History {
         this.end_longtitude = end_longtitude;
         this.end_latitude = end_latitude;
         this.depart_time = depart_time;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
     }
 
     public String getFirstSeat() {
@@ -86,11 +97,8 @@ public class History {
         return depart_time;
     }
 
-
     public String startToFinish() {
-        String start = Float.toString(start_longtitude);
-        String finish = Float.toString(end_longtitude);
-        return start + " ~ " + finish;
+        return start + "\n" + finish;
     }
     public String dateFormat() {
         return format.format(new Date(depart_time));
