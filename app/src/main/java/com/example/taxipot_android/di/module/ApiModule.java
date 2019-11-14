@@ -26,32 +26,32 @@ public class ApiModule {
     @Provides
     @Singleton
     public UserApi provideUserApi() {
-        return new CreateRetrofit().createRetrofit(UserApi.class);
+        return CreateRetrofit.createRetrofit(UserApi.class);
     }
 
     @Provides
     @Singleton
     public TaxipotApi provideTaxipot() {
-        return new CreateRetrofit().createRetrofit(TaxipotApi.class);
+        return CreateRetrofit.createRetrofit(TaxipotApi.class);
     }
 
     @Provides
     @Singleton
     public ReportApi provideReport() {
-        return new CreateRetrofit().createRetrofit(ReportApi.class);
+        return CreateRetrofit.createRetrofit(ReportApi.class);
     }
 
     @Provides
     @Singleton
     public HistoryApi provideHistory() {
         Log.e(ApiModule.class.getSimpleName(),"provideHistory");
-        return new CreateRetrofit().createRetrofit(HistoryApi.class);
+        return CreateRetrofit.createRetrofit(HistoryApi.class);
     }
 
     @Provides
     @Singleton
     public BugApi provideBug() {
-        return new CreateRetrofit().createRetrofit(BugApi.class);
+        return CreateRetrofit.createRetrofit(BugApi.class);
     }
 
     @Provides
