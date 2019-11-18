@@ -7,6 +7,15 @@ public class Report {
     private int reasonNum;
     @SerializedName("reportUserId")
     private String reportUserId;
-    @SerializedName("reportUserId")
+    @SerializedName("reportedUserId")
     private String reportedUserId;
+
+    public Report() {
+    }
+
+    public Report(int reasonNum, String reportUserId, String reportedUserId) {
+        this.reasonNum = reasonNum;
+        this.reportUserId = reportUserId;
+        this.reportedUserId = reportedUserId;
+    }
 }

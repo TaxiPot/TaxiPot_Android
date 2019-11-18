@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<LinearLayout
+    <data>
+        <variable
+            name="vm"
+            type="com.example.taxipot_android.presenter.viewModel.ReportSelReasonViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@drawable/bg_gradation">
 
     <TextView
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="72dp"
+        android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/barColor"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
         android:text="사유를 선택하세요"
-        android:textSize="22sp"/>
+        android:textColor="@color/barColor"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
         android:id="@+id/report_reason_reasonlist_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_report_reason"/>
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        tools:listitem="@layout/item_report_reason" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:text="신고하기"
+        android:id="@+id/report_reason_doReport_btn"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report_reason_reasonlist_rv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

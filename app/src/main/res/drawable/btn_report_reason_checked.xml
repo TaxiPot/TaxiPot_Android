@@ -20,7 +20,7 @@
     </item>
     <item>
         <shape android:shape="rectangle">
-            <size android:height="10dp" android:width="10dp"/>
+            <size android:height="13dp" android:width="13dp"/>
             <corners android:radius="10dp" />
             <stroke
                 android:width="2dp"

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="vh"
+            type="com.example.taxipot_android.presenter.ui.adapter.ReportReasonAdapter.ReportReasonViewHolder" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:onClick="@{vh::check}">
     <CheckBox
         android:id="@+id/report_reason_checkreason_cb"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="false"
+        android:onClick="@{vh::check}"
         android:drawableLeft="@drawable/view_select_report_reason"
         android:drawablePadding="8dp"
         android:button="@null"

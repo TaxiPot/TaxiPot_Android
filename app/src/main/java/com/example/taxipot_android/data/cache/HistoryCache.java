@@ -4,6 +4,8 @@ import com.example.taxipot_android.domain.entity.History;
 
 import java.util.List;
 
+import io.reactivex.Single;
+
 public class HistoryCache {
     private List<History> histories;
     private History history;
@@ -16,8 +18,8 @@ public class HistoryCache {
         return this.histories = histories;
     }
 
-    public History getHistory() {
-        return history;
+    public Single<History> getHistory() {
+        return Single.just(history);
     }
 
     public void setHistory(History history) {

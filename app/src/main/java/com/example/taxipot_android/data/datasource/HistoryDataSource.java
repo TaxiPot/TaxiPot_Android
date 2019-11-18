@@ -16,7 +16,6 @@ public class HistoryDataSource {
     }
 
     public Observable<List<History>> findHistoryById(String userId) {
-        Log.e(this.getClass().getSimpleName(),"findHistoryById");
         return api.findHistoryById(userId);
     }
 

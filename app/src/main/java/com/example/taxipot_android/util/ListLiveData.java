@@ -12,6 +12,11 @@ public class ListLiveData<T> extends MutableLiveData<List<T>> {
     public ListLiveData() {
         setValue(new ArrayList<>());
     }
+
+    public ListLiveData(int size) {
+        setValue(new ArrayList<>(size));
+    }
+
     public ListLiveData(List<T> list) {
         setValue(list);
     }
@@ -55,5 +60,17 @@ public class ListLiveData<T> extends MutableLiveData<List<T>> {
         T res = list.remove(index);
         postValue(list);
         return res;
+    }
+
+    public T replace(T newItem, int index) {
+        List<T> list = getValue();
+        T res = list.set(index,newItem);
+        postValue(list);
+        return res;
+    }
+
+    public List<T> replaceAll(List<T> newList) {
+        postValue(newList);
+        return newList;
     }
 }

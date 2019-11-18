@@ -3,7 +3,9 @@ package com.example.taxipot_android.domain.entity;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class History {
     @SerializedName("first_seat")
@@ -105,6 +107,15 @@ public class History {
     }
 
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm");
+
+    public List<String> getSeatList() {
+        List<String> list = new ArrayList<>();
+        list.add(firstSeat);
+        list.add(secondSeat);
+        list.add(thirdSeat);
+        list.add(fourthSeat);
+        return list;
+    }
 
     @Override
     public String toString() {

@@ -6,6 +6,12 @@
         <variable
             name="ui"
             type="com.example.taxipot_android.util.BaseSeatFragment" />
+        <variable
+            name="vm"
+            type="com.example.taxipot_android.util.BaseSeatViewModel" />
+        <variable
+            name="list"
+            type="java.util.List" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -26,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/seat_first_seat_cb"
         android:layout_width="110dp"
         android:layout_height="140dp"
         android:layout_marginEnd="15dp"
@@ -34,37 +40,38 @@
         android:background="@drawable/btn_round_one_corner"
         android:button="@null"
         android:rotation="270"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox2"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox2" />
+        app:layout_constraintBottom_toTopOf="@+id/seat_fourth_seat_cb"
+        app:layout_constraintEnd_toEndOf="@+id/seat_fourth_seat_cb" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/seat_second_seat_cb"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/btn_round_one_corner"
         android:button="@null"
         android:rotation="90"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox3"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox3"
+        app:layout_constraintBottom_toBottomOf="@+id/seat_third_seat_cb"
+        app:layout_constraintEnd_toStartOf="@+id/seat_third_seat_cb"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/checkBox3" />
+        app:layout_constraintTop_toTopOf="@+id/seat_third_seat_cb"
+        tools:enabled="false"/>
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/seat_third_seat_cb"
         android:layout_width="80dp"
         android:layout_height="100dp"
         android:background="@drawable/btn_round_no_corner"
         android:button="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox2"
+        app:layout_constraintBottom_toBottomOf="@+id/seat_fourth_seat_cb"
+        app:layout_constraintEnd_toStartOf="@+id/seat_fourth_seat_cb"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkBox4"
-        app:layout_constraintTop_toTopOf="@+id/checkBox2" />
+        app:layout_constraintStart_toEndOf="@+id/seat_second_seat_cb"
+        app:layout_constraintTop_toTopOf="@+id/seat_fourth_seat_cb" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/seat_fourth_seat_cb"
         android:layout_width="80dp"
         android:layout_height="100dp"
         android:layout_marginTop="150dp"
@@ -75,21 +82,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkBox3"
+        app:layout_constraintStart_toEndOf="@+id/seat_third_seat_cb"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
+        android:onClick="@{ui::applySeatSelect}"
         android:text="선택 완료"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:onClick="@{ui::applySeatSelect}"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox2"
-        app:layout_constraintStart_toStartOf="@+id/checkBox4" />
+        app:layout_constraintEnd_toEndOf="@+id/seat_fourth_seat_cb"
+        app:layout_constraintStart_toStartOf="@+id/seat_second_seat_cb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
