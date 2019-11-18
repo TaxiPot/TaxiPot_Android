@@ -11,6 +11,7 @@ import com.example.taxipot_android.util.BaseViewModel;
 
 public class ReportSelReasonViewModel extends BaseViewModel {
     private MutableLiveData<Integer> selectPosition = new MutableLiveData<>(-1);
+    public MutableLiveData<Report> report = new MutableLiveData<>();
 
     public ReportSelReasonViewModel(ReportSelReasonUseCase useCase) {
         this.useCase = useCase;
@@ -27,7 +28,8 @@ public class ReportSelReasonViewModel extends BaseViewModel {
     private class ReportObservable extends BaseObservable<Report> {
         @Override
         public void onNext(Report report) {
-
+            ReportSelReasonViewModel.this.report.postValue(report);
+            setToast(report.toString());
         }
 
         @Override

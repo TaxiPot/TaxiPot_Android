@@ -40,6 +40,7 @@
         android:background="@drawable/btn_round_one_corner"
         android:button="@null"
         android:rotation="270"
+        android:onClick="@{ui::clickSeat}"
         app:layout_constraintBottom_toTopOf="@+id/seat_fourth_seat_cb"
         app:layout_constraintEnd_toEndOf="@+id/seat_fourth_seat_cb" />
 
@@ -51,6 +52,7 @@
         android:background="@drawable/btn_round_one_corner"
         android:button="@null"
         android:rotation="90"
+        android:onClick="@{ui::clickSeat}"
         app:layout_constraintBottom_toBottomOf="@+id/seat_third_seat_cb"
         app:layout_constraintEnd_toStartOf="@+id/seat_third_seat_cb"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,6 +66,7 @@
         android:layout_height="100dp"
         android:background="@drawable/btn_round_no_corner"
         android:button="@null"
+        android:onClick="@{ui::clickSeat}"
         app:layout_constraintBottom_toBottomOf="@+id/seat_fourth_seat_cb"
         app:layout_constraintEnd_toStartOf="@+id/seat_fourth_seat_cb"
         app:layout_constraintHorizontal_bias="0.5"
@@ -79,6 +82,7 @@
         android:background="@drawable/btn_round_one_corner"
         tools:checked="true"
         android:button="@null"
+        android:onClick="@{ui::clickSeat}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

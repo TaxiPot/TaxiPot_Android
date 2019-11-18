@@ -61,7 +61,10 @@ public class ReportReasonAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         public void check(View v) {
-            if(uncheckSeat==this) return;
+            if(uncheckSeat==this) {
+                viewModel.getSelectPosition().postValue(-1);
+                return;
+            }
             viewModel.getSelectPosition().postValue(position);
             if(ReportReasonAdapter.this.uncheckSeat!=null) ReportReasonAdapter.this.uncheckSeat.binding.reportReasonCheckreasonCb.setChecked(false);
             ReportReasonAdapter.this.uncheckSeat = this;

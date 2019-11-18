@@ -37,6 +37,7 @@ public class MapPosition {
                 Address add = coordinateToLocate(item.getStart_latitude(), item.getStart_longtitude());
                 start = getLocateFromAddress(add);
             } catch (IOException e) {
+                Log.e(this.getClass().getSimpleName(),e.getMessage());
                 start = "위치 찾을 수 없음";
             }
             item.setStart(start);
@@ -45,6 +46,7 @@ public class MapPosition {
                 Address add = coordinateToLocate(item.getStart_latitude(), item.getStart_longtitude());
                 end = getLocateFromAddress(add);
             } catch (IOException e) {
+                Log.e(this.getClass().getSimpleName(),e.getMessage());
                 end = "위치 찾을 수 없음";
             }
             item.setFinish(end);

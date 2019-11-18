@@ -7,13 +7,12 @@
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="@{vh::check}">
+    android:layout_height="64dp">
     <CheckBox
         android:id="@+id/report_reason_checkreason_cb"
-        android:layout_marginTop="16dp"
+        android:paddingTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:checked="false"
         android:onClick="@{vh::check}"
         android:drawableLeft="@drawable/view_select_report_reason"
@@ -21,7 +20,7 @@
         android:button="@null"
         android:paddingLeft="5dp"
         android:text="말이 너무 많아요"
-        android:layout_marginBottom="16dp"
+        android:paddingBottom="16dp"
         android:textSize="17sp"
         android:textColor="@android:color/white" />
 </LinearLayout>

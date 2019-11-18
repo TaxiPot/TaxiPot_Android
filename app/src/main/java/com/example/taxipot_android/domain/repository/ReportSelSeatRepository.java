@@ -6,4 +6,6 @@ import io.reactivex.Single;
 
 public interface ReportSelSeatRepository {
     public Single<History> getHistory();
+
+    Single<String> saveReportUser(History history, Integer seatNum);
 }

@@ -8,15 +8,17 @@ public class ReportCache {
         return reportId;
     }
 
-    public void setReportId(String reportId) {
+    public String setReportId(String reportId) {
         this.reportId = reportId;
+        return reportId;
     }
 
     public String getReportedId() {
         return reportedId;
     }
 
-    public void setReportedId(String reportedId) {
+    public String setReportedId(String reportedId) {
         this.reportedId = reportedId;
+        return reportedId;
     }
 }

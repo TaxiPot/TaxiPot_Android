@@ -18,4 +18,13 @@ public class Report {
         this.reportUserId = reportUserId;
         this.reportedUserId = reportedUserId;
     }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "reasonNum=" + reasonNum +
+                ", reportUserId='" + reportUserId + '\'' +
+                ", reportedUserId='" + reportedUserId + '\'' +
+                '}';
+    }
 }

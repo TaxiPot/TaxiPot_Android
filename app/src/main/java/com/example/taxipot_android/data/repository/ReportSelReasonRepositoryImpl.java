@@ -1,5 +1,7 @@
 package com.example.taxipot_android.data.repository;
 
+import android.util.Log;
+
 import com.example.taxipot_android.data.cache.ReportCache;
 import com.example.taxipot_android.data.remote.RemoteAPI;
 import com.example.taxipot_android.domain.entity.Report;
@@ -19,6 +21,9 @@ public class ReportSelReasonRepositoryImpl implements ReportSelReasonRepository 
 
     @Override
     public Observable<Report> doReport(int num) {
-        return api.sendReport(new Report(num,cache.getReportId(),cache.getReportedId()));
+        if(num==-1) return Observable.error(new ArrayIndexOutOfBoundsException("신고 사유를 선택해주세요."));
+        Report report = new Report(num,cache.getReportId(),cache.getReportedId());
+        Log.e(this.getClass().getSimpleName(),report.toString());
+        return api.sendReport(report);
     }
 }

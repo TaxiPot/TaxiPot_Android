@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentSelectReportreasonBinding;
+import com.example.taxipot_android.domain.entity.Report;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.ui.adapter.ReportReasonAdapter;
 import com.example.taxipot_android.presenter.viewModel.ReportSelReasonViewModel;
@@ -53,8 +54,15 @@ public class ReportSelReasonFragment extends BaseFragment<FragmentSelectReportre
         viewModel.getSelectPosition().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
+                if(integer==-1) adapter.uncheckSeat = null;
                 if(adapter.uncheckSeat!=null)
                 adapter.uncheckSeat.unCheck();
+            }
+        });
+        viewModel.report.observe(this, new Observer<Report>() {
+            @Override
+            public void onChanged(Report report) {
+                ReportSelReasonFragment.this.getActivity().finish();
             }
         });
 

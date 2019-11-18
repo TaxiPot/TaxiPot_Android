@@ -42,6 +42,7 @@
         android:layout_marginTop="58dp"
         android:text="신고하기"
         android:id="@+id/report_reason_doReport_btn"
+        android:onClick="@{vm::doReport}"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

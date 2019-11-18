@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ReportApi {
-    @POST
+    @POST("/api/reports/report")
     Observable<Report> sendReport(@Body Report report);
 }

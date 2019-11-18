@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class UseCase <T> {
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    protected void execute(Observable<T> observable, DisposableObserver disposable) {
+    protected <T>void execute(Observable<T> observable, DisposableObserver disposable) {
         Log.e(this.getClass().getSimpleName(),"execute");
         DisposableObserver observer = observable
                 .observeOn(AndroidSchedulers.mainThread())
@@ -23,7 +23,7 @@ public abstract class UseCase <T> {
         addDisposable(observer);
     }
 
-    protected void execute(Single<T> observable, DisposableSingleObserver disposable) {
+    protected <T>void execute(Single<T> observable, DisposableSingleObserver disposable) {
         Log.e(this.getClass().getSimpleName(),"execute");
         DisposableSingleObserver observer = observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

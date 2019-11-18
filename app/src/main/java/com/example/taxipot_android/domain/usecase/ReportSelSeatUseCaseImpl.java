@@ -18,4 +18,9 @@ public class ReportSelSeatUseCaseImpl extends ReportSelSeatUseCase<History> {
         Log.e(this.getClass().getSimpleName(),"getHistory");
         execute(repository.getHistory(),disposable);
     }
+
+    @Override
+    public void saveReportUser(History history, Integer seatNum, DisposableSingleObserver disposable) {
+        execute(repository.saveReportUser(history,seatNum),disposable);
+    }
 }

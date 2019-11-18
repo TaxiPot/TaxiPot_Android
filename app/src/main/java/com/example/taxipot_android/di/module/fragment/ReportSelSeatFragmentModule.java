@@ -1,6 +1,7 @@
 package com.example.taxipot_android.di.module.fragment;
 
 import com.example.taxipot_android.data.cache.HistoryCache;
+import com.example.taxipot_android.data.cache.ReportCache;
 import com.example.taxipot_android.data.remote.RemoteAPI;
 import com.example.taxipot_android.data.repository.ReportSelSeatRepositoryImpl;
 import com.example.taxipot_android.domain.repository.ReportSelSeatRepository;
@@ -24,7 +25,7 @@ public class ReportSelSeatFragmentModule {
     }
 
     @Provides
-    public ReportSelSeatRepository repository(RemoteAPI api, HistoryCache cache) {
-        return new ReportSelSeatRepositoryImpl(api,cache);
+    public ReportSelSeatRepository repository(RemoteAPI api, HistoryCache cache, ReportCache reportCache) {
+        return new ReportSelSeatRepositoryImpl(api,cache, reportCache);
     }
 }
