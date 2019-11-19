@@ -14,9 +14,18 @@
         <item name="android:colorControlNormal">#747474</item>
         <item name="android:colorControlActivated">#747474</item>
         <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#74e0b5</item>
         <item name="android:textColorHint">#707070</item>
         <item name="android:inputType">number</item>
 
+    </style>
+
+    <style name="normalTextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/normalTextColor</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/nanumgothicbold</item>
+        <item name="android:letterSpacing">0.07</item>
+        <item name="android:lineSpacingExtra">2sp</item>
     </style>
 
     <style name="idEditTextStyle" parent="Widget.AppCompat.EditText">

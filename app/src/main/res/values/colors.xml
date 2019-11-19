@@ -7,4 +7,5 @@
     <color name="themeGray">#747474</color>
     <color name="dark_themeGray">#5b5e5e</color>
     <color name="transParent">#00000000</color>
+    <color name="normalTextColor">#74e0b5</color>
 </resources>

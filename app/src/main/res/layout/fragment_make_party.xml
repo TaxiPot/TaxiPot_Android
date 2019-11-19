@@ -272,7 +272,7 @@
             android:layout_width="29dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="15"
+            android:text="@={vm.ageLowLimit}"
             android:inputType="number"
             android:theme="@style/ageEditTextStyle"
             android:fontFamily="@font/nanumgothicbold"
@@ -291,7 +291,7 @@
             android:layout_width="29dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="25"
+            android:text="@={vm.ageHighLimit}"
             android:inputType="number"
             android:theme="@style/ageEditTextStyle"
             android:fontFamily="@font/nanumgothicbold"
@@ -336,25 +336,145 @@
             app:layout_constraintVertical_bias="0.7045" />
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText8"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nanumgothicbold"
+            android:text="@={vm.year}"
+            android:gravity="center"
+            android:textColor="@color/normalTextColor"
+            android:letterSpacing="0.07"
+            android:maxLength="4"
+            android:lineSpacingExtra="2sp"
+            android:theme="@style/normalEditTextStyle"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editText10"
+            app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
+            app:layout_constraintTop_toTopOf="@+id/editText10" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="년"
+            android:theme="@style/normalTextViewStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/editText8"
+            app:layout_constraintStart_toEndOf="@+id/editText8"
+            app:layout_constraintTop_toTopOf="@+id/editText8" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText9"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:ems="10"
+            android:fontFamily="@font/nanumgothicbold"
+            android:gravity="center"
+            android:text="@={vm.month}"
+            android:letterSpacing="0.07"
+            android:textColor="@color/normalTextColor"
+            android:maxLength="2"
+            android:lineSpacingExtra="2sp"
+            android:theme="@style/normalEditTextStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/editText7"
+            app:layout_constraintStart_toEndOf="@+id/textView27"
+            app:layout_constraintTop_toTopOf="@+id/editText7"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="월"
+            android:theme="@style/normalTextViewStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/editText10"
+            app:layout_constraintStart_toEndOf="@+id/editText9"
+            app:layout_constraintTop_toTopOf="@+id/editText10" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText10"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:ems="10"
+            android:text="@={vm.day}"
+            android:fontFamily="@font/nanumgothicbold"
+            android:gravity="center"
+            android:maxLength="2"
+            android:textColor="@color/normalTextColor"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:theme="@style/normalEditTextStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/editText7"
+            app:layout_constraintStart_toEndOf="@+id/textView28"
+            app:layout_constraintTop_toTopOf="@+id/editText7"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일"
+            android:theme="@style/normalTextViewStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/editText10"
+            app:layout_constraintStart_toEndOf="@+id/editText10"
+            app:layout_constraintTop_toTopOf="@+id/editText10" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText7"
-            android:layout_width="65dp"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:ems="10"
+            android:fontFamily="@font/nanumgothicbold"
+            android:gravity="center"
+            android:inputType="time"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:text="@={vm.hour}"
+            android:textColor="#74e0b5"
+            android:maxLength="2"
+            android:textSize="13sp"
+            android:theme="@style/normalEditTextStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView30"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.751" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text=":"
+            android:theme="@style/normalTextViewStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/editText7"
+            app:layout_constraintStart_toEndOf="@+id/editText7"
+            app:layout_constraintTop_toTopOf="@+id/editText7" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText11"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:fontFamily="@font/nanumgothicbold"
             android:gravity="center"
-            android:inputType="date"
+            android:inputType="time"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:text="15 : 30"
+            android:text="@={vm.minute}"
+            android:maxLength="2"
             android:textColor="#74e0b5"
             android:textSize="13sp"
             android:theme="@style/normalEditTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/makePartyGuideLine2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.752" />
+            app:layout_constraintVertical_bias="0.751" />
+
 
         <TextView
             android:layout_width="wrap_content"

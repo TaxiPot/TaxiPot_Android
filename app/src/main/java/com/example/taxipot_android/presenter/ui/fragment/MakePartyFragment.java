@@ -18,10 +18,13 @@ import com.example.taxipot_android.presenter.viewModelFactory.MakePartyViewModel
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.inject.Inject;
+
 public class MakePartyFragment extends BaseFragment<FragmentMakePartyBinding> {
 
-    MakePartyViewModel viewModel;
+    @Inject
     MakePartyViewModelFactory factory;
+    MakePartyViewModel viewModel;
 
     @Nullable
     @Override
