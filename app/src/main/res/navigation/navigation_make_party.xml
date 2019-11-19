@@ -18,7 +18,7 @@
         android:id="@+id/makePartySeatFragment"
         android:name="com.example.taxipot_android.presenter.ui.fragment.MakePartySeatFragment"
         android:label="MakePartySeatFragment"
-        tools:layout="@layout/fragment_select_reportreason">
+        tools:layout="@layout/fragment_select_seat">
         <action
             android:id="@+id/action_makePartySeatFragment_to_chattingFragment"
             app:destination="@id/chattingFragment" />
