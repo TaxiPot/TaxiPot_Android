@@ -81,4 +81,7 @@ dependencies {
     // google map
     implementation "com.google.android.gms:play-services-maps:${map_version}"
     implementation "com.google.android.gms:play-services-location:${map_version}"
+
+    // TedPermission
+    implementation "gun0912.ted:tedpermission-rx2:2.2.2"
 }
