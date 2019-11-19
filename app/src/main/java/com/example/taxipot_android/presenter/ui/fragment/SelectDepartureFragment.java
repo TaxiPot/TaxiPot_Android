@@ -30,7 +30,7 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
         View v = super.onCreateView(inflater, container, savedInstanceState);
         binding.setFragment(this);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.mapview);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapview);
         mapFragment.getMapAsync(this);
 
         getLocationPermission();

@@ -1,9 +1,10 @@
 package com.example.taxipot_android.presenter.viewModel;
 
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class MakePartyViewModel extends ViewModel {
+import com.example.taxipot_android.util.BaseViewModel;
+
+public class MakePartyViewModel extends BaseViewModel {
     public MutableLiveData<String> departure = new MutableLiveData<>("출발지를 등록해주세요.");
     public MutableLiveData<String> arrive = new MutableLiveData<>("도착지를 등록해주세요.");
     public MutableLiveData<Boolean> isMan = new MutableLiveData<>(false);
@@ -16,6 +17,7 @@ public class MakePartyViewModel extends ViewModel {
     public MutableLiveData<String> hour = new MutableLiveData<>("00");
     public MutableLiveData<String> minute = new MutableLiveData<>("00");
 
-    public void init() {
+    public void makeTaxiPot() {
+
     }
 }
