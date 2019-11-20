@@ -17,7 +17,7 @@ public class IntegerRangeObserver implements Observer<String> {
     @Override
     public void onChanged(String s) {
         if(liveData.getValue().equals("")) {
-            liveData.postValue(String.valueOf(low));
+            liveData.postValue("");
         } else if(Integer.parseInt(liveData.getValue())<low){
             liveData.postValue(String.valueOf(low));
         } else if(Integer.parseInt(liveData.getValue())>high) {
