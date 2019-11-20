@@ -54,13 +54,11 @@ public class ReportSelSeatViewmodel extends BaseSeatViewModel {
     private class SaveReportSingle extends BaseSingle<String> {
         @Override
         public void onSuccess(String s) {
-            successSaveReport.postValue(true);
             navigate.nextFragment();
         }
 
         @Override
         public void onError(Throwable e) {
-            successSaveReport.postValue(false);
             setToast(e.getMessage());
         }
     }

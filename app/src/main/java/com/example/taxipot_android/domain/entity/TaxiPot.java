@@ -42,7 +42,7 @@ public class TaxiPot {
 
     private SimpleDateFormat format;
     public TaxiPot() {
-        format = new SimpleDateFormat("MM/dd HH:mm");
+        format = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
     }
 
     public TaxiPot(Calendar time, String start, String finish) {

@@ -27,7 +27,18 @@ public class BaseSeatFragment extends BaseFragment<FragmentSelectSeatBinding> im
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_select_seat);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View v = super.onCreateView(inflater, container, savedInstanceState);
+
+        List<CheckBox> checkBoxList = new ArrayList<>();
+
+        checkBoxList.add(binding.seatFirstSeatCb);
+        checkBoxList.add(binding.seatSecondSeatCb);
+        checkBoxList.add(binding.seatThirdSeatCb);
+        checkBoxList.add(binding.seatFourthSeatCb);
+
+        this.checkBoxList = checkBoxList;
+
+        return v;
     }
 
     @Override

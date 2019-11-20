@@ -16,13 +16,16 @@ import com.example.taxipot_android.databinding.FragmentMakePartyBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.viewModel.MakePartyViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.MakePartyViewModelFactory;
+import com.example.taxipot_android.util.IntegerRangeObserver;
+import com.example.taxipot_android.util.Navigate;
+import com.example.taxipot_android.util.ToastObserver;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.inject.Inject;
 
-public class MakePartyFragment extends BaseFragment<FragmentMakePartyBinding> {
+public class MakePartyFragment extends BaseFragment<FragmentMakePartyBinding> implements Navigate {
 
     @Inject
     MakePartyViewModelFactory factory;
@@ -36,22 +39,19 @@ public class MakePartyFragment extends BaseFragment<FragmentMakePartyBinding> {
         viewModel = ViewModelProviders.of(this, factory).get(MakePartyViewModel.class);
         binding.setFragment(this);
         binding.setVm(viewModel);
-        viewModel.getToast().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                makeToast(s);
-            }
-        });
-        viewModel.onlySameGender.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                Log.e(this.getClass().getSimpleName(),aBoolean.toString());
-            }
-        });
+
+        viewModel.setNavigate(this);
+        viewModel.getToast().observe(this, new ToastObserver(getContext()));
+        viewModel.month.observe(this, new IntegerRangeObserver(1,12,viewModel.month));
+        viewModel.day.observe(this, new IntegerRangeObserver(1,31,viewModel.day));
+        viewModel.hour.observe(this, new IntegerRangeObserver(0,23,viewModel.hour));
+        viewModel.minute.observe(this, new IntegerRangeObserver(0,59,viewModel.minute));
+
         return v;
     }
 
-    public void applySeatSelect(View v) {
+    @Override
+    public void nextFragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_makePartyFragment_to_makePartySeatFragment);
     }
 }
