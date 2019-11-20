@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class TaxiPot {
     @SerializedName("room_id")
@@ -32,9 +33,10 @@ public class TaxiPot {
     private String thirdSeat;
     @SerializedName("fourth_seat")
     private String fourthSeat;
-
-    private Calendar departTime;
+    @SerializedName("departTime")
+    private long departTime;
     // TODO : departTime 을 Long 형으로 받아올 때, Format 에 적용할 때에 오류가 발생함.
+    private boolean onlySameGender;
     private String start;
     private String finish;
 
@@ -45,16 +47,27 @@ public class TaxiPot {
 
     public TaxiPot(Calendar time, String start, String finish) {
         this();
-        departTime = time;
+        departTime = time.getTime().getTime();
         this.start = start;
         this.finish = finish;
+    }
+
+    public TaxiPot(String start, String finish, boolean onlySameGender, int startAge, int endAge, long departTime) {
+        this.startAge = startAge;
+        this.endAge = endAge;
+        this.onlySameGender = onlySameGender;
+        this.departTime = departTime;
+        this.start = start;
+        this.finish = finish;
+        this.genderMan = true;
+        this.genderWoman = true;
     }
 
     public String startToFinish() {
         return start + " ~ " + finish;
     }
     public String dateFormat() {
-        return format.format(departTime.getTime());
+        return format.format(new Date(departTime));
     }
 
     public double getStartLongtitude() {
@@ -73,7 +86,83 @@ public class TaxiPot {
         return endLatitude;
     }
 
-    public Calendar getDepartTime() {
+    public long getDepartTime() {
         return departTime;
+    }
+
+    public int getRoomid() {
+        return roomid;
+    }
+
+    public int getStartAge() {
+        return startAge;
+    }
+
+    public int getEndAge() {
+        return endAge;
+    }
+
+    public boolean isGenderMan() {
+        return genderMan;
+    }
+
+    public boolean isGenderWoman() {
+        return genderWoman;
+    }
+
+    public String getFirstSeat() {
+        return firstSeat;
+    }
+
+    public String getSecondSeat() {
+        return secondSeat;
+    }
+
+    public String getThirdSeat() {
+        return thirdSeat;
+    }
+
+    public String getFourthSeat() {
+        return fourthSeat;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public String getFinish() {
+        return finish;
+    }
+
+    public SimpleDateFormat getFormat() {
+        return format;
+    }
+
+    public boolean isOnlySameGender() {
+        return onlySameGender;
+    }
+
+    public void setGenderMan(boolean genderMan) {
+        this.genderMan = genderMan;
+    }
+
+    public void setGenderWoman(boolean genderWoman) {
+        this.genderWoman = genderWoman;
+    }
+
+    public void setStartLongtitude(double startLongtitude) {
+        this.startLongtitude = startLongtitude;
+    }
+
+    public void setStartLatitude(double startLatitude) {
+        this.startLatitude = startLatitude;
+    }
+
+    public void setEndLongtitude(double endLongtitude) {
+        this.endLongtitude = endLongtitude;
+    }
+
+    public void setEndLatitude(double endLatitude) {
+        this.endLatitude = endLatitude;
     }
 }

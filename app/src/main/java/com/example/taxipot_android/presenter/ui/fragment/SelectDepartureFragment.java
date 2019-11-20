@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentSelectDepartureBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;

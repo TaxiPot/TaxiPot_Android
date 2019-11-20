@@ -13,7 +13,7 @@ public class TaxiPotDataSource {
     }
 
     public Observable<TaxiPot> findTaxiPotList(TaxiPot taxiPot, float radius, int age) {
-        return api.findTaxipotList(taxiPot.getDepartTime().getTime().getTime(),
+        return api.findTaxipotList(taxiPot.getDepartTime(),
                 taxiPot.getStartLatitude(),
                 taxiPot.getStartLongtitude(),
                 taxiPot.getEndLatitude(),

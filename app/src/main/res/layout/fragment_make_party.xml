@@ -80,11 +80,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.2825" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="출발지를 등록해주세요"
+            android:text="@={vm.departure}"
             android:textColor="@android:color/white"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
@@ -148,14 +148,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.4125" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumgothicbold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:text="도착지를 등록해주세요"
+            android:text="@={vm.arrive}"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -211,33 +211,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/makePartyGuideLine"
             app:layout_constraintTop_toBottomOf="@+id/textView22">
 
             <CheckBox
                 android:id="@+id/makeparty_gender_is_man_rb"
-                android:layout_width="32dp"
+                android:layout_width="64dp"
                 android:layout_height="27dp"
                 android:background="@drawable/view_select_gender"
                 android:button="@null"
-                android:checked="@={vm.isMan}"
+                android:checked="@={vm.onlySameGender}"
                 android:gravity="center"
-                android:text="남"
-                android:textColor="@{vm.isMan ? @android:color/white : @color/barColor}" />
+                android:text="동성만"
+                android:textColor="@{vm.onlySameGender ? @android:color/white : @color/barColor}" />
 
             <CheckBox
                 android:id="@+id/signup2_gender_is_woman_rb"
-                android:layout_width="32dp"
+                android:layout_width="64dp"
                 android:layout_height="27dp"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/view_select_gender"
                 android:button="@null"
-                android:checked="@={vm.isWoman}"
+                android:checked="@={!vm.onlySameGender}"
                 android:gravity="center"
-                android:text="여"
-                android:textColor="@{vm.isWoman ? @android:color/white : @color/barColor}" />
+                android:text="상관없음"
+                android:textColor="@{vm.onlySameGender ? @color/barColor : @android:color/white}" />
 
         </LinearLayout>
 
@@ -442,7 +440,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView30"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.751" />
+            app:layout_constraintVertical_bias="0.781" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView"
@@ -465,14 +463,14 @@
             android:inputType="time"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:text="@={vm.minute}"
             android:maxLength="2"
+            android:text="@={vm.minute}"
             android:textColor="#74e0b5"
             android:textSize="13sp"
             android:theme="@style/normalEditTextStyle"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/editText7"
             app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editText7"
             app:layout_constraintVertical_bias="0.751" />
 
 
@@ -485,7 +483,7 @@
             android:textColor="#ffffff"
             android:textSize="14sp"
             android:fontFamily="@font/nanumgothicextrabold"
-            android:onClick="@{fragment::applySeatSelect}"
+            android:onClick="@{vm::requestMakeTaxiPot}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
