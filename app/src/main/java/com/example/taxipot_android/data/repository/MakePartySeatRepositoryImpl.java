@@ -13,6 +13,11 @@ public class MakePartySeatRepositoryImpl implements MakePartySeatRepository {
     private TaxiPotCache taxiPotCache;
     private RemoteAPI api;
 
+    public MakePartySeatRepositoryImpl(TaxiPotCache taxiPotCache, RemoteAPI api) {
+        this.taxiPotCache = taxiPotCache;
+        this.api = api;
+    }
+
     @Override
     public User getUser() {
         return BaseApplication.getUser();
@@ -21,5 +26,10 @@ public class MakePartySeatRepositoryImpl implements MakePartySeatRepository {
     @Override
     public Single<TaxiPot> joinToTaxiPot(int roomId, String userId, int seat_num) {
         return api.joinTaxiPot(roomId,userId,seat_num);
+    }
+
+    @Override
+    public TaxiPot getTaxiPot() {
+        return taxiPotCache.getMakeTaxiPot();
     }
 }

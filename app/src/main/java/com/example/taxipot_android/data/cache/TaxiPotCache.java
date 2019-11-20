@@ -8,4 +8,8 @@ public class TaxiPotCache {
     public void setMakeTaxiPot(TaxiPot makeTaxiPot) {
         this.makeTaxiPot = makeTaxiPot;
     }
+
+    public TaxiPot getMakeTaxiPot() {
+        return makeTaxiPot;
+    }
 }

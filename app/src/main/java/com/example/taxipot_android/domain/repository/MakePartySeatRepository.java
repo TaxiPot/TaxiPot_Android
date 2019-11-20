@@ -10,4 +10,6 @@ public interface MakePartySeatRepository {
     User getUser();
 
     Single<TaxiPot> joinToTaxiPot(int roomId, String userId, int seat_num);
+
+    TaxiPot getTaxiPot();
 }
