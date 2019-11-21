@@ -6,4 +6,6 @@ import io.reactivex.Single;
 
 public interface MakePartySeatValidation {
     Single<TaxiPot> joinToTaxiPot(int seat_num);
+
+    TaxiPot getTaxiPot();
 }
