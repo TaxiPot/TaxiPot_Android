@@ -26,32 +26,40 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     }
 
     @Override
-    public Observable<List<History>> getHistories(String userId) {
+    public Observable<History> getHistories(String userId) {
         Log.e(this.getClass().getSimpleName(), "getHistories");
         return api.findHistoryById(userId)
                 .map(new Function<List<History>, List<History>>() {
                     @Override
                     public List<History> apply(List<History> histories) throws Exception {
-                        return cache.saveHistories(mapPosition.historiesTransForm(histories));
+                        return cache.saveHistories(histories);
                     }
-                });
-    }
-
-    public Observable<History> getHistorie(String userId) {
-        return api.findHistoryById(userId)
-                .flatMapIterable(new Function<List<History>, Iterable<History>>() {
+                })
+                .flatMapIterable(new Function<List<History>, Iterable<? extends History>>() {
                     @Override
-                    public Iterable<History> apply(List<History> histories) throws Exception {
+                    public Iterable<? extends History> apply(List<History> histories) throws Exception {
                         return histories;
                     }
                 })
                 .map(new Function<History, History>() {
                     @Override
                     public History apply(History history) throws Exception {
-                        history.setStart("요기에옴");
-                        return history;
+                        return putAddress(history);
                     }
                 });
+    }
+
+    private History putAddress(History history) throws Exception{
+
+        Address startAdd = mapPosition.coordinateToLocate(history.getStart_latitude(), history.getStart_longtitude());
+        Address endAdd = mapPosition.coordinateToLocate(history.getEnd_latitude(), history.getEnd_longtitude());
+        String start = mapPosition.getLocateFromAddress(startAdd);
+        String end = mapPosition.getLocateFromAddress(endAdd);
+
+        history.setStart(start);
+        history.setFinish(end);
+
+        return history;
     }
 
     @Override

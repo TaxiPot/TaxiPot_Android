@@ -9,6 +9,6 @@ import java.util.List;
 import io.reactivex.Observable;
 
 public interface HistoryRepository {
-    Observable<List<History>> getHistories(String userId);
+    Observable<History> getHistories(String userId);
     void saveToReport(History history);
 }

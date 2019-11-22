@@ -32,12 +32,11 @@ public class HistoryViewModel extends BaseViewModel {
         ((HistoryUseCase)useCase).reportOnHistory(history);
     }
 
-    private class HistoryObservable extends BaseObservable<List<History>> {
+    private class HistoryObservable extends BaseObservable<History> {
 
         @Override
-        public void onNext(List<History> history) {
-            Log.e(this.getClass().getSimpleName(),history.toString() + '\n');
-            taxipotList.addAll(history);
+        public void onNext(History history) {
+            taxipotList.add(history);
         }
 
         @Override
