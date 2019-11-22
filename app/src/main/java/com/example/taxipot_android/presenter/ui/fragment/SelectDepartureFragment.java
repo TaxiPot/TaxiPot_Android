@@ -13,15 +13,18 @@ import androidx.annotation.Nullable;
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentSelectDepartureBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
-import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.tedpark.tedpermission.rx2.TedRx2Permission;
 
 public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartureBinding> implements OnMapReadyCallback {
 
-    GoogleMap map;
+    MapView mapView;
 
     @Nullable
     @Override
@@ -30,10 +33,11 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
         View v = super.onCreateView(inflater, container, savedInstanceState);
         binding.setFragment(this);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapview);
-        mapFragment.getMapAsync(this);
-
         getLocationPermission();
+        mapView = (MapView) v.findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume();
+        mapView.getMapAsync(this);
 
         return v;
     }
@@ -56,7 +60,15 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
-        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        LatLng SEOUL = new LatLng(37.56, 126.97);
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(SEOUL);
+        markerOptions.title("서울");
+        markerOptions.snippet("수도");
+
+        googleMap.addMarker(markerOptions);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
     }
 }

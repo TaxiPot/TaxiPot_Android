@@ -90,6 +90,7 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:ems="10"
             android:fontFamily="@font/nanumgothicbold"
             android:hint="출발지를 입력해주세요."
@@ -101,12 +102,12 @@
             android:textSize="13sp"
             android:theme="@style/normalEditTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintEnd_toStartOf="@+id/iv_seldep_search"
             app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.307" />
 
-        <fragment
+        <com.google.android.gms.maps.MapView
             android:id="@+id/mapview"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -176,6 +177,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8845" />
+
+        <ImageView
+            android:id="@+id/iv_seldep_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_search_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.315" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
