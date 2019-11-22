@@ -27,12 +27,29 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Override
     public Observable<List<History>> getHistories(String userId) {
-        Log.e(this.getClass().getSimpleName(),"getHistories");
+        Log.e(this.getClass().getSimpleName(), "getHistories");
         return api.findHistoryById(userId)
                 .map(new Function<List<History>, List<History>>() {
                     @Override
                     public List<History> apply(List<History> histories) throws Exception {
                         return cache.saveHistories(mapPosition.historiesTransForm(histories));
+                    }
+                });
+    }
+
+    public Observable<History> getHistorie(String userId) {
+        return api.findHistoryById(userId)
+                .flatMapIterable(new Function<List<History>, Iterable<History>>() {
+                    @Override
+                    public Iterable<History> apply(List<History> histories) throws Exception {
+                        return histories;
+                    }
+                })
+                .map(new Function<History, History>() {
+                    @Override
+                    public History apply(History history) throws Exception {
+                        history.setStart("요기에옴");
+                        return history;
                     }
                 });
     }

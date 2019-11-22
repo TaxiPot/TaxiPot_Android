@@ -59,6 +59,10 @@ public class History {
         this.finish = finish;
     }
 
+    public String getStart() {
+        return start;
+    }
+
     public String getFirstSeat() {
         return firstSeat;
     }

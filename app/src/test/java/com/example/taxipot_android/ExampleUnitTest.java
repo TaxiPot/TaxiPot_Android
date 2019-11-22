@@ -18,14 +18,19 @@ import com.example.taxipot_android.domain.usecase.HistoryUseCaseImpl;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.Retrofit;
@@ -48,8 +53,57 @@ public class ExampleUnitTest {
     }
 
     @Test
+    public void test1() {
+        List<String> arr = new ArrayList<>();
+        arr.add("asdf");
+        arr.add("qwer");
+        Observable.just(arr)
+                .flatMapIterable(new Function<List<String>, Iterable<String>>() {
+                    @Override
+                    public Iterable<String> apply(List<String> strings) throws Exception {
+                        return strings;
+                    }
+                })
+                .map(new Function<String, String>() {
+                    @Override
+                    public String apply(String s) throws Exception {
+                        return s + "@";
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        System.out.println(s);
+                    }
+                });
+    }
+
+    @Test
     public void apiTestStarter() {
-        apiTest1(createHistoryApi().findHistoryById("id3"));
+        createHistoryApi().findHistoryById("id3")
+                .flatMapIterable(new Function<List<History>, Iterable<History>>() {
+                    @Override
+                    public Iterable<History> apply(List<History> histories) throws Exception {
+                        return histories;
+                    }
+                })
+                .map(new Function<History, History>() {
+                    @Override
+                    public History apply(History history) throws Exception {
+                        history.setStart("요기에옴");
+                        return history;
+                    }
+                })
+                .test()
+                .assertNoErrors()
+                .assertSubscribed()
+                .assertValue(new Predicate<History>() {
+                    @Override
+                    public boolean test(History history) throws Exception {
+                        System.out.println(history.getStart());
+                        return true;
+                    }
+                });
     }
 
     private <R>void apiTest1(Observable<R> api) {
