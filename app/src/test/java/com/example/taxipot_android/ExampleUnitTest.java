@@ -19,6 +19,7 @@ import com.example.taxipot_android.domain.usecase.HistoryUseCaseImpl;
 import org.junit.Test;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -41,36 +42,13 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void dateFormat_isCorrect() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2019, 8, 15, 13, 30);
-        TaxiPot taxiPot = new TaxiPot(calendar, "출발지", "목적지");
-        assertEquals(taxiPot.dateFormat(), "09/15 13:30");
-        System.out.println(taxiPot.dateFormat());
-    }
-
-    @Test
-    public void historyTest() {
-        new HistoryRepositoryImpl(new RemoteApiImpl()).getHistories("id3").subscribeWith(new DisposableObserver<List<History>>() {
-            @Override
-            public void onNext(List<History> histories) {
-                System.out.println(histories);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+        System.out.println(new Date(2019-1900,11-1,20,16,37).getMinutes());
+        System.out.println(new Date().getMinutes());
+        assertEquals(1,1);
     }
 
     @Test
     public void apiTestStarter() {
-
         apiTest1(createHistoryApi().findHistoryById("id3"));
     }
 

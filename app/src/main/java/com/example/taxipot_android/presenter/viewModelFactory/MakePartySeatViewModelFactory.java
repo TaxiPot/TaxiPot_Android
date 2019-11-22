@@ -6,15 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.taxipot_android.domain.usecase.MakePartyUseCase;
+import com.example.taxipot_android.domain.usecase.MakePartySeatUseCase;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class MakePartyViewModelFactory implements ViewModelProvider.Factory {
+public class MakePartySeatViewModelFactory implements ViewModelProvider.Factory {
+    MakePartySeatUseCase useCase;
 
-    private MakePartyUseCase useCase;
-
-    public MakePartyViewModelFactory(MakePartyUseCase useCase) {
+    public MakePartySeatViewModelFactory(MakePartySeatUseCase useCase) {
         this.useCase = useCase;
     }
 
@@ -23,13 +22,12 @@ public class MakePartyViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         T obj = null;
         try {
-            obj = modelClass.getConstructor(MakePartyUseCase.class).newInstance(useCase);
+            obj = modelClass.getConstructor(MakePartySeatUseCase.class).newInstance(useCase);
         } catch (NoSuchMethodException nsme) {
-            Log.e("MakePartyViewModelFactory", "getConstructor");
+            Log.e("HistoryViewModelFactory", "getConstructor");
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            Log.e("MakePartyViewModelFactory", "newInstance");
+            Log.e("HistoryViewModelFactory", "newInstance");
         }
-
         return obj;
     }
 }

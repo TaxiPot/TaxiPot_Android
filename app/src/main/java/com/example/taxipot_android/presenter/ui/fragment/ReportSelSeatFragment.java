@@ -17,6 +17,7 @@ import com.example.taxipot_android.R;
 import com.example.taxipot_android.presenter.viewModel.ReportSelSeatViewmodel;
 import com.example.taxipot_android.presenter.viewModelFactory.ReportSelSeatViewmodelFactory;
 import com.example.taxipot_android.util.BaseSeatFragment;
+import com.example.taxipot_android.util.ToastObserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,20 +35,12 @@ public class ReportSelSeatFragment extends BaseSeatFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        List<CheckBox> checkBoxList = new ArrayList<>();
-        checkBoxList.add(binding.seatFirstSeatCb);
-        checkBoxList.add(binding.seatSecondSeatCb);
-        checkBoxList.add(binding.seatThirdSeatCb);
-        checkBoxList.add(binding.seatFourthSeatCb);
-        this.checkBoxList = checkBoxList;
-
         binding.setUi(this);
         binding.setVm(viewmodel);
 
         setActionId(R.id.action_reportSelSeatFragment_to_reportSelReasonFragment);
 
         viewmodel = ViewModelProviders.of(this, factory).get(ReportSelSeatViewmodel.class);
-        viewmodel.successSaveReport.postValue(false);
         viewmodel.getHistory();
         viewmodel.getUserSeatList().observe(this, (strings) -> {
             if (strings.size() != 4) return;
@@ -59,12 +52,7 @@ public class ReportSelSeatFragment extends BaseSeatFragment {
                 }
             }
         });
-        viewmodel.getToast().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                makeToast(s);
-            }
-        });
+        viewmodel.getToast().observe(this, new ToastObserver(getContext()));
         return v;
     }
 
