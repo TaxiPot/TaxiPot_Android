@@ -131,7 +131,6 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
         try {
             Address myLocationAddress = mapPosition.coordinateToLocate(latLng.latitude, latLng.longitude);
             locationAddressData = mapPosition.getLocateFromAddress(myLocationAddress);
-            Log.d("locationAddressData", locationAddressData);
         } catch (IOException e) {
             e.printStackTrace();
         }

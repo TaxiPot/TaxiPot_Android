@@ -16,4 +16,9 @@ public class MakePartySeatUseCaseImpl extends MakePartySeatUseCase<TaxiPot> {
     public void joinToTaxiPot(int seat_num, DisposableSingleObserver disposable) {
         execute(validation.joinToTaxiPot(seat_num),disposable);
     }
+
+    @Override
+    public TaxiPot getTaxiPot() {
+        return validation.getTaxiPot();
+    }
 }

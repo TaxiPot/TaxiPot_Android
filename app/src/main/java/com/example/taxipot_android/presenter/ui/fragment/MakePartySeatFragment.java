@@ -31,6 +31,17 @@ public class MakePartySeatFragment extends BaseSeatFragment {
         binding.setUi(this);
         viewModel = ViewModelProviders.of(this,factory).get(MakePartySeatViewModel.class);
         viewModel.getToast().observe(this, new ToastObserver(getContext()));
+        viewModel.setNavigate(this);
+        viewModel.getTaxiPot().observe(this, (strings) -> {
+            if (strings.size() != 4) return;
+            for (int i = 0; i < 4; i++) {
+                if (strings.get(i) == null) {
+                    checkBoxList.get(i).setEnabled(true);
+                } else {
+                    checkBoxList.get(i).setEnabled(false);
+                }
+            }
+        });
         setActionId(R.id.action_makePartySeatFragment_to_chattingFragment);
         return v;
     }
@@ -38,5 +49,10 @@ public class MakePartySeatFragment extends BaseSeatFragment {
     @Override
     public void applySeatSelect(View v) {
         viewModel.joinToTaxiPot(super.checkSeat);
+    }
+
+    @Override
+    public void nextFragment() {
+        getActivity().finish();
     }
 }

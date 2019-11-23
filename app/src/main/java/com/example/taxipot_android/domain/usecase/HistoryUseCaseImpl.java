@@ -9,7 +9,7 @@ import java.util.List;
 
 import io.reactivex.observers.DisposableObserver;
 
-public class HistoryUseCaseImpl extends HistoryUseCase<List<History>> {
+public class HistoryUseCaseImpl extends HistoryUseCase<History> {
     HistoryRepository repository;
     public HistoryUseCaseImpl(HistoryRepository repository) {
         this.repository = repository;

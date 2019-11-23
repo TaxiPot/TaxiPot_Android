@@ -21,4 +21,9 @@ public class MakePartySeatValidationImpl implements MakePartySeatValidation {
             return repository.joinToTaxiPot(roomId,userId,seat_num);
         }
     }
+
+    @Override
+    public TaxiPot getTaxiPot() {
+        return repository.getTaxiPot();
+    }
 }

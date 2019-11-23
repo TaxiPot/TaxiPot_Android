@@ -14,6 +14,9 @@ import com.example.taxipot_android.databinding.FragmentSettingBinding;
 import com.example.taxipot_android.domain.entity.SettingContent;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.ui.adapter.SettingAdapter;
+import com.example.taxipot_android.presenter.ui.dialog.BugReportDialog;
+import com.example.taxipot_android.presenter.ui.dialog.ChangePWDialog;
+import com.example.taxipot_android.presenter.ui.dialog.IntroDeveloperDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +38,13 @@ public class SettingFragment extends BaseFragment<FragmentSettingBinding> {
         array.add(new SettingContent("비밀번호 확인", "기존 비밀번호를 변경합니다", new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                makeToast("비밀번호 확인");
+                new ChangePWDialog(getContext());
             }
         }));
         array.add(new SettingContent("비밀번호 변경", "대신 사용할 비밀번호로 변경합니다", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeToast("비밀번호 변경");
+                new ChangePWDialog(getContext());
             }
         }
         ));
@@ -49,14 +52,14 @@ public class SettingFragment extends BaseFragment<FragmentSettingBinding> {
         array.add(new SettingContent("버그 신고하기", "개발자에게 큰 도움이 됩니다", new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                new BugReportDialog(getContext()).show();
             }
         }));
         array.add("개발자 소개");
         array.add(new SettingContent("개발자 보기", "택시팟을 개발한 개발진들입니다", new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                new IntroDeveloperDialog(getContext());
             }
         }));
         return array;

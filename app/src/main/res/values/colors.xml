@@ -8,4 +8,6 @@
     <color name="dark_themeGray">#5b5e5e</color>
     <color name="transParent">#00000000</color>
     <color name="normalTextColor">#74e0b5</color>
+    <color name="red_darker">@android:color/holo_red_dark</color>
+    <color name="blue_darker">#2E41AA</color>
 </resources>

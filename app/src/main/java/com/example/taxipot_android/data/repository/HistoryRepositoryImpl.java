@@ -26,15 +26,40 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     }
 
     @Override
-    public Observable<List<History>> getHistories(String userId) {
-        Log.e(this.getClass().getSimpleName(),"getHistories");
+    public Observable<History> getHistories(String userId) {
+        Log.e(this.getClass().getSimpleName(), "getHistories");
         return api.findHistoryById(userId)
                 .map(new Function<List<History>, List<History>>() {
                     @Override
                     public List<History> apply(List<History> histories) throws Exception {
-                        return cache.saveHistories(mapPosition.historiesTransForm(histories));
+                        return cache.saveHistories(histories);
+                    }
+                })
+                .flatMapIterable(new Function<List<History>, Iterable<? extends History>>() {
+                    @Override
+                    public Iterable<? extends History> apply(List<History> histories) throws Exception {
+                        return histories;
+                    }
+                })
+                .map(new Function<History, History>() {
+                    @Override
+                    public History apply(History history) throws Exception {
+                        return putAddress(history);
                     }
                 });
+    }
+
+    private History putAddress(History history) throws Exception{
+
+        Address startAdd = mapPosition.coordinateToLocate(history.getStart_latitude(), history.getStart_longtitude());
+        Address endAdd = mapPosition.coordinateToLocate(history.getEnd_latitude(), history.getEnd_longtitude());
+        String start = mapPosition.getLocateFromAddress(startAdd);
+        String end = mapPosition.getLocateFromAddress(endAdd);
+
+        history.setStart(start);
+        history.setFinish(end);
+
+        return history;
     }
 
     @Override
