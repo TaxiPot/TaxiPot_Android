@@ -18,5 +18,5 @@ public interface UserApi {
     Single<User> requestSignUp(@Body User user);
     
     @PATCH("/api/users/{user_id}/change_pw")
-    Observable<User> changePassword(@Path("user_id") String user_id, @Query("fromPW") String fromPW, @Query("toPW") String toPW);
+    Single<User> changePassword(@Path("user_id") String user_id, @Query("fromPW") String fromPW, @Query("toPW") String toPW);
 }

@@ -16,7 +16,7 @@ public interface RemoteAPI {
 
     Single<User> signUp(User user);
 
-    Observable<User> changePassWord(String id, String fromPW, String toPW);
+    Single<User> changePassWord(String id, String fromPW, String toPW);
 
     Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seat_num);
 
