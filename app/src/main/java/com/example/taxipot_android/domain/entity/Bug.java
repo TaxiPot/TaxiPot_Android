@@ -11,4 +11,9 @@ public class Bug {
     @SerializedName("user_id")
     private String userId;
 
+
+    public Bug(String content, String userId) {
+        this.content = content;
+        this.userId = userId;
+    }
 }

@@ -20,7 +20,7 @@ public class UserDataSource {
         return api.requestSignUp(user);
     }
 
-    public Observable<User> changePassword (String id, String fromPW, String toPW) {
+    public Single<User> changePassword (String id, String fromPW, String toPW) {
         return api.changePassword(id,fromPW,toPW);
     }
 }

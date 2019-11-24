@@ -44,7 +44,7 @@ public class RemoteAPIImpl implements RemoteAPI {
     }
 
     @Override
-    public Observable<User> changePassWord(String id, String fromPW, String toPW) {
+    public Single<User> changePassWord(String id, String fromPW, String toPW) {
         return userDS.changePassword(id,fromPW,toPW);
     }
 

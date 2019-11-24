@@ -19,21 +19,14 @@ public abstract class BaseDialog<T extends ViewDataBinding> extends AppCompatDia
     public BaseDialog(Context context, @LayoutRes int layoutId) {
         super(context);
         this.layoutId = layoutId;
-        show();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        /*WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        layoutParams.dimAmount = 0.8f;
-        getWindow().setAttributes(layoutParams);*/
 
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()),layoutId,null,false);
         setContentView(binding.getRoot());
     }
-
-
 }

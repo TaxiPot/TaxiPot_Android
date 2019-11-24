@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.taxipot_android.presenter.ui.dialog.ChangePWDialogListener" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="300dp"
     android:layout_height="250dp"
@@ -27,7 +32,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:hint="현재 비밀번호"
+        android:inputType="textPassword"
         android:textSize="12sp"
+        android:text="@={vm.fromPW}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
@@ -38,7 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="변경할 비밀번호"
+        android:inputType="textPassword"
         android:textSize="12sp"
+        android:text="@={vm.toPW}"
         app:layout_constraintEnd_toEndOf="@+id/editText12"
         app:layout_constraintStart_toStartOf="@+id/editText12"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
@@ -61,6 +70,7 @@
         android:gravity="center"
         android:paddingBottom="16dp"
         android:text="취소"
+        android:onClick="@{vm::dismiss}"
         android:textColor="@color/red_darker"
         app:layout_constraintEnd_toStartOf="@+id/textView33"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,6 +84,7 @@
         android:gravity="center"
         android:paddingBottom="16dp"
         android:text="확인"
+        android:onClick="@{vm::changePW}"
         android:textColor="@color/blue_darker"
         app:layout_constraintBottom_toBottomOf="@+id/textView34"
         app:layout_constraintEnd_toEndOf="parent"
