@@ -23,7 +23,6 @@ public class HistoryViewModel extends BaseViewModel {
     }
 
     public void getHistories(String userId) {
-        Log.e(this.getClass().getSimpleName(),"getHistories");
         ((HistoryUseCase)useCase).getHistories(userId, new HistoryObservable());
 
     }

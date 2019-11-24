@@ -17,7 +17,6 @@ public class HistoryUseCaseImpl extends HistoryUseCase<History> {
 
     @Override
     public void getHistories(String userId, DisposableObserver disposable) {
-        Log.e(this.getClass().getSimpleName(),"getHistories");
         execute(repository.getHistories(userId),disposable);
     }
 

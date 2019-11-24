@@ -27,7 +27,6 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Override
     public Observable<History> getHistories(String userId) {
-        Log.e(this.getClass().getSimpleName(), "getHistories");
         return api.findHistoryById(userId)
                 .map(new Function<List<History>, List<History>>() {
                     @Override
@@ -49,16 +48,24 @@ public class HistoryRepositoryImpl implements HistoryRepository {
                 });
     }
 
-    private History putAddress(History history) throws Exception{
+    private History putAddress(History history) {
 
-        Address startAdd = mapPosition.coordinateToLocate(history.getStart_latitude(), history.getStart_longtitude());
-        Address endAdd = mapPosition.coordinateToLocate(history.getEnd_latitude(), history.getEnd_longtitude());
-        String start = mapPosition.getLocateFromAddress(startAdd);
-        String end = mapPosition.getLocateFromAddress(endAdd);
-
-        history.setStart(start);
-        history.setFinish(end);
-
+        try {
+            Address startAdd = mapPosition.coordinateToLocate(history.getStart_latitude(), history.getStart_longtitude());
+            String start = mapPosition.getLocateFromAddress(startAdd);
+            history.setStart(start);
+        } catch (Exception e) {
+            Log.e(this.getClass().getSimpleName(),e.getMessage());
+            history.setStart("위치 찾을 수 없음");
+        }
+        try {
+            Address endAdd = mapPosition.coordinateToLocate(history.getEnd_latitude(), history.getEnd_longtitude());
+            String end = mapPosition.getLocateFromAddress(endAdd);
+            history.setFinish(end);
+        } catch (Exception e) {
+            Log.e(this.getClass().getSimpleName(),e.getMessage());
+            history.setFinish("위치 찾을 수 없음");
+        }
         return history;
     }
 
