@@ -49,35 +49,15 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
 
         getLocationPermission();
 
-        mapView = (MapView) v.findViewById(R.id.mapview);
+        mapView = (MapView) v.findViewById(R.id.mapview_departure);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
 
         return v;
     }
 
-    // TedPermission RxJava2를 통한 권한 요청
-    @SuppressLint("CheckResult")
-    private void getLocationPermission() {
-        TedRx2Permission.with(getActivity())
-                .setRationaleTitle("권한 요청")
-                .setRationaleMessage("위치 권한이 필요합니다. 승인하시겠습니까?")
-                .setPermissions(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
-                .request()
-                .subscribe(tedPermissionResult -> {
-                    if (tedPermissionResult.isGranted()) {
-                        makeToast("위치 권한 요청 성공");
-                        mapView.getMapAsync(this);
-                    } else {
-                        makeToast("위치 권한을 허용해주세요.");
-                        getActivity().finish();
-                    }
-                }, throwable -> {
-                });
-    }
 
     // 맵 처음 나올 때 실행 (getMapAsync(this) 를 통해서! )
-    // 일부 코드분할 필요
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
@@ -109,6 +89,28 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
         googleMap.setOnMapClickListener(this);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+    }
+    // 일부 코드분할 필요
+
+
+    // TedPermission RxJava2를 통한 권한 요청
+    @SuppressLint("CheckResult")
+    private void getLocationPermission() {
+        TedRx2Permission.with(getActivity())
+                .setRationaleTitle("권한 요청")
+                .setRationaleMessage("위치 권한이 필요합니다. 승인하시겠습니까?")
+                .setPermissions(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
+                .request()
+                .subscribe(tedPermissionResult -> {
+                    if (tedPermissionResult.isGranted()) {
+                        makeToast("위치 권한 요청 성공");
+                        mapView.getMapAsync(this);
+                    } else {
+                        makeToast("위치 권한을 허용해주세요.");
+                        getActivity().finish();
+                    }
+                }, throwable -> {
+                });
     }
 
     // 내 위치 데이터 LatLng로 return! 합니다
