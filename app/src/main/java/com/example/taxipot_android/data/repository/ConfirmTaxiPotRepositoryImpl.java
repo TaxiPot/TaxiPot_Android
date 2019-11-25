@@ -10,6 +10,10 @@ import io.reactivex.Single;
 public class ConfirmTaxiPotRepositoryImpl implements ConfirmTaxiPotRepository {
     TaxiPotCache cache;
 
+    public ConfirmTaxiPotRepositoryImpl(TaxiPotCache cache) {
+        this.cache = cache;
+    }
+
     @Override
     public Observable<TaxiPot> getTaxiPotSearchResult() {
         return cache.getFindTaxiPot();
