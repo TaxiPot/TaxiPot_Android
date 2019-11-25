@@ -19,6 +19,6 @@ public class SelectLocateUseCaseImpl extends SelectLocateUseCase {
     public void findTaxiPots(double departureLatitude, double departureLongitude, double arriveLatitude, double arriveLongitude, float radius, int year, int month, int day, int hour, int minute, DisposableObserver disposable) {
         Date date = new Date(year-1900,month-1,day,hour,minute);
         TaxiPot taxiPot = new TaxiPot(departureLongitude,departureLatitude,arriveLongitude,arriveLatitude,date.getTime());
-        repository.findTaxiPot(taxiPot,radius);
+        execute(repository.findTaxiPot(taxiPot,radius),disposable);
     }
 }
