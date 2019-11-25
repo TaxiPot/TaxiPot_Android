@@ -20,9 +20,10 @@ public interface RemoteAPI {
 
     Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seat_num);
 
-    Observable<TaxiPot> findTaxipotList(TaxiPot taxiPot,
-                                        float radius,
-                                        int age);
+    Observable<List<TaxiPot>> findTaxipotList(TaxiPot taxiPot,
+                                              float radius,
+                                              int age,
+                                              boolean isMan);
 
     Single<TaxiPot> makeTaxipot(TaxiPot taxiPot);
 

@@ -20,7 +20,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:text="출발지\n목적지"
-            android:lineSpacingExtra="8dp"
+            android:lineSpacingExtra="2dp"
             android:textColor="@color/barColor"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

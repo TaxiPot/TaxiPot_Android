@@ -15,10 +15,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentSelectDepartureBinding;
 import com.example.taxipot_android.presenter.ui.BaseFragment;
+import com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel;
+import com.example.taxipot_android.presenter.viewModelFactory.SelectLocateViewModelFactory;
 import com.example.taxipot_android.util.MapPosition;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,12 +33,18 @@ import com.tedpark.tedpermission.rx2.TedRx2Permission;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
+
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static com.google.android.gms.maps.GoogleMap.*;
 
 public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartureBinding>
         implements OnMapReadyCallback, OnMapClickListener {
+
+    @Inject
+    SelectLocateViewModelFactory factory;
+    SelectLocateViewModel viewModel;
 
     GoogleMap googleMap;
     MapView mapView;
@@ -45,6 +54,9 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setFragmentLayout(R.layout.fragment_select_departure);
         View v = super.onCreateView(inflater, container, savedInstanceState);
+
+        viewModel = ViewModelProviders.of(requireActivity(),factory).get(SelectLocateViewModel.class);
+
         binding.setFragment(this);
 
         getLocationPermission();
