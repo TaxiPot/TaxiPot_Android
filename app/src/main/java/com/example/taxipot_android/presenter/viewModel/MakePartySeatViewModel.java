@@ -47,4 +47,17 @@ public class MakePartySeatViewModel extends BaseSeatViewModel {
             setToast(e.getMessage());
         }
     }
+
+    private class GetTaxiPotSingle extends BaseSingle<TaxiPot> {
+        @Override
+        public void onSuccess(TaxiPot taxiPot) {
+            MakePartySeatViewModel.this.taxiPot.postValue(taxiPot);
+            userSeatList.replaceAll(taxiPot.getSeatList());
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            setToast(e.getMessage());
+        }
+    }
 }

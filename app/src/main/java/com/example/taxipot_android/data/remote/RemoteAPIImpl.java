@@ -45,17 +45,17 @@ public class RemoteAPIImpl implements RemoteAPI {
 
     @Override
     public Single<User> changePassWord(String id, String fromPW, String toPW) {
-        return userDS.changePassword(id,fromPW,toPW);
+        return userDS.changePassword(id, fromPW, toPW);
     }
 
     @Override
     public Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seat_num) {
-        return taxiPotDS.joinTaxiPot(roomId,userId,seat_num);
+        return taxiPotDS.joinTaxiPot(roomId, userId, seat_num);
     }
 
     @Override
-    public Observable<TaxiPot> findTaxipotList(TaxiPot taxiPot, float radius, int age) {
-        return taxiPotDS.findTaxiPotList(taxiPot,radius,age);
+    public Observable<List<TaxiPot>> findTaxipotList(TaxiPot taxiPot, float radius, int age, boolean isMan) {
+        return taxiPotDS.findTaxiPotList(taxiPot, radius, age, isMan);
     }
 
     @Override
@@ -70,13 +70,13 @@ public class RemoteAPIImpl implements RemoteAPI {
 
     @Override
     public Observable<List<History>> findHistoryById(String userId) {
-        Log.e(this.getClass().getSimpleName(),"findHistoryById" + userId);
+        Log.e(this.getClass().getSimpleName(), "findHistoryById" + userId);
         return historyDS.findHistoryById(userId);
     }
 
     @Override
     public Observable<Integer> sendHistoryList(String id, List<History> historyList) {
-        return historyDS.sendHistoryList(id,historyList);
+        return historyDS.sendHistoryList(id, historyList);
     }
 
     @Override

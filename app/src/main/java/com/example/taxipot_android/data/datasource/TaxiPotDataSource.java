@@ -3,6 +3,8 @@ package com.example.taxipot_android.data.datasource;
 import com.example.taxipot_android.data.api.TaxipotApi;
 import com.example.taxipot_android.domain.entity.TaxiPot;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
@@ -12,14 +14,15 @@ public class TaxiPotDataSource {
         this.api = api;
     }
 
-    public Observable<TaxiPot> findTaxiPotList(TaxiPot taxiPot, float radius, int age) {
+    public Observable<List<TaxiPot>> findTaxiPotList(TaxiPot taxiPot, float radius, int age, boolean isMan) {
         return api.findTaxipotList(taxiPot.getDepartTime(),
                 taxiPot.getStartLatitude(),
                 taxiPot.getStartLongtitude(),
                 taxiPot.getEndLatitude(),
                 taxiPot.getEndLongtitude(),
                 radius,
-                age);
+                age,
+                isMan);
     }
 
     public Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seatNum) {

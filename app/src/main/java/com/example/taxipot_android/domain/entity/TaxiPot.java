@@ -65,6 +65,14 @@ public class TaxiPot {
         this.genderWoman = true;
     }
 
+    public TaxiPot(double startLongtitude, double startLatitude, double endLongtitude, double endLatitude, long departTime) {
+        this.startLongtitude = startLongtitude;
+        this.startLatitude = startLatitude;
+        this.endLongtitude = endLongtitude;
+        this.endLatitude = endLatitude;
+        this.departTime = departTime;
+    }
+
     public String startToFinish() {
         return start + " ~ " + finish;
     }
