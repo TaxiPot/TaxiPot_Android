@@ -2,7 +2,6 @@ package com.example.taxipot_android.presenter.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,14 +37,6 @@ public class SelectArriveFragment extends BaseFragment<FragmentSelectArriveBindi
         return v;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        this.googleMap = googleMap;
-
-        // TODO : 기본 목적지가 있을텐데 거기 핑 찍고 위치이동하는 로직 장성
-        // 내 프로필에서 저장해야됨
-    }
-
     @SuppressLint("CheckResult")
     private void getLocationPermission() {
         TedRx2Permission.with(getActivity())
@@ -56,12 +47,20 @@ public class SelectArriveFragment extends BaseFragment<FragmentSelectArriveBindi
                 .subscribe(tedPermissionResult -> {
                     if (tedPermissionResult.isGranted()) {
                         makeToast("위치 권한 요청 성공");
-//                        mapView.getMapAsync(this);
+                        mapView.getMapAsync(this);
                     } else {
                         makeToast("위치 권한을 허용해주세요.");
                         getActivity().finish();
                     }
                 }, throwable -> {
                 });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.googleMap = googleMap;
+
+        // TODO : 기본 목적지가 있을텐데 거기 핑 찍고 위치이동하는 로직 장성
+        // 내 프로필에서 저장해야됨
     }
 }
