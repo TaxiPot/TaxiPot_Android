@@ -7,4 +7,8 @@ import io.reactivex.Single;
 
 public interface ConfirmTaxiPotRepository {
     Observable<TaxiPot> getTaxiPotSearchResult();
+
+    void cacheTaxiPot(TaxiPot taxiPot);
+
+    TaxiPot getTaxiPot();
 }

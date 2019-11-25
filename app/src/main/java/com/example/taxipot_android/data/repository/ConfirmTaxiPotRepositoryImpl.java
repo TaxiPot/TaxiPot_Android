@@ -18,4 +18,14 @@ public class ConfirmTaxiPotRepositoryImpl implements ConfirmTaxiPotRepository {
     public Observable<TaxiPot> getTaxiPotSearchResult() {
         return cache.getFindTaxiPot();
     }
+
+    @Override
+    public void cacheTaxiPot(TaxiPot taxiPot) {
+        cache.setMakeTaxiPot(taxiPot);
+    }
+
+    @Override
+    public TaxiPot getTaxiPot() {
+        return cache.getMakeTaxiPot();
+    }
 }
