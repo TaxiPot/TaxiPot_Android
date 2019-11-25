@@ -16,6 +16,11 @@ public class SelectLocateRepositoryImpl implements SelectLocateRepository {
     RemoteAPI api;
     TaxiPotCache cache;
 
+    public SelectLocateRepositoryImpl(RemoteAPI api, TaxiPotCache cache) {
+        this.api = api;
+        this.cache = cache;
+    }
+
     private User getUser() {
         return BaseApplication.getUser();
     }
