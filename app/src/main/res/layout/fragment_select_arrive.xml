@@ -7,7 +7,8 @@
 
         <variable
             name="fragment"
-            type="com.example.taxipot_android.presenter.ui.fragment.SelectDepartureFragment" />
+            type="com.example.taxipot_android.presenter.ui.fragment.SelectArriveFragment" />
+
         <variable
             name="vm"
             type="com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel" />
@@ -77,12 +78,13 @@
             app:layout_constraintVertical_bias="0.141" />
 
         <TextView
+            android:id="@+id/textView35"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumgothicbold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:text="출발지를 선택해주세요"
+            android:text="도착지를 선택해주세요"
             android:textColor="#74e0b5"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -96,11 +98,11 @@
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:fontFamily="@font/nanumgothicbold"
-            android:hint="출발지를 입력해주세요."
-            android:text="@={vm.depart}"
+            android:hint="도착지를 입력해주세요."
             android:inputType="text"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
+            android:text="@={vm.arrive}"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:textSize="13sp"
@@ -113,69 +115,24 @@
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapview"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#2F2F2F"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
             app:layout_constraintBottom_toTopOf="@+id/selfrg_guide4"
             app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
             app:layout_constraintStart_toStartOf="@+id/selfrg_guide1"
             app:layout_constraintTop_toTopOf="@+id/selfrg_guide3" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/selfrg_guide4"
-            app:layout_constraintVertical_bias="0.1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumgothicbold"
-                android:letterSpacing="0.07"
-                android:lineSpacingExtra="2sp"
-                android:text="반경 "
-                android:textColor="#ffffff"
-                android:textSize="13sp" />
-
-            <EditText
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:text="@={vm.radiusStr}"
-                android:fontFamily="@font/nanumgothicbold"
-                android:inputType="number"
-                android:letterSpacing="0.07"
-                android:lineSpacingExtra="2sp"
-                android:maxLength="3"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
-                android:textSize="13sp"
-                android:theme="@style/normalEditTextStyle" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumgothicbold"
-                android:letterSpacing="0.07"
-                android:lineSpacingExtra="2sp"
-                android:text=" m"
-                android:textColor="#ffffff"
-                android:textSize="13sp" />
-        </LinearLayout>
-
         <TextView
+            android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumgothicextrabold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
+            android:onClick="@{vm::findTaxiPots}"
             android:text="다음"
-            android:onClick="@{fragment::navigateFragment}"
             android:textColor="#ffffff"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -194,6 +151,30 @@
             app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.315" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내일"
+            android:drawableLeft="@drawable/view_select_report_reason"
+            android:drawablePadding="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:checked="@={vm.tomorrow}"
+            android:button="@null"
+            android:textColor="@color/barColor"
+            app:layout_constraintStart_toStartOf="@+id/mapview"
+            app:layout_constraintTop_toBottomOf="@+id/mapview" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간 선택하기"
+            android:textColor="@android:color/white"
+            android:onClick="@{fragment::setDepartTime}"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

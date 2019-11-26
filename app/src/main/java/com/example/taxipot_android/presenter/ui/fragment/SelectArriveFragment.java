@@ -1,29 +1,30 @@
 package com.example.taxipot_android.presenter.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.taxipot_android.R;
-import com.example.taxipot_android.databinding.FragmentSelectDepartureBinding;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
+import com.example.taxipot_android.databinding.FragmentSelectArriveBinding;
 import com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.SelectLocateViewModelFactory;
 import com.example.taxipot_android.util.BaseNavigateFragment;
 import com.example.taxipot_android.util.MapPosition;
+import com.example.taxipot_android.util.ToastObserver;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -38,10 +39,8 @@ import javax.inject.Inject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static com.google.android.gms.maps.GoogleMap.*;
 
-public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelectDepartureBinding>
-        implements OnMapReadyCallback, OnMapClickListener {
+public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArriveBinding> implements OnMapReadyCallback, GoogleMap.OnMapClickListener, TimePickerDialog.OnTimeSetListener {
 
     @Inject
     SelectLocateViewModelFactory factory;
@@ -53,11 +52,11 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setFragmentLayout(R.layout.fragment_select_departure);
+        setFragmentLayout(R.layout.fragment_select_arrive);
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        setAction(R.id.action_selectDepartureFragment_to_selectArriveFragment);
         viewModel = ViewModelProviders.of(requireActivity(),factory).get(SelectLocateViewModel.class);
+        viewModel.getToast().observe(this,new ToastObserver(getContext()));
 
         binding.setFragment(this);
         binding.setVm(viewModel);
@@ -151,9 +150,9 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
             e.printStackTrace();
         }
 
-        viewModel.getDepartLatitude().postValue(latLng.latitude);
-        viewModel.getDepartLongitude().postValue(latLng.longitude);
-        viewModel.getDepart().postValue(locationAddressData);
+        viewModel.getArriveLatitude().postValue(latLng.latitude);
+        viewModel.getArriveLongitude().postValue(latLng.longitude);
+        viewModel.getArrive().postValue(locationAddressData);
 
         MarkerOptions clickLocationMarker = new MarkerOptions()
                 .position(latLng)
@@ -163,5 +162,20 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
         googleMap.addMarker(clickLocationMarker);
     }
 
+    @Override
+    public void navigateFragment(View v) {
+        Log.e(this.getClass().getSimpleName(),viewModel.getArriveLatitude().getValue() + "\n" + viewModel.getArriveLongitude().getValue() +"\n" + viewModel.getDepartLatitude().getValue() + "\n" + viewModel.getDepartLongitude().getValue() +"\n" + viewModel.getRadiusStr().getValue());
+    }
 
+    public void setDepartTime(View v) {
+        TimePickerDialog dialog = new TimePickerDialog(getContext(),androidx.appcompat.R.style.Base_AlertDialog_AppCompat_Light, this ,0,0,false);
+        dialog.show();
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        Log.e(this.getClass().getSimpleName(),hourOfDay + "\n" + minute);
+        viewModel.getHour().postValue(hourOfDay);
+        viewModel.getMinute().postValue(minute);
+    }
 }

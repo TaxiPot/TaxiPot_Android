@@ -47,9 +47,8 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void dateFormat_isCorrect() {
-        System.out.println(new Date(2019-1900,11-1,20,16,37).getMinutes());
-        System.out.println(new Date().getMinutes());
-        assertEquals(1,1);
+        System.out.println(new Date(2019-1900,11-1,20,16,37).getMonth());
+        System.out.println(new Date().getMonth());
     }
 
     @Test
@@ -156,58 +155,6 @@ public class ExampleUnitTest {
 
     private BugApi createBugApi() {
         return connect(BugApi.class);
-    }
-
-    class RemoteApiImpl implements RemoteAPI {
-        @Override
-        public Single<User> signIn(User user) {
-            return null;
-        }
-
-        @Override
-        public Single<User> signUp(User user) {
-            return null;
-        }
-
-        @Override
-        public Observable<User> changePassWord(String id, String fromPW, String toPW) {
-            return null;
-        }
-
-        @Override
-        public Single<TaxiPot> joinTaxiPot(int roomId, String userId, int seat_num) {
-            return null;
-        }
-
-        @Override
-        public Observable<TaxiPot> findTaxipotList(TaxiPot taxiPot, float radius, int age) {
-            return null;
-        }
-
-        @Override
-        public Single<TaxiPot> makeTaxipot(TaxiPot taxiPot) {
-            return null;
-        }
-
-        @Override
-        public Observable<Report> sendReport(Report report) {
-            return null;
-        }
-
-        @Override
-        public Observable<List<History>> findHistoryById(String userId) {
-            return createHistoryApi().findHistoryById(userId);
-        }
-
-        @Override
-        public Observable<Integer> sendHistoryList(String id, List<History> historyList) {
-            return null;
-        }
-
-        @Override
-        public Single<Bug> postBug(Bug bug) {
-            return null;
-        }
     }
 }
 

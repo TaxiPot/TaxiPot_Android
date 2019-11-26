@@ -9,5 +9,13 @@
         android:id="@+id/selectDepartureFragment"
         android:name="com.example.taxipot_android.presenter.ui.fragment.SelectDepartureFragment"
         android:label="SelectDepartureFragment"
-        tools:layout="@layout/fragment_select_departure"/>
+        tools:layout="@layout/fragment_select_departure">
+        <action
+            android:id="@+id/action_selectDepartureFragment_to_selectArriveFragment"
+            app:destination="@id/selectArriveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectArriveFragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.SelectArriveFragment"
+        android:label="SelectArriveFragment" />
 </navigation>
