@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.taxipot_android.presenter.viewModel.SelectLocationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transParent"
+        tools:background="@drawable/bg_gradation"
+        tools:context=".presenter.ui.activity.SelectLocationActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.175" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.825" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.373" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.74" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.103" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/selfrg_guide6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.908" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothicbold"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="3sp"
+            android:text="위치를 선택하세요!"
+            android:textColor="#74e0b5"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.141" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothicbold"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:text="위치를 선택해주세요."
+            android:textColor="#74e0b5"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2575" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:fontFamily="@font/nanumgothicbold"
+            android:hint="위치를 입력해주세요."
+            android:inputType="text"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="13sp"
+            android:theme="@style/normalEditTextStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_seldep_search"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.307" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapview_arrive"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#2F2F2F"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            app:layout_constraintBottom_toTopOf="@+id/selfrg_guide4"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintStart_toStartOf="@+id/selfrg_guide1"
+            app:layout_constraintTop_toTopOf="@+id/selfrg_guide3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothicextrabold"
+            android:letterSpacing="0.07"
+            android:lineSpacingExtra="2sp"
+            android:text="선택 완료"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8845" />
+
+        <ImageView
+            android:id="@+id/iv_seldep_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_search_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.315" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
