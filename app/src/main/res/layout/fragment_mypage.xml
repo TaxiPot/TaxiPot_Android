@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
+
         <variable
             name="fragment"
             type="com.example.taxipot_android.presenter.ui.fragment.MyPageFragment" />
+
         <variable
             name="vm"
             type="com.example.taxipot_android.presenter.viewModel.MyPageViewModel" />
@@ -15,8 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transParent"
-        tools:background="@drawable/bg_gradation"
+        android:background="@drawable/bg_gradation"
         tools:context=".presenter.ui.fragment.MyPageFragment">
 
         <TextView
@@ -83,8 +85,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="성별"
                 android:layout_gravity="center"
+                android:text="성별"
                 android:textColor="@color/barColor"
                 android:textSize="18sp" />
 
@@ -167,6 +169,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:onClick="@{(view) -> fragment.changeBasicsDepartLocation()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -213,6 +216,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:onClick="@{() -> fragment.changeBasicsArriveLocation()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

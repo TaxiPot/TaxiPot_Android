@@ -15,7 +15,6 @@ import com.example.taxipot_android.presenter.ui.activity.ReportActivity;
 import com.example.taxipot_android.presenter.ui.activity.SelectLocationActivity;
 import com.example.taxipot_android.presenter.ui.activity.SignInActivity;
 import com.example.taxipot_android.presenter.ui.activity.SignUpActivity;
-import com.example.taxipot_android.presenter.viewModel.SelectLocationViewModel;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

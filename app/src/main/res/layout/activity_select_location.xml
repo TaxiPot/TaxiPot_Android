@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="ui"
+            type="com.example.taxipot_android.presenter.ui.activity.SelectLocationActivity" />
+
         <variable
             name="vm"
             type="com.example.taxipot_android.presenter.viewModel.SelectLocationViewModel" />
@@ -12,8 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transParent"
-        tools:background="@drawable/bg_gradation"
+        android:background="@drawable/bg_gradation"
         tools:context=".presenter.ui.activity.SelectLocationActivity">
 
         <androidx.constraintlayout.widget.Guideline
@@ -96,6 +100,7 @@
             android:inputType="text"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
+            android:text="@={vm.addressData}"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:textSize="13sp"
@@ -107,11 +112,11 @@
             app:layout_constraintVertical_bias="0.307" />
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapview_arrive"
+            android:id="@+id/mapview_select_location"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#2F2F2F"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
             app:layout_constraintBottom_toTopOf="@+id/selfrg_guide4"
             app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
             app:layout_constraintStart_toStartOf="@+id/selfrg_guide1"
@@ -123,6 +128,7 @@
             android:fontFamily="@font/nanumgothicextrabold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
+            android:onClick="@{ui::returnLocationData}"
             android:text="선택 완료"
             android:textColor="#ffffff"
             android:textSize="14sp"
