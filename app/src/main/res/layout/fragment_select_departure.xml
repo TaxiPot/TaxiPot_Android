@@ -8,6 +8,9 @@
         <variable
             name="fragment"
             type="com.example.taxipot_android.presenter.ui.fragment.SelectDepartureFragment" />
+        <variable
+            name="vm"
+            type="com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,6 +97,7 @@
             android:ems="10"
             android:fontFamily="@font/nanumgothicbold"
             android:hint="출발지를 입력해주세요."
+            android:text="@={vm.depart}"
             android:inputType="text"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
@@ -139,14 +143,15 @@
                 android:textSize="13sp" />
 
             <EditText
-                android:layout_width="45dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:text="@={vm.radiusStr}"
                 android:fontFamily="@font/nanumgothicbold"
                 android:inputType="number"
                 android:letterSpacing="0.07"
                 android:lineSpacingExtra="2sp"
-                android:maxLength="3"
+                android:maxLength="6"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
                 android:textSize="13sp"
@@ -170,6 +175,7 @@
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
             android:text="다음"
+            android:onClick="@{fragment::navigateFragment}"
             android:textColor="#ffffff"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

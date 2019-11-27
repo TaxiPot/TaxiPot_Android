@@ -9,5 +9,33 @@
         android:id="@+id/selectDepartureFragment"
         android:name="com.example.taxipot_android.presenter.ui.fragment.SelectDepartureFragment"
         android:label="SelectDepartureFragment"
-        tools:layout="@layout/fragment_select_departure"/>
+        tools:layout="@layout/fragment_select_departure">
+        <action
+            android:id="@+id/action_selectDepartureFragment_to_selectArriveFragment"
+            app:destination="@id/selectArriveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectArriveFragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.SelectArriveFragment"
+        android:label="SelectArriveFragment"
+        tools:layout="@layout/fragment_select_arrive">
+        <action
+            android:id="@+id/action_selectArriveFragment_to_confirmDepartureFragment"
+            app:destination="@id/confirmDepartureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmDepartureFragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.ConfirmDepartureFragment"
+        android:label="ConfirmDepartureFragment"
+        tools:layout="@layout/fragment_confirm_departure">
+        <action
+            android:id="@+id/action_confirmDepartureFragment_to_confirmArriveFragment"
+            app:destination="@id/confirmArriveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmArriveFragment"
+        android:name="com.example.taxipot_android.presenter.ui.fragment.ConfirmArriveFragment"
+        android:label="ConfirmArriveFragment"
+        tools:layout="@layout/fragment_confirm_arrive"/>
+
 </navigation>

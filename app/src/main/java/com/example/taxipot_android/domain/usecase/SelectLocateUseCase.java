@@ -6,15 +6,13 @@ import io.reactivex.observers.DisposableObserver;
 
 public abstract class SelectLocateUseCase extends UseCase {
     public abstract void findTaxiPots(
-            double departureLatitude,
-            double departureLongitude,
-            double arriveLatitude,
-            double arriveLongitude,
-            float radius,
-            int year,
-            int month,
-            int day,
-            int hour,
-            int minute,
+            Double departureLatitude,
+            Double departureLongitude,
+            Double arriveLatitude,
+            Double arriveLongitude,
+            Float radius,
+            Integer hour,
+            Integer minute,
+            boolean tomorrow,
             DisposableObserver disposable);
 }

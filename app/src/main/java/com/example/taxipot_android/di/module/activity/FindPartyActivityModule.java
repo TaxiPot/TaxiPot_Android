@@ -1,8 +1,11 @@
 package com.example.taxipot_android.di.module.activity;
 
 import com.example.taxipot_android.di.FragmentScope;
+import com.example.taxipot_android.di.module.fragment.ConfirmTaxiPotModule;
 import com.example.taxipot_android.di.module.fragment.SelectArriveFragmentModule;
 import com.example.taxipot_android.di.module.fragment.SelectDepartureFragmentModule;
+import com.example.taxipot_android.presenter.ui.fragment.ConfirmArriveFragment;
+import com.example.taxipot_android.presenter.ui.fragment.ConfirmDepartureFragment;
 import com.example.taxipot_android.presenter.ui.fragment.SelectArriveFragment;
 import com.example.taxipot_android.presenter.ui.fragment.SelectDepartureFragment;
 
@@ -17,5 +20,13 @@ public abstract class FindPartyActivityModule {
 
     @FragmentScope
     @ContributesAndroidInjector(modules = SelectArriveFragmentModule.class)
-    abstract SelectArriveFragment provideSelectArriveFragment();
+    abstract SelectArriveFragment selectArriveFragment();
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = ConfirmTaxiPotModule.class)
+    abstract ConfirmDepartureFragment departureFragment();
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = ConfirmTaxiPotModule.class)
+    abstract ConfirmArriveFragment arriveFragment();
 }

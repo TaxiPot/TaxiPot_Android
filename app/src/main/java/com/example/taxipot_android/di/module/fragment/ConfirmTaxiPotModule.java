@@ -6,6 +6,7 @@ import com.example.taxipot_android.domain.repository.ConfirmTaxiPotRepository;
 import com.example.taxipot_android.domain.usecase.ConfirmTaxiPotUseCase;
 import com.example.taxipot_android.domain.usecase.ConfirmTaxiPotUseCaseImpl;
 import com.example.taxipot_android.presenter.viewModelFactory.ConfirmTaxiPotViewModelFactory;
+import com.example.taxipot_android.util.MapPosition;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,7 +24,7 @@ public class ConfirmTaxiPotModule {
     }
 
     @Provides
-    public ConfirmTaxiPotRepository repository(TaxiPotCache cache) {
-        return new ConfirmTaxiPotRepositoryImpl(cache);
+    public ConfirmTaxiPotRepository repository(TaxiPotCache cache, MapPosition mapPosition) {
+        return new ConfirmTaxiPotRepositoryImpl(cache, mapPosition);
     }
 }
