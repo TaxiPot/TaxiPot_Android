@@ -42,7 +42,7 @@ public class ConfirmTaxiPotViewModel extends BaseViewModel {
 
         @Override
         public void onError(Throwable e) {
-            Log.e(this.getClass().getSimpleName(),e.getMessage());
+            e.printStackTrace();
             setToast("뭔가 에러가 났어요..");
         }
 

@@ -24,6 +24,7 @@ import com.example.taxipot_android.presenter.viewModel.ConfirmTaxiPotViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.ConfirmTaxiPotViewModelFactory;
 import com.example.taxipot_android.util.BaseNavigateFragment;
 import com.example.taxipot_android.util.MapPosition;
+import com.example.taxipot_android.util.ToastObserver;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -81,6 +82,7 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
                 googleMap.addMarker(clickLocationMarker);
             }
         });
+        viewModel.getToast().observe(this, new ToastObserver(getContext()));
 
         return v;
     }
