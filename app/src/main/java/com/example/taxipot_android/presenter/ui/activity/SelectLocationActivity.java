@@ -1,8 +1,10 @@
 package com.example.taxipot_android.presenter.ui.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Location;
@@ -13,12 +15,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.ActivitySelectLocationBinding;
-import com.example.taxipot_android.di.module.LocalModule;
 import com.example.taxipot_android.presenter.ui.BaseActivity;
 import com.example.taxipot_android.presenter.viewModel.SelectLocationViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.SelectLocationViewModelFactory;
@@ -37,7 +37,7 @@ import javax.inject.Inject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static com.google.android.gms.maps.GoogleMap.*;
+import static com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 
 public class SelectLocationActivity extends BaseActivity
         implements OnMapReadyCallback, OnMapClickListener {
@@ -61,8 +61,9 @@ public class SelectLocationActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this, factory).get(SelectLocationViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_location);
-        binding.setVm(viewModel);
         binding.setLifecycleOwner(this);
+        binding.setActivity(this);
+        binding.setVm(viewModel);
 
         Log.d("viewModel", viewModel == null ? "null" : "not null");
 
@@ -73,6 +74,19 @@ public class SelectLocationActivity extends BaseActivity
         mapView = (MapView) findViewById(R.id.mapview_select_location);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
+    }
+
+    public void returnLocationData(View view) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if (pinLatLng.latitude != -1 && pinLatLng.longitude != -1) {
+            editor.putString(mapValue + "_latitude", String.valueOf(pinLatLng.latitude));
+            editor.putString(mapValue + "_longitude", String.valueOf(pinLatLng.longitude));
+            editor.apply();
+            finish();
+        } else {
+            Toast.makeText(this, "위치를 선택하세요.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -111,8 +125,9 @@ public class SelectLocationActivity extends BaseActivity
         MapPosition mapPosition = new MapPosition(this);
         String locationAddressData = "";
 
+        Address myLocationAddress;
         try {
-            Address myLocationAddress = mapPosition.coordinateToLocate(latLng.latitude, latLng.longitude);
+            myLocationAddress = mapPosition.coordinateToLocate(latLng.latitude, latLng.longitude);
             locationAddressData = mapPosition.getLocateFromAddress(myLocationAddress);
         } catch (IOException e) {
             e.printStackTrace();
@@ -122,7 +137,7 @@ public class SelectLocationActivity extends BaseActivity
                 .position(latLng)
                 .title(locationAddressData);
 
-        viewModel.addressData.setValue(locationAddressData);
+        viewModel.addressData.postValue(locationAddressData);
 
         googleMap.clear();
         googleMap.addMarker(clickLocationMarker);
@@ -130,28 +145,13 @@ public class SelectLocationActivity extends BaseActivity
         pinLatLng = latLng;
     }
 
-    public void returnLocationData(View v) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        Log.d("click", "yes");
-
-        if (pinLatLng.latitude != -1 && pinLatLng.longitude != -1) {
-            editor.putString(mapValue + "_latitude", String.valueOf(pinLatLng.latitude));
-            editor.putString(mapValue + "_longitude", String.valueOf(pinLatLng.longitude));
-            editor.apply();
-            Log.d("pinLatLng-save", pinLatLng.toString());
-            finish();
-        } else {
-            Log.d("pinLatLng-save", pinLatLng.toString());
-            Toast.makeText(this, "위치를 선택하세요.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @SuppressLint("MissingPermission")
     private LatLng getMyLocation() {
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
-        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+
+        @SuppressLint("MissingPermission")
+        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
         return new LatLng(location.getLatitude(), location.getLongitude());
     }
 

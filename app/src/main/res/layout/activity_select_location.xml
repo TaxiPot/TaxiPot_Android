@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
 
         <variable
-            name="ui"
+            name="activity"
             type="com.example.taxipot_android.presenter.ui.activity.SelectLocationActivity" />
 
         <variable
@@ -128,7 +129,7 @@
             android:fontFamily="@font/nanumgothicextrabold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:onClick="@{ui::returnLocationData}"
+            android:onClick="@{activity::returnLocationData}"
             android:text="선택 완료"
             android:textColor="#ffffff"
             android:textSize="14sp"

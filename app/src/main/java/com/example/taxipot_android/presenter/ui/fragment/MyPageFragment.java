@@ -76,7 +76,7 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
         }
 
         if (basicsArriveLatitude != -1 && basicsArriveLongitude != -1) {
-            Address basicsArriveAddress = mapPosition.coordinateToLocate(basicsArriveLatitude, basicsArriveLatitude);
+            Address basicsArriveAddress = mapPosition.coordinateToLocate(basicsArriveLatitude, basicsArriveLongitude);
             String basicsArriveAddressData = mapPosition.getLocateFromAddress(basicsArriveAddress);
 
             viewModel.basicsArrive.setValue(basicsArriveAddressData);

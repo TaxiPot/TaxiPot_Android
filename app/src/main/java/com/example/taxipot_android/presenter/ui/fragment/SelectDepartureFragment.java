@@ -127,11 +127,13 @@ public class SelectDepartureFragment extends BaseFragment<FragmentSelectDepartur
 
     // 내 위치 데이터 LatLng로 return! 합니다
     // MissingPermssion은 이미 권한 확인했는데도 오류 발생하고 있어서 SuppressLint로 무시
-    @SuppressLint("MissingPermission")
     private LatLng getMyLocation() {
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getActivity().getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
+
+        @SuppressLint("MissingPermission")
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+
         return new LatLng(location.getLatitude(), location.getLongitude());
     }
 
