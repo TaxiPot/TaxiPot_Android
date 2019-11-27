@@ -1,25 +1,7 @@
 package com.example.taxipot_android.presenter.ui.fragment;
 
+
 import android.annotation.SuppressLint;
-<<<<<<< HEAD
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.taxipot_android.R;
-import com.example.taxipot_android.databinding.FragmentSelectArriveBinding;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.tedpark.tedpermission.rx2.TedRx2Permission;
-
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-
-public class SelectArriveFragment extends BaseFragment<FragmentSelectArriveBinding> implements OnMapReadyCallback {
-=======
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.location.Address;
@@ -64,7 +46,6 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
     @Inject
     SelectLocateViewModelFactory factory;
     SelectLocateViewModel viewModel;
->>>>>>> upstream/master
 
     GoogleMap googleMap;
     MapView mapView;
