@@ -143,7 +143,7 @@
                 android:textSize="13sp" />
 
             <EditText
-                android:layout_width="45dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:text="@={vm.radiusStr}"
@@ -151,7 +151,7 @@
                 android:inputType="number"
                 android:letterSpacing="0.07"
                 android:lineSpacingExtra="2sp"
-                android:maxLength="3"
+                android:maxLength="6"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
                 android:textSize="13sp"

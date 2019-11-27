@@ -84,7 +84,7 @@
             android:fontFamily="@font/nanumgothicbold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:text="도착지를 선택해주세요"
+            android:text="도착지를 확인해주세요"
             android:textColor="#74e0b5"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -95,20 +95,18 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:ems="10"
             android:fontFamily="@font/nanumgothicbold"
-            android:hint="도착지를 입력해주세요."
+            android:hint="도착지를 확인해주세요"
             android:inputType="text"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:text="@={vm.arrive}"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:textSize="13sp"
             android:theme="@style/normalEditTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_seldep_search"
+            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide6"
             app:layout_constraintStart_toStartOf="@+id/selfrg_guide5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.307" />
@@ -131,8 +129,7 @@
             android:fontFamily="@font/nanumgothicextrabold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
-            android:onClick="@{vm::findTaxiPots}"
-            android:text="다음"
+            android:text="확인"
             android:textColor="#ffffff"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -140,51 +137,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8845" />
-
-        <ImageView
-            android:id="@+id/iv_seldep_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_search_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.315" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="내일"
-            android:drawableLeft="@drawable/view_select_report_reason"
-            android:drawablePadding="8dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="6dp"
-            android:checked="@={vm.tomorrow}"
-            android:button="@null"
-            android:textColor="@color/barColor"
-            app:layout_constraintStart_toStartOf="@+id/mapview"
-            app:layout_constraintTop_toBottomOf="@+id/mapview" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{@string/timeFormat(vm.hour,vm.minute)}"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView37" />
-
-        <TextView
-            android:id="@+id/textView37"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{fragment::setDepartTime}"
-            android:text="시간 선택하기"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toStartOf="@+id/selfrg_guide2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

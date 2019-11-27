@@ -7,7 +7,6 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +14,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.taxipot_android.R;
-import com.example.taxipot_android.databinding.FragmentSelectDepartureBinding;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
-import com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel;
-import com.example.taxipot_android.presenter.viewModelFactory.SelectLocateViewModelFactory;
+import com.example.taxipot_android.databinding.FragmentConfirmDepartureBinding;
+import com.example.taxipot_android.domain.entity.TaxiPot;
+import com.example.taxipot_android.presenter.viewModel.ConfirmTaxiPotViewModel;
+import com.example.taxipot_android.presenter.viewModelFactory.ConfirmTaxiPotViewModelFactory;
 import com.example.taxipot_android.util.BaseNavigateFragment;
 import com.example.taxipot_android.util.MapPosition;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,19 +33,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.tedpark.tedpermission.rx2.TedRx2Permission;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static com.google.android.gms.maps.GoogleMap.*;
 
-public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelectDepartureBinding>
-        implements OnMapReadyCallback, OnMapClickListener {
+public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfirmDepartureBinding> implements OnMapReadyCallback {
 
     @Inject
-    SelectLocateViewModelFactory factory;
-    SelectLocateViewModel viewModel;
+    ConfirmTaxiPotViewModelFactory factory;
+    ConfirmTaxiPotViewModel viewModel;
 
     GoogleMap googleMap;
     MapView mapView;
@@ -53,25 +52,39 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setFragmentLayout(R.layout.fragment_select_departure);
+        setFragmentLayout(R.layout.fragment_confirm_departure);
+
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        setAction(R.id.action_selectDepartureFragment_to_selectArriveFragment);
-        viewModel = ViewModelProviders.of(requireActivity(),factory).get(SelectLocateViewModel.class);
-
-        binding.setFragment(this);
-        binding.setVm(viewModel);
-
         getLocationPermission();
-
         mapView = (MapView) v.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
 
+        setAction(R.id.action_confirmDepartureFragment_to_confirmArriveFragment);
+
+        viewModel = ViewModelProviders.of(requireActivity(),factory).get(ConfirmTaxiPotViewModel.class);
+        viewModel.getTaxiPotList();
+
+        viewModel.getTaxiPotSearchResult().observe(this, new Observer<List<TaxiPot>>() {
+            @Override
+            public void onChanged(List<TaxiPot> taxiPots) {
+                if(taxiPots.size()<1) return;
+                TaxiPot taxiPot = taxiPots.get(taxiPots.size()-1);
+
+                LatLng latLng = new LatLng(taxiPot.getStartLatitude(),taxiPot.getStartLongtitude());
+
+                MarkerOptions clickLocationMarker = new MarkerOptions()
+                        .position(latLng)
+                        .title(taxiPot.toString());
+
+                googleMap.addMarker(clickLocationMarker);
+            }
+        });
+
         return v;
     }
 
-    // TedPermission RxJava2를 통한 권한 요청
     @SuppressLint("CheckResult")
     private void getLocationPermission() {
         TedRx2Permission.with(getActivity())
@@ -110,18 +123,7 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
             e.printStackTrace();
         }
 
-        // 현재 내 위치 위경도로 핀을 찍어줌
-        MarkerOptions myLocationMarker = new MarkerOptions()
-                .position(myLocation)
-                .title(myLocationAddressData);
-
-        // TODO : 뷰모델 완성시 이 부분에서 EditText에 현 위치 주소를 적는다
-        // MapPosition 싱글톤으로 해도 좋을듯 또한 시, 도가 있어야 할 듯 함 구분하기 힘듬.
-        // 같은 동이나 구 등이 존재하는 경우가 있어 중복되는 결과가 나올 수 있다
-
-        googleMap.addMarker(myLocationMarker);
         googleMap.setMyLocationEnabled(true);
-        googleMap.setOnMapClickListener(this);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
     }
@@ -136,33 +138,4 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
         //if(location!=null) return new LatLng(location.getLatitude(), location.getLongitude());
         return new LatLng(37.5,127);
     }
-
-    // 맵 클릭시 핀 찍는 로직들
-    // MarkerOptions 분리하면 좋을듯함.
-    @Override
-    public void onMapClick(LatLng latLng) {
-        MapPosition mapPosition = new MapPosition(getActivity());
-        String locationAddressData = "";
-
-        try {
-            Address myLocationAddress = mapPosition.coordinateToLocate(latLng.latitude, latLng.longitude);
-            locationAddressData = mapPosition.getLocateFromAddress(myLocationAddress);
-        } catch (IOException e) {
-            locationAddressData = "위치 정보를 찾을 수 없습니다.";
-            e.printStackTrace();
-        }
-
-        viewModel.getDepartLatitude().postValue(latLng.latitude);
-        viewModel.getDepartLongitude().postValue(latLng.longitude);
-        viewModel.getDepart().postValue(locationAddressData);
-
-        MarkerOptions clickLocationMarker = new MarkerOptions()
-                .position(latLng)
-                .title(locationAddressData);
-
-        googleMap.clear();
-        googleMap.addMarker(clickLocationMarker);
-    }
-
-
 }

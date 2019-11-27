@@ -1,5 +1,6 @@
 package com.example.taxipot_android.presenter.viewModel;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
@@ -8,6 +9,7 @@ import com.example.taxipot_android.domain.entity.TaxiPot;
 import com.example.taxipot_android.domain.usecase.SelectLocateUseCase;
 import com.example.taxipot_android.util.BaseObservable;
 import com.example.taxipot_android.util.BaseViewModel;
+import com.example.taxipot_android.util.Navigate;
 
 public class SelectLocateViewModel extends BaseViewModel {
 
@@ -19,8 +21,14 @@ public class SelectLocateViewModel extends BaseViewModel {
     private MutableLiveData<String> arrive = new MutableLiveData<>();
     private MutableLiveData<String> radiusStr = new MutableLiveData<>();
     private MutableLiveData<Boolean> tomorrow = new MutableLiveData<>(false);
-    private MutableLiveData<Integer> hour = new MutableLiveData<>();
-    private MutableLiveData<Integer> minute = new MutableLiveData<>();
+    private MutableLiveData<Integer> hour = new MutableLiveData<>(0);
+    private MutableLiveData<Integer> minute = new MutableLiveData<>(0);
+
+    private Navigate navigate;
+
+    public void setNavigate(Navigate navigate) {
+        this.navigate = navigate;
+    }
 
     public SelectLocateViewModel(SelectLocateUseCase useCase) {
         this.useCase = useCase;
@@ -43,7 +51,7 @@ public class SelectLocateViewModel extends BaseViewModel {
     private class SearchTaxiPotsObservable extends BaseObservable<TaxiPot> {
         @Override
         public void onNext(TaxiPot taxiPot) {
-
+            Log.e(this.getClass().getSimpleName(),taxiPot.toString());
         }
 
         @Override
@@ -54,6 +62,7 @@ public class SelectLocateViewModel extends BaseViewModel {
         @Override
         public void onComplete() {
             setToast("방 검색이 완료되었어요.");
+            navigate.nextFragment();
         }
     }
 

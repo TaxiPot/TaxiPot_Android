@@ -14,6 +14,7 @@ public class BaseNavigateFragment<T extends ViewDataBinding> extends BaseFragmen
         this.action = action;
     }
 
+    @Override
     public void nextFragment() {
         NavHostFragment.findNavController(this).navigate(action);
     }

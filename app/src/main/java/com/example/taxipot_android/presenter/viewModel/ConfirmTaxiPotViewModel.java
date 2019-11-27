@@ -1,5 +1,6 @@
 package com.example.taxipot_android.presenter.viewModel;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
@@ -20,6 +21,10 @@ public class ConfirmTaxiPotViewModel extends BaseViewModel {
         this.useCase = useCase;
     }
 
+    public ListLiveData<TaxiPot> getTaxiPotSearchResult() {
+        return taxiPotSearchResult;
+    }
+
     public void getTaxiPotList() {
         ((ConfirmTaxiPotUseCase)useCase).getTaxiPotSearchResult(new TaxiPotSearchResultObservable());
     }
@@ -31,11 +36,13 @@ public class ConfirmTaxiPotViewModel extends BaseViewModel {
     private class TaxiPotSearchResultObservable extends BaseObservable<TaxiPot> {
         @Override
         public void onNext(TaxiPot taxiPot) {
+            Log.e(this.getClass().getSimpleName(),taxiPot.toString());
             taxiPotSearchResult.add(taxiPot);
         }
 
         @Override
         public void onError(Throwable e) {
+            Log.e(this.getClass().getSimpleName(),e.getMessage());
             setToast("뭔가 에러가 났어요..");
         }
 

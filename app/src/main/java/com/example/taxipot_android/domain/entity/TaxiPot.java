@@ -30,7 +30,7 @@ public class TaxiPot {
     @SerializedName("first_seat")
     private String firstSeat;
     @SerializedName("second_seat")
-    private String  secondSeat;
+    private String secondSeat;
     @SerializedName("third_seat")
     private String thirdSeat;
     @SerializedName("fourth_seat")
@@ -43,6 +43,7 @@ public class TaxiPot {
     private String finish;
 
     private SimpleDateFormat format;
+
     public TaxiPot() {
         format = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
     }
@@ -76,6 +77,7 @@ public class TaxiPot {
     public String startToFinish() {
         return start + " ~ " + finish;
     }
+
     public String dateFormat() {
         return format.format(new Date(departTime));
     }
@@ -183,5 +185,25 @@ public class TaxiPot {
         list.add(thirdSeat);
         list.add(fourthSeat);
         return list;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
+    }
+
+    @Override
+    public String toString() {
+        String man = "";
+        String woman = "";
+        if (genderMan) man = "남";
+        if (genderWoman) woman = "여";
+        return "입장 가능 나이 : " + startAge + " ~ " + endAge + "\n"
+                + man + " " + woman + " 입장 가능\n"
+                + "출발 시간 : " + format.format(departTime) + "\n"
+                + "출발 : " + start + " 도착 : " + finish;
     }
 }

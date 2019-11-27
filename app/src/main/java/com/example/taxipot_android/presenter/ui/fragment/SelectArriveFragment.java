@@ -57,6 +57,8 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
 
         viewModel = ViewModelProviders.of(requireActivity(),factory).get(SelectLocateViewModel.class);
         viewModel.getToast().observe(this,new ToastObserver(getContext()));
+        viewModel.setNavigate(this);
+        setAction(R.id.action_selectArriveFragment_to_confirmDepartureFragment);
 
         binding.setFragment(this);
         binding.setVm(viewModel);
@@ -132,7 +134,8 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        return new LatLng(location.getLatitude(), location.getLongitude());
+        //if(location!=null) return new LatLng(location.getLatitude(), location.getLongitude());
+        return new LatLng(37.5,127);
     }
 
     // 맵 클릭시 핀 찍는 로직들
