@@ -10,6 +10,8 @@ import com.example.taxipot_android.util.MapPosition;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
 public class ConfirmTaxiPotRepositoryImpl implements ConfirmTaxiPotRepository {

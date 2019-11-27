@@ -64,7 +64,7 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
 
         getLocationPermission();
 
-        mapView = (MapView) v.findViewById(R.id.mapview);
+        mapView = binding.mapviewDeparture;
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
 

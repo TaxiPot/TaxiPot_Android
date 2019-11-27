@@ -28,9 +28,9 @@ public class SelectLocateUseCaseImpl extends SelectLocateUseCase {
             Date today = new Date();
             Date date;
             if(isTomorrow) {
-                date = new Date(today.getYear(), today.getMonth(), today.getDay()+1, hour, minute);
+                date = new Date(today.getYear(), today.getMonth(), today.getDate()+1, hour, minute);
             } else {
-                date = new Date(today.getYear(), today.getMonth(), today.getDay(), hour, minute);
+                date = new Date(today.getYear(), today.getMonth(), today.getDate(), hour, minute);
             }
             radius = radius / 100000;
 
