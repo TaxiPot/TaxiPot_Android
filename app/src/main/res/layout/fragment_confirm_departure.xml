@@ -112,7 +112,7 @@
             app:layout_constraintVertical_bias="0.307" />
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapview"
+            android:id="@+id/mapview_confirm_departure"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"

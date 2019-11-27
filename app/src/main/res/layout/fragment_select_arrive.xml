@@ -114,7 +114,7 @@
             app:layout_constraintVertical_bias="0.307" />
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapview"
+            android:id="@+id/mapview_arrive"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -156,16 +156,14 @@
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내일"
+            android:button="@null"
+            android:checked="@={vm.tomorrow}"
             android:drawableLeft="@drawable/view_select_report_reason"
             android:drawablePadding="8dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="6dp"
-            android:checked="@={vm.tomorrow}"
-            android:button="@null"
+            android:text="내일"
             android:textColor="@color/barColor"
-            app:layout_constraintStart_toStartOf="@+id/mapview"
-            app:layout_constraintTop_toBottomOf="@+id/mapview" />
+            app:layout_constraintStart_toStartOf="@+id/mapview_arrive"
+            app:layout_constraintTop_toBottomOf="@+id/mapview_arrive" />
 
         <TextView
             android:layout_width="wrap_content"

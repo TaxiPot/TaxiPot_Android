@@ -58,7 +58,7 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
         getLocationPermission();
-        mapView = (MapView) v.findViewById(R.id.mapview);
+        mapView = (MapView) v.findViewById(R.id.mapview_confirm_departure);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
 
@@ -67,21 +67,6 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
         viewModel = ViewModelProviders.of(requireActivity(),factory).get(ConfirmTaxiPotViewModel.class);
         viewModel.getTaxiPotList();
 
-        viewModel.getTaxiPotSearchResult().observe(this, new Observer<List<TaxiPot>>() {
-            @Override
-            public void onChanged(List<TaxiPot> taxiPots) {
-                if(taxiPots.size()<1) return;
-                TaxiPot taxiPot = taxiPots.get(taxiPots.size()-1);
-
-                LatLng latLng = new LatLng(taxiPot.getStartLatitude(),taxiPot.getStartLongtitude());
-
-                MarkerOptions clickLocationMarker = new MarkerOptions()
-                        .position(latLng)
-                        .title(taxiPot.toString());
-
-                googleMap.addMarker(clickLocationMarker);
-            }
-        });
         viewModel.getToast().observe(this, new ToastObserver(getContext()));
 
         return v;
@@ -128,6 +113,25 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
         googleMap.setMyLocationEnabled(true);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+
+        viewModel.getTaxiPotSearchResult().observe(this, new Observer<List<TaxiPot>>() {
+            @Override
+            public void onChanged(List<TaxiPot> taxiPots) {
+                Log.e(ConfirmDepartureFragment.this.getClass().getSimpleName(),"size : " + taxiPots.size());
+                if(taxiPots.size()<1) return;
+
+                for(TaxiPot taxiPot : taxiPots) {
+                    Log.e(ConfirmDepartureFragment.this.getClass().getSimpleName(), taxiPot.toString());
+                    LatLng latLng = new LatLng(taxiPot.getStartLatitude(), taxiPot.getStartLongtitude());
+
+                    MarkerOptions clickLocationMarker = new MarkerOptions()
+                            .position(latLng)
+                            .title(taxiPot.toString());
+
+                    googleMap.addMarker(clickLocationMarker);
+                }
+            }
+        });
     }
 
     // 내 위치 데이터 LatLng로 return! 합니다

@@ -66,7 +66,7 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
 
         getLocationPermission();
 
-        mapView = (MapView) v.findViewById(R.id.mapview);
+        mapView = (MapView) v.findViewById(R.id.mapview_arrive);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
 

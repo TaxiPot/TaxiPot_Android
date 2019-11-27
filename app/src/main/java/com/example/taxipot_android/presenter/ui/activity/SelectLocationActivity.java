@@ -152,7 +152,9 @@ public class SelectLocationActivity extends BaseActivity
         @SuppressLint("MissingPermission")
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
+        if(location!=null)
         return new LatLng(location.getLatitude(), location.getLongitude());
+        return new LatLng(37.5,127);
     }
 
     @Override
