@@ -46,16 +46,16 @@ public class SelectLocationActivity extends BaseActivity
     SelectLocationViewModel viewModel;
     @Inject
     SelectLocationViewModelFactory factory;
-    
+
     @Inject
     SharedPreferences sharedPreferences;
-    
+
     MapView mapView;
     GoogleMap googleMap;
-    
+
     String mapValue;
     LatLng pinLatLng = new LatLng(-1, -1);
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,21 +64,21 @@ public class SelectLocationActivity extends BaseActivity
         binding.setLifecycleOwner(this);
         binding.setActivity(this);
         binding.setVm(viewModel);
-    
+
         Log.d("viewModel", viewModel == null ? "null" : "not null");
-    
+
         getLocationPermission();
-    
+
         mapValue = getIntent().getStringExtra("map_value");
-    
+
         mapView = (MapView) findViewById(R.id.mapview_select_location);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
     }
-    
+
     public void returnLocationData(View view) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-    
+
         if (pinLatLng.latitude != -1 && pinLatLng.longitude != -1) {
             editor.putString(mapValue + "_latitude", String.valueOf(pinLatLng.latitude));
             editor.putString(mapValue + "_longitude", String.valueOf(pinLatLng.longitude));
@@ -88,19 +88,19 @@ public class SelectLocationActivity extends BaseActivity
             Toast.makeText(this, "위치를 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
-    
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
-    
+
         LatLng myLocation = getMyLocation();
-    
+
         googleMap.setMyLocationEnabled(true);
         googleMap.setOnMapClickListener(this);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
     }
-    
+
     @SuppressLint("CheckResult")
     private void getLocationPermission() {
         TedRx2Permission.with(this)
@@ -119,12 +119,11 @@ public class SelectLocationActivity extends BaseActivity
                 }, throwable -> {
                 });
     }
-    
+
     @Override
     public void onMapClick(LatLng latLng) {
         MapPosition mapPosition = new MapPosition(this);
         String locationAddressData = "";
-    
         Address myLocationAddress;
         try {
             myLocationAddress = mapPosition.coordinateToLocate(latLng.latitude, latLng.longitude);
@@ -132,32 +131,34 @@ public class SelectLocationActivity extends BaseActivity
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
+
         MarkerOptions clickLocationMarker = new MarkerOptions()
                 .position(latLng)
                 .title(locationAddressData);
-    
+
         viewModel.addressData.postValue(locationAddressData);
-    
+
         googleMap.clear();
         googleMap.addMarker(clickLocationMarker);
-    
+
         pinLatLng = latLng;
     }
-    
+
+
     private LatLng getMyLocation() {
         LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
-    
+
         @SuppressLint("MissingPermission")
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-        if(location!=null)
-        return new LatLng(location.getLatitude(), location.getLongitude());
-        return new LatLng(37.5,127);
-        }
+        if (location != null)
+            return new LatLng(location.getLatitude(), location.getLongitude());
+        return new LatLng(37.5, 127);
+    }
+
     @Override
     protected void showToast() {
-    
+
     }
 }
