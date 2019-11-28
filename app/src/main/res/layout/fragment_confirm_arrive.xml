@@ -7,11 +7,11 @@
 
         <variable
             name="fragment"
-            type="com.example.taxipot_android.presenter.ui.fragment.SelectArriveFragment" />
+            type="com.example.taxipot_android.presenter.ui.fragment.ConfirmArriveFragment" />
 
         <variable
             name="vm"
-            type="com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel" />
+            type="com.example.taxipot_android.presenter.viewModel.ConfirmTaxiPotViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,6 +104,7 @@
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:textSize="13sp"
+            android:text="@{vm.taxiPot.finish}"
             android:theme="@style/normalEditTextStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/selfrg_guide6"
@@ -112,7 +113,7 @@
             app:layout_constraintVertical_bias="0.307" />
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapview"
+            android:id="@+id/mapview_confirm_arrive"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -129,6 +130,7 @@
             android:fontFamily="@font/nanumgothicextrabold"
             android:letterSpacing="0.07"
             android:lineSpacingExtra="2sp"
+            android:onClick="@{vm::nextFragment}"
             android:text="확인"
             android:textColor="#ffffff"
             android:textSize="14sp"

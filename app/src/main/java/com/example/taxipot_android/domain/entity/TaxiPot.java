@@ -1,5 +1,6 @@
 package com.example.taxipot_android.domain.entity;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
@@ -205,5 +206,13 @@ public class TaxiPot {
                 + man + " " + woman + " 입장 가능\n"
                 + "출발 시간 : " + format.format(departTime) + "\n"
                 + "출발 : " + start + " 도착 : " + finish;
+    }
+
+    public LatLng toDepartLatLng() {
+        return new LatLng(startLatitude,startLongtitude);
+    }
+
+    public LatLng toArriveLatLng() {
+        return new LatLng(endLatitude, endLongtitude);
     }
 }

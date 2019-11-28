@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -30,10 +31,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tedpark.tedpermission.rx2.TedRx2Permission;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -65,9 +68,28 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
         setAction(R.id.action_confirmDepartureFragment_to_confirmArriveFragment);
 
         viewModel = ViewModelProviders.of(requireActivity(),factory).get(ConfirmTaxiPotViewModel.class);
+
+        binding.setVm(viewModel);
+        binding.setFragment(this);
+
+        viewModel.setNavigate(this);
         viewModel.getTaxiPotList();
 
         viewModel.getToast().observe(this, new ToastObserver(getContext()));
+
+        viewModel.getTaxiPotIndex().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                makeToast(integer + "");
+            }
+        });
+
+        viewModel.getTaxiPot().observe(this, new Observer<TaxiPot>() {
+            @Override
+            public void onChanged(TaxiPot taxiPot) {
+                new AlertDialog.Builder(getContext()).setMessage(taxiPot.toString()).create().show();
+            }
+        });
 
         return v;
     }
@@ -113,6 +135,7 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
         googleMap.setMyLocationEnabled(true);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        googleMap.setOnMarkerClickListener(viewModel);
 
         viewModel.getTaxiPotSearchResult().observe(this, new Observer<List<TaxiPot>>() {
             @Override
@@ -120,15 +143,17 @@ public class ConfirmDepartureFragment extends BaseNavigateFragment<FragmentConfi
                 Log.e(ConfirmDepartureFragment.this.getClass().getSimpleName(),"size : " + taxiPots.size());
                 if(taxiPots.size()<1) return;
 
-                for(TaxiPot taxiPot : taxiPots) {
-                    Log.e(ConfirmDepartureFragment.this.getClass().getSimpleName(), taxiPot.toString());
-                    LatLng latLng = new LatLng(taxiPot.getStartLatitude(), taxiPot.getStartLongtitude());
+                viewModel.setMarkerMap(new HashMap<>());
+                for(int i=0; i<taxiPots.size(); i++) {
+                    TaxiPot taxiPot = taxiPots.get(i);
 
                     MarkerOptions clickLocationMarker = new MarkerOptions()
-                            .position(latLng)
-                            .title(taxiPot.toString());
+                            .position(taxiPot.toDepartLatLng())
+                            .title("선택되었습니다.");
 
-                    googleMap.addMarker(clickLocationMarker);
+                    Marker marker = googleMap.addMarker(clickLocationMarker);
+
+                    viewModel.getMarkerMap().put(marker, i);
                 }
             }
         });
