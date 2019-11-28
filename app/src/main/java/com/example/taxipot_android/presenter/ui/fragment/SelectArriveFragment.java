@@ -2,25 +2,11 @@ package com.example.taxipot_android.presenter.ui.fragment;
 
 
 import android.annotation.SuppressLint;
-<<<<<<< HEAD
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.taxipot_android.R;
-import com.example.taxipot_android.databinding.FragmentSelectArriveBinding;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.tedpark.tedpermission.rx2.TedRx2Permission;
-
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-
-public class SelectArriveFragment extends BaseFragment<FragmentSelectArriveBinding> implements OnMapReadyCallback {
-=======
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.location.Address;
@@ -65,7 +51,6 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
     @Inject
     SelectLocateViewModelFactory factory;
     SelectLocateViewModel viewModel;
->>>>>>> upstream/master
 
     GoogleMap googleMap;
     MapView mapView;
@@ -76,8 +61,8 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
         setFragmentLayout(R.layout.fragment_select_arrive);
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
-        viewModel = ViewModelProviders.of(requireActivity(),factory).get(SelectLocateViewModel.class);
-        viewModel.getToast().observe(this,new ToastObserver(getContext()));
+        viewModel = ViewModelProviders.of(requireActivity(), factory).get(SelectLocateViewModel.class);
+        viewModel.getToast().observe(this, new ToastObserver(getContext()));
         viewModel.setNavigate(this);
         setAction(R.id.action_selectArriveFragment_to_confirmDepartureFragment);
 
@@ -156,7 +141,7 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
         Criteria criteria = new Criteria();
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
         //if(location!=null) return new LatLng(location.getLatitude(), location.getLongitude());
-        return new LatLng(37.5,127);
+        return new LatLng(37.5, 127);
     }
 
     // 맵 클릭시 핀 찍는 로직들
@@ -188,17 +173,17 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
 
     @Override
     public void navigateFragment(View v) {
-        Log.e(this.getClass().getSimpleName(),viewModel.getArriveLatitude().getValue() + "\n" + viewModel.getArriveLongitude().getValue() +"\n" + viewModel.getDepartLatitude().getValue() + "\n" + viewModel.getDepartLongitude().getValue() +"\n" + viewModel.getRadiusStr().getValue());
+        Log.e(this.getClass().getSimpleName(), viewModel.getArriveLatitude().getValue() + "\n" + viewModel.getArriveLongitude().getValue() + "\n" + viewModel.getDepartLatitude().getValue() + "\n" + viewModel.getDepartLongitude().getValue() + "\n" + viewModel.getRadiusStr().getValue());
     }
 
     public void setDepartTime(View v) {
-        TimePickerDialog dialog = new TimePickerDialog(getContext(),androidx.appcompat.R.style.Base_AlertDialog_AppCompat_Light, this ,0,0,false);
+        TimePickerDialog dialog = new TimePickerDialog(getContext(), androidx.appcompat.R.style.Base_AlertDialog_AppCompat_Light, this, 0, 0, false);
         dialog.show();
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Log.e(this.getClass().getSimpleName(),hourOfDay + "\n" + minute);
+        Log.e(this.getClass().getSimpleName(), hourOfDay + "\n" + minute);
         viewModel.getHour().postValue(hourOfDay);
         viewModel.getMinute().postValue(minute);
     }
