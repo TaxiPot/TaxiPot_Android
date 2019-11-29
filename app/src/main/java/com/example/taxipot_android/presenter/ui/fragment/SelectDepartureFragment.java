@@ -107,6 +107,7 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
             myLocationAddressData = mapPosition.getLocateFromAddress(myLocationAddress);
             Log.d("myLocationAddressData", myLocationAddressData);
         } catch (IOException e) {
+            myLocationAddressData = "위치 정보를 찾을 수 없습니다.";
             e.printStackTrace();
         }
 
