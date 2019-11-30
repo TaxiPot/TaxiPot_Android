@@ -19,7 +19,12 @@ public class MapPosition {
     }
 
     public Address coordinateToLocate(double latitude, double longitude) throws IOException {
-        return geocoder.getFromLocation(latitude, longitude, 1).get(0);
+        try {
+            return geocoder.getFromLocation(latitude, longitude, 1).get(0);
+        } catch (IndexOutOfBoundsException e) {
+            Log.e(getClass().toString(), "coordinateToLocate - IndexOutOfBoundsException");
+            return null;
+        }
     }
 
     public Address locateToCoordinate(String locate) throws IOException {
@@ -27,11 +32,17 @@ public class MapPosition {
     }
 
     public String getLocateFromAddress(Address address) {
-        String addressDataIncludeCountryData = address.getAddressLine(0);
+        String addressDataIncludeCountryData;
+        String addressData = "데이터를 가져올 수 없습니다.";
+        try {
+            addressDataIncludeCountryData = address.getAddressLine(0);
+            addressData = addressDataIncludeCountryData.replaceAll(address.getCountryName() + " ", "");
+        } catch (NullPointerException e) {
+            Log.e(getClass().toString(), "getLocateFromAddress - NullPointerException");
+        }
         // 한국 내에서 사용할 어플리케이션임
         // 한국에서는 국가 이름을 맨 앞에 표시하기 때문에 뒤에 띄어쓰기가 붙음
         // getCountryName() + " " 으로 replace 해 공백을 없애고자 함
-        String addressData = addressDataIncludeCountryData.replaceAll(address.getCountryName() + " ", "");
         return addressData;
     }
 
