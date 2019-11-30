@@ -52,8 +52,7 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
             e.printStackTrace();
         }
 
-//        Test용으로 잠시 주석처리.
-//        setUserDataInUI();
+        setUserDataInUI();
         return v;
     }
 
@@ -73,14 +72,14 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
             Address basicsDepartAddress = mapPosition.coordinateToLocate(basicsDepartLatitude, basicsDepartLongitude);
             String basicsArriveAddressData = mapPosition.getLocateFromAddress(basicsDepartAddress);
 
-            viewModel.basicsDepart.setValue(basicsArriveAddressData);
+            viewModel.basicsDepart.postValue(basicsArriveAddressData);
         }
 
         if (basicsArriveLatitude != -1 && basicsArriveLongitude != -1) {
             Address basicsArriveAddress = mapPosition.coordinateToLocate(basicsArriveLatitude, basicsArriveLongitude);
             String basicsArriveAddressData = mapPosition.getLocateFromAddress(basicsArriveAddress);
 
-            viewModel.basicsArrive.setValue(basicsArriveAddressData);
+            viewModel.basicsArrive.postValue(basicsArriveAddressData);
         }
     }
 
