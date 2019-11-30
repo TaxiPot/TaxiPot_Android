@@ -7,6 +7,8 @@ import com.example.taxipot_android.domain.usecase.ChattingUseCase;
 import com.example.taxipot_android.domain.usecase.ChattingUseCaseImpl;
 import com.example.taxipot_android.presenter.viewModelFactory.ChattingViewModelFactory;
 
+import java.net.URI;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -25,5 +27,11 @@ public class ChattingActivityModule {
     @Provides
     public ChattingRepository repository(WebSocketHandler handler) {
         return new ChattingRepositoryImpl(handler);
+    }
+
+    @Provides
+    public WebSocketHandler client(URI uri) {
+        if(uri == null) return null;
+        return new WebSocketHandler(uri);
     }
 }

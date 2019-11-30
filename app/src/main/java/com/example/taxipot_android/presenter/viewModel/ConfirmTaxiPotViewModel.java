@@ -63,6 +63,7 @@ public class ConfirmTaxiPotViewModel extends BaseViewModel implements GoogleMap.
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        if(markerMap==null)return false;
         int index = markerMap.get(marker);
         taxiPotIndex.postValue(index);
         ((ConfirmTaxiPotUseCaseImpl)useCase).cacheTaxiPot(taxiPotSearchResult.get(index));

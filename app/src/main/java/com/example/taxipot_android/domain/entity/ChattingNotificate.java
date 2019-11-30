@@ -19,6 +19,10 @@ public class ChattingNotificate implements ChattingEntity{
         this.value = value;
     }
 
+    public int getSeatNum() {
+        return seatNum;
+    }
+
     @NonNull
     @Override
     public String toString() {

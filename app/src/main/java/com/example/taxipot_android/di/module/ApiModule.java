@@ -32,7 +32,7 @@ import dagger.Provides;
 @Module
 public class ApiModule {
 
-    private final static String webSocketURI = "ws://localhost:8080/ws/socket";
+    private final static String webSocketURI = "ws://10.0.2.2:8080/ws/socket";
 
     @Provides
     @Singleton
@@ -42,13 +42,6 @@ public class ApiModule {
         } catch (URISyntaxException e) {
             return null;
         }
-    }
-
-    @Provides
-    @Singleton
-    public WebSocketHandler client(URI uri) {
-        if(uri == null) return null;
-        return new WebSocketHandler(uri);
     }
 
     @Provides

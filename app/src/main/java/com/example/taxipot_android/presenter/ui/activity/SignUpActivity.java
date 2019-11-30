@@ -74,5 +74,6 @@ public class SignUpActivity extends BaseActivity {
     @Override
     protected void showToast() {
         viewModel.getToast().observe(this, toastObserver);
+        finish();
     }
 }

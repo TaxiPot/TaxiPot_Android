@@ -2,6 +2,11 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
+    <data>
+        <variable
+            name="data"
+            type="com.example.taxipot_android.domain.entity.ChattingNotificate" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -12,9 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="X번 님이 나가셨습니다."
+            android:text="@{@string/chatNotifyFormat(data.seatNum,data.value)}"
             android:textColor="@android:color/white"
-            android:textSize="8sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -5,19 +5,38 @@ import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.taxipot_android.domain.entity.ChattingContent;
 import com.example.taxipot_android.domain.entity.ChattingEntity;
 import com.example.taxipot_android.domain.usecase.ChattingUseCase;
+import com.example.taxipot_android.util.ActivityFinish;
 import com.example.taxipot_android.util.BaseObservable;
 import com.example.taxipot_android.util.BaseViewModel;
 import com.example.taxipot_android.util.ListLiveData;
 
 public class ChattingViewModel extends BaseViewModel {
 
-    ListLiveData<ChattingEntity> chattingList = new ListLiveData<>();
-    public MutableLiveData<String> message = new MutableLiveData<>("");
+    ActivityFinish finisher;
+    public ListLiveData<ChattingEntity> chattingList = new ListLiveData<>();
+    private MutableLiveData<String> message = new MutableLiveData<>("");
 
     public ChattingViewModel(ChattingUseCase useCase) {
         this.useCase = useCase;
+    }
+
+    public ActivityFinish getFinisher() {
+        return finisher;
+    }
+
+    public MutableLiveData<String> getMessage() {
+        return message;
+    }
+
+    public void setMessage(MutableLiveData<String> message) {
+        this.message = message;
+    }
+
+    public void setFinisher(ActivityFinish finisher) {
+        this.finisher = finisher;
     }
 
     public void connect() {
@@ -26,14 +45,13 @@ public class ChattingViewModel extends BaseViewModel {
 
     public void send(View v) {
         ((ChattingUseCase)useCase).send(message.getValue());
+        chattingList.add(new ChattingContent(-1,message.getValue(),true));
+        message.postValue("");
     }
 
     public void disconnect(View v) {
         ((ChattingUseCase)useCase).disconnect();
-    }
-
-    public void destroy() {
-        ((ChattingUseCase)useCase).disconnect();
+        finisher.finish();
     }
 
     private class ChattingObserver extends BaseObservable<ChattingEntity> {

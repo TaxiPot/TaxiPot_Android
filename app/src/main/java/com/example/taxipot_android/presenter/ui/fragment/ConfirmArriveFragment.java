@@ -43,15 +43,19 @@ public class ConfirmArriveFragment extends BaseNavigateFragment<FragmentConfirmA
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getLocationPermission();
+
         setFragmentLayout(R.layout.fragment_confirm_arrive);
         View v = super.onCreateView(inflater, container, savedInstanceState);
         setAction(R.id.action_confirmArriveFragment_to_makePartySeatFragment2);
+
+        binding.mapviewConfirmArrive.onCreate(savedInstanceState);
+        binding.mapviewConfirmArrive.onResume();
 
         setViewModel();
         initViewModelObserver();
         binding.setVm(viewModel);
         binding.setFragment(this);
-        getLocationPermission();
 
         return v;
     }

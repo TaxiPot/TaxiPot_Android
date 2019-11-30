@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView38" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/chat_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="20dp"
@@ -49,7 +49,7 @@
             android:text="출발지 ~ 목적지"
             android:textColor="@color/barColor"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintBottom_toTopOf="@+id/chat_recyclerview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +66,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+            app:layout_constraintTop_toBottomOf="@+id/chat_recyclerview">
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"

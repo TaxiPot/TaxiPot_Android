@@ -15,9 +15,9 @@ public class User {
     private String userId;
     @SerializedName("user_password")
     private String userPassword;
-    @SerializedName("room_id")
+    @SerializedName("roomId")
     private Integer roomId;
-    @SerializedName("seat_num")
+    @SerializedName("seatNum")
     private Integer seatNum;
 
     public User(String userId, String userPassword) {
@@ -98,9 +98,16 @@ public class User {
         this.seatNum = seatNum;
     }
 
-    @NonNull
     @Override
     public String toString() {
-        return "age : " + age + "\ngetIsMan : " + isMan + "\ntrustpoint : " + trustPoint + "\nuserId : " + userId + "\npassword : " + userPassword;
+        return "User{" +
+                "age=" + age +
+                ", isMan=" + isMan +
+                ", trustPoint=" + trustPoint +
+                ", userId='" + userId + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", roomId=" + roomId +
+                ", seatNum=" + seatNum +
+                '}';
     }
 }

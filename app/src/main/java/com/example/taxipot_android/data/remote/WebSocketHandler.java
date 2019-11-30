@@ -43,6 +43,12 @@ public class WebSocketHandler extends WebSocketClient {
     }
 
     @Override
+    public void send(String text) {
+        super.send(text);
+        Log.e(this.getClass().getSimpleName(), "send : "+text);
+    }
+
+    @Override
     public void onMessage(String message) {
         Log.e(this.getClass().getSimpleName(),"onMessage : "+message);
         publishSubject.onNext(ChattingEntityMapper.create(messageListToPair(splitMessage(message))));

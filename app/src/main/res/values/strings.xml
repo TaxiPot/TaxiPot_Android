@@ -3,4 +3,5 @@
     <string name="man">남자</string>
     <string name="woman">여자</string>
     <string name="timeFormat" formatted="false">%d시 %d분</string>
+    <string name="chatNotifyFormat" formatted="false">%d 님이 %s</string>
 </resources>

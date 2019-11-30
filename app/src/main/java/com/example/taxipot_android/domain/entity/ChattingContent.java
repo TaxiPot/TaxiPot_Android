@@ -34,6 +34,14 @@ public class ChattingContent implements ChattingEntity{
         this.content = content;
     }
 
+    public boolean isMyChat() {
+        return myChat;
+    }
+
+    public void setMyChat(boolean myChat) {
+        this.myChat = myChat;
+    }
+
     @NonNull
     @Override
     public String toString() {

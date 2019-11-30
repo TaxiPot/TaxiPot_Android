@@ -39,6 +39,7 @@ public class SignInActivity extends BaseActivity {
                 setUser(user);
                 Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -20,6 +20,7 @@ public class ChattingRepositoryImpl implements ChattingRepository {
         seatNum = getSeatNum();
     }
 
+    private String getUserId() {return BaseApplication.getUser().getUserId();}
     private Integer getRoomId() {return BaseApplication.getUser().getRoomId(); }
     private Integer getSeatNum() {return BaseApplication.getUser().getSeatNum();}
 
@@ -40,8 +41,9 @@ public class ChattingRepositoryImpl implements ChattingRepository {
 
     @Override
     public void disconnect() {
+        BaseApplication.getUser().setRoomId(null);
         if(socket.isClosed()) return;
-        socket.send(roomId+",DISCONNECT," + seatNum); // {roomId},DISCONNECT
+        socket.send(roomId+",DISCONNECT," + getUserId());// {roomId},DISCONNECT
         socket.close();
     }
 

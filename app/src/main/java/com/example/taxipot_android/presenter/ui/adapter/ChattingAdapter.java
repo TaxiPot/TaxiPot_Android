@@ -6,23 +6,30 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taxipot_android.R;
-import com.example.taxipot_android.data.remote.WebSocketHandler;
 import com.example.taxipot_android.databinding.ItemChatChattingBinding;
 import com.example.taxipot_android.databinding.ItemChatNotifyBinding;
 import com.example.taxipot_android.domain.entity.ChattingContent;
 import com.example.taxipot_android.domain.entity.ChattingEntity;
+import com.example.taxipot_android.domain.entity.ChattingNotificate;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
 
     List<ChattingEntity> chatting = new ArrayList<>();
+
+    public ChattingAdapter(Context context) {
+        this.context = context;
+    }
 
     private final static int CHATTINGVIEWHOLDER = 0;
     private final static int NOTIFICATEVIEWHOLDER = 1;
@@ -43,7 +50,11 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        if(holder instanceof ChattingViewHolder) {
+            ((ChattingViewHolder)holder).bind(chatting.get(position));
+            return;
+        }
+        ((NotificateViewHolder)holder).bind(chatting.get(position));
     }
 
     @Override
@@ -56,14 +67,26 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private class ChattingViewHolder extends RecyclerView.ViewHolder {
+        ItemChatChattingBinding binding;
         public ChattingViewHolder(@NonNull ItemChatChattingBinding itemView) {
             super(itemView.getRoot());
+            binding = itemView;
+        }
+
+        public void bind(ChattingEntity content) {
+            binding.setData((ChattingContent)content);
         }
     }
 
     private class NotificateViewHolder extends RecyclerView.ViewHolder {
+        ItemChatNotifyBinding binding;
         public NotificateViewHolder(@NonNull ItemChatNotifyBinding itemView) {
             super(itemView.getRoot());
+            binding = itemView;
+        }
+
+        public void bind(ChattingEntity content) {
+            binding.setData((ChattingNotificate)content);
         }
     }
 }

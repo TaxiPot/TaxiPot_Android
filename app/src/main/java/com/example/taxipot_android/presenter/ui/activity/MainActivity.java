@@ -67,9 +67,11 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(BaseApplication.getUser()==null) return;
         if(BaseApplication.getUser().getRoomId()!=null) {
             startActivity(new Intent(MainActivity.this, ChattingFragment.class));
         }
+        Log.e(this.getClass().getSimpleName(), BaseApplication.getUser().toString());
     }
 
     @Override
