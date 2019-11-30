@@ -11,8 +11,9 @@ clean Architecture 패턴을 사용할 예정입니다.
 + LifeCycle(LiveData) : https://developer.android.com/topic/libraries/architecture/livedata
 + AAC ViewModel : https://developer.android.com/topic/libraries/architecture/viewmodel
 + Dagger 2 : https://github.com/google/dagger
-+ Google Map
-+ Ted Permission
++ Google Map : https://developers.google.com/maps/documentation/android-sdk/start
++ Ted Permission : https://github.com/ParkSangGwon/TedPermission
++ Java Websockets : https://github.com/TooTallNate/Java-WebSocket
 
 ### 개발 관련
 + [코딩 컨벤션](https://www.notion.so/taxipotandroid/Coding-Convenction-789092b693c14b8484163d4e5f2d8ef5)
@@ -21,4 +22,3 @@ clean Architecture 패턴을 사용할 예정입니다.
 ### 개발 인원
 + [전승민](https://github.com/nwar-Jeon)
 + [홍성하](https://github.com/KRMKGOLD)
-+ [이동기](https://github.com/donkyey)
