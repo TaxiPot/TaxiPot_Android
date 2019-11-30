@@ -46,13 +46,7 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
         binding.setFragment(this);
         binding.setVm(viewModel);
 
-        try {
-            setBasicsAddress();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        setUserDataInUI();
+//        setUserDataInUI();
         return v;
     }
 
@@ -60,6 +54,17 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
     public void onStart() {
         super.onStart();
         viewModel.refreshUserData(BaseApplication.getUser());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        try {
+            setBasicsAddress();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setBasicsAddress() throws IOException {
