@@ -46,13 +46,7 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
         binding.setFragment(this);
         binding.setVm(viewModel);
 
-        try {
-            setBasicsAddress();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        setUserDataInUI();
+//        setUserDataInUI();
         return v;
     }
 
@@ -60,6 +54,17 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
     public void onStart() {
         super.onStart();
         viewModel.refreshUserData(BaseApplication.getUser());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        try {
+            setBasicsAddress();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setBasicsAddress() throws IOException {
@@ -72,14 +77,14 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
             Address basicsDepartAddress = mapPosition.coordinateToLocate(basicsDepartLatitude, basicsDepartLongitude);
             String basicsArriveAddressData = mapPosition.getLocateFromAddress(basicsDepartAddress);
 
-            viewModel.basicsDepart.setValue(basicsArriveAddressData);
+            viewModel.basicsDepart.postValue(basicsArriveAddressData);
         }
 
         if (basicsArriveLatitude != -1 && basicsArriveLongitude != -1) {
             Address basicsArriveAddress = mapPosition.coordinateToLocate(basicsArriveLatitude, basicsArriveLongitude);
             String basicsArriveAddressData = mapPosition.getLocateFromAddress(basicsArriveAddress);
 
-            viewModel.basicsArrive.setValue(basicsArriveAddressData);
+            viewModel.basicsArrive.postValue(basicsArriveAddressData);
         }
     }
 
