@@ -1,7 +1,6 @@
 package com.example.taxipot_android.di.module.activity;
 
 import com.example.taxipot_android.di.FragmentScope;
-import com.example.taxipot_android.di.module.fragment.ChattingFragmentModule;
 import com.example.taxipot_android.di.module.fragment.MakePartyFragmentModule;
 import com.example.taxipot_android.di.module.fragment.MakePartySeatFragmentModule;
 import com.example.taxipot_android.presenter.ui.fragment.ChattingFragment;
@@ -22,7 +21,4 @@ public abstract class MakePartyActivityModule {
     @ContributesAndroidInjector(modules = MakePartySeatFragmentModule.class)
     abstract MakePartySeatFragment provideMakePartySeatFragment();
 
-    @FragmentScope
-    @ContributesAndroidInjector(modules = ChattingFragmentModule.class)
-    abstract ChattingFragment provideChattingFragment();
 }

@@ -20,6 +20,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".presenter.ui.activity.SelectLocationActivity"></activity>
         <activity android:name=".presenter.ui.activity.FindPartyActivity" />
+        <activity android:name=".presenter.ui.fragment.ChattingFragment"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

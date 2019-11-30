@@ -11,6 +11,8 @@ clean Architecture 패턴을 사용할 예정입니다.
 + LifeCycle(LiveData) : https://developer.android.com/topic/libraries/architecture/livedata
 + AAC ViewModel : https://developer.android.com/topic/libraries/architecture/viewmodel
 + Dagger 2 : https://github.com/google/dagger
++ Google Map
++ Ted Permission
 
 ### 개발 관련
 + [코딩 컨벤션](https://www.notion.so/taxipotandroid/Coding-Convenction-789092b693c14b8484163d4e5f2d8ef5)
