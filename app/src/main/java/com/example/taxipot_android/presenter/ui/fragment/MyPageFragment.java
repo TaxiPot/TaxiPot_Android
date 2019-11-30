@@ -52,7 +52,8 @@ public class MyPageFragment extends BaseFragment<FragmentMypageBinding> {
             e.printStackTrace();
         }
 
-        setUserDataInUI();
+//        Test용으로 잠시 주석처리.
+//        setUserDataInUI();
         return v;
     }
 

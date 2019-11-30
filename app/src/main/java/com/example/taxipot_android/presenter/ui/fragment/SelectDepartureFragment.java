@@ -2,12 +2,12 @@ package com.example.taxipot_android.presenter.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +19,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.taxipot_android.R;
 import com.example.taxipot_android.databinding.FragmentSelectDepartureBinding;
-import com.example.taxipot_android.presenter.ui.BaseFragment;
 import com.example.taxipot_android.presenter.viewModel.SelectLocateViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.SelectLocateViewModelFactory;
 import com.example.taxipot_android.util.BaseNavigateFragment;
@@ -38,11 +37,13 @@ import javax.inject.Inject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static com.google.android.gms.maps.GoogleMap.*;
+import static com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 
 public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelectDepartureBinding>
         implements OnMapReadyCallback, OnMapClickListener {
 
+    @Inject
+    SharedPreferences sharedPreferences;
     @Inject
     SelectLocateViewModelFactory factory;
     SelectLocateViewModel viewModel;
@@ -57,7 +58,7 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
         View v = super.onCreateView(inflater, container, savedInstanceState);
 
         setAction(R.id.action_selectDepartureFragment_to_selectArriveFragment);
-        viewModel = ViewModelProviders.of(requireActivity(),factory).get(SelectLocateViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity(), factory).get(SelectLocateViewModel.class);
 
         binding.setFragment(this);
         binding.setVm(viewModel);
@@ -99,7 +100,7 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
 
         LatLng myLocation = getMyLocation();
         MapPosition mapPosition = new MapPosition(getActivity());
-        String myLocationAddressData = "";
+        String myLocationAddressData;
 
         // 경도 위도를 주소로 변경하는 로직, MapPosition 선언한것을 통해서 이용함
         try {
@@ -116,9 +117,9 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
                 .position(myLocation)
                 .title(myLocationAddressData);
 
-        // TODO : 뷰모델 완성시 이 부분에서 EditText에 현 위치 주소를 적는다
-        // MapPosition 싱글톤으로 해도 좋을듯 또한 시, 도가 있어야 할 듯 함 구분하기 힘듬.
-        // 같은 동이나 구 등이 존재하는 경우가 있어 중복되는 결과가 나올 수 있다
+        viewModel.getDepartLatitude().postValue(myLocation.latitude);
+        viewModel.getDepartLongitude().postValue(myLocation.longitude);
+        viewModel.getDepart().postValue(myLocationAddressData);
 
         googleMap.addMarker(myLocationMarker);
         googleMap.setMyLocationEnabled(true);
@@ -134,8 +135,15 @@ public class SelectDepartureFragment extends BaseNavigateFragment<FragmentSelect
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        //if(location!=null) return new LatLng(location.getLatitude(), location.getLongitude());
-        return new LatLng(37.5,127);
+
+        double basicsDepartLatitude = Double.parseDouble(sharedPreferences.getString("basics_depart_latitude", "-1"));
+        double basicsDepartLongitude = Double.parseDouble(sharedPreferences.getString("basics_depart_longitude", "-1"));
+
+        if (basicsDepartLatitude == -1 || basicsDepartLongitude == -1) {
+            return new LatLng(37.5, 127);
+        }
+
+        return new LatLng(basicsDepartLatitude, basicsDepartLongitude);
     }
 
     // 맵 클릭시 핀 찍는 로직들

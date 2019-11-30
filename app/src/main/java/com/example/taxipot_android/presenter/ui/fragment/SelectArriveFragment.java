@@ -2,6 +2,7 @@ package com.example.taxipot_android.presenter.ui.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,8 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArriveBinding> implements OnMapReadyCallback, GoogleMap.OnMapClickListener, TimePickerDialog.OnTimeSetListener {
 
+    @Inject
+    SharedPreferences sharedPreferences;
     @Inject
     SelectLocateViewModelFactory factory;
     SelectLocateViewModel viewModel;
@@ -122,9 +125,9 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
                 .position(myLocation)
                 .title(myLocationAddressData);
 
-        // TODO : 뷰모델 완성시 이 부분에서 EditText에 현 위치 주소를 적는다
-        // MapPosition 싱글톤으로 해도 좋을듯 또한 시, 도가 있어야 할 듯 함 구분하기 힘듬.
-        // 같은 동이나 구 등이 존재하는 경우가 있어 중복되는 결과가 나올 수 있다
+        viewModel.getArriveLatitude().postValue(myLocation.latitude);
+        viewModel.getArriveLongitude().postValue(myLocation.longitude);
+        viewModel.getArrive().postValue(myLocationAddressData);
 
         googleMap.addMarker(myLocationMarker);
         googleMap.setMyLocationEnabled(true);
@@ -140,8 +143,15 @@ public class SelectArriveFragment extends BaseNavigateFragment<FragmentSelectArr
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        //if(location!=null) return new LatLng(location.getLatitude(), location.getLongitude());
-        return new LatLng(37.5, 127);
+
+        double basicsArriveLatitude = Double.parseDouble(sharedPreferences.getString("basics_arrive_latitude", "-1"));
+        double basicsArriveLongitude = Double.parseDouble(sharedPreferences.getString("basics_arrive_longitude", "-1"));
+
+        if (basicsArriveLatitude == -1 || basicsArriveLongitude == -1) {
+            return new LatLng(37.5, 127);
+        }
+
+        return new LatLng(basicsArriveLatitude, basicsArriveLongitude);
     }
 
     // 맵 클릭시 핀 찍는 로직들
