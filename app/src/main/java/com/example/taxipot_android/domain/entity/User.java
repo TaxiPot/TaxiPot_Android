@@ -15,6 +15,10 @@ public class User {
     private String userId;
     @SerializedName("user_password")
     private String userPassword;
+    @SerializedName("room_id")
+    private Integer roomId;
+    @SerializedName("seat_num")
+    private Integer seatNum;
 
     public User(String userId, String userPassword) {
         this.userId = userId;
@@ -26,6 +30,16 @@ public class User {
         this.isMan = isMan;
         this.userId = userId;
         this.userPassword = userPassword;
+    }
+
+    public User(int age, boolean isMan, int trustPoint, String userId, String userPassword, Integer roomId, Integer seatNum) {
+        this.age = age;
+        this.isMan = isMan;
+        this.trustPoint = trustPoint;
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.roomId = roomId;
+        this.seatNum = seatNum;
     }
 
     public int getAge() {
@@ -66,6 +80,22 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public Integer getSeatNum() {
+        return seatNum;
+    }
+
+    public void setSeatNum(Integer seatNum) {
+        this.seatNum = seatNum;
     }
 
     @NonNull

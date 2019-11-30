@@ -84,4 +84,7 @@ dependencies {
 
     // TedPermission
     implementation "gun0912.ted:tedpermission-rx2:2.2.2"
+
+    //Web Socket
+    implementation"org.java-websocket:Java-WebSocket:1.4.0"
 }

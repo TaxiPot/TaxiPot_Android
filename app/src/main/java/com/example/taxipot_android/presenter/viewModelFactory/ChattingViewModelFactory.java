@@ -1,0 +1,25 @@
+package com.example.taxipot_android.presenter.viewModelFactory;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.taxipot_android.domain.usecase.ChattingUseCase;
+
+public class ChattingViewModelFactory implements ViewModelProvider.Factory {
+    ChattingUseCase useCase;
+
+    public ChattingViewModelFactory(ChattingUseCase useCase) {
+        this.useCase = useCase;
+    }
+
+    @NonNull
+    @Override
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+        try {
+            return modelClass.getConstructor(ChattingUseCase.class).newInstance(useCase);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+}
