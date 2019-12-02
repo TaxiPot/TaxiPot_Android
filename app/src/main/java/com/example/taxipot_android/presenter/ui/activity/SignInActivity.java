@@ -2,6 +2,7 @@ package com.example.taxipot_android.presenter.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -30,6 +31,7 @@ public class SignInActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this, factory).get(SignInViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
+        binding.setLifecycleOwner(this);
         binding.setActivity(this);
         binding.setVm(viewModel);
 
@@ -45,7 +47,9 @@ public class SignInActivity extends BaseActivity {
     }
 
     public void doSignUp(View v) {
-        startActivity(new Intent(SignInActivity.this,SignUpActivity.class));
+        Log.e(this.getClass().getSimpleName(), "TouchEvent");
+        Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     @Override

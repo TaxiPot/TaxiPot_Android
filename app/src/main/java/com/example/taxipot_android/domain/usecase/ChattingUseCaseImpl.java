@@ -30,5 +30,6 @@ public class ChattingUseCaseImpl extends ChattingUseCase {
     @Override
     public void disconnect() {
         repository.disconnect();
+        subject.onComplete();
     }
 }

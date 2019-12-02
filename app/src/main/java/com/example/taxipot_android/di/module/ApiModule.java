@@ -17,6 +17,7 @@ import com.example.taxipot_android.data.remote.RemoteAPI;
 import com.example.taxipot_android.data.remote.RemoteAPIImpl;
 import com.example.taxipot_android.data.remote.WebSocketHandler;
 import com.example.taxipot_android.util.CreateRetrofit;
+import com.example.taxipot_android.util.IPAddress;
 import com.example.taxipot_android.util.MapPosition;
 
 import org.java_websocket.client.WebSocketClient;
@@ -32,7 +33,7 @@ import dagger.Provides;
 @Module
 public class ApiModule {
 
-    private final static String webSocketURI = "ws://10.0.2.2:8080/ws/socket";
+    private final static String webSocketURI = "ws://" + IPAddress.ipAddress + ":8080/ws/socket";
 
     @Provides
     @Singleton

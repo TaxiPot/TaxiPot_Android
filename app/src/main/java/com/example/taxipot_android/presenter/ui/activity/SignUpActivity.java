@@ -14,10 +14,11 @@ import com.example.taxipot_android.databinding.ActivitySignUpBinding;
 import com.example.taxipot_android.presenter.ui.BaseActivity;
 import com.example.taxipot_android.presenter.viewModel.SignUpViewModel;
 import com.example.taxipot_android.presenter.viewModelFactory.SignUpViewModelFactory;
+import com.example.taxipot_android.util.Navigate;
 
 import javax.inject.Inject;
 
-public class SignUpActivity extends BaseActivity {
+public class SignUpActivity extends BaseActivity implements Navigate {
 
     ActivitySignUpBinding binding;
     @Inject
@@ -28,6 +29,7 @@ public class SignUpActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this, factory).get(SignUpViewModel.class);
+        viewModel.navigate = this;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         binding.setVm(viewModel);
         binding.setActivity(this);
@@ -74,6 +76,10 @@ public class SignUpActivity extends BaseActivity {
     @Override
     protected void showToast() {
         viewModel.getToast().observe(this, toastObserver);
+    }
+
+    @Override
+    public void nextFragment() {
         finish();
     }
 }

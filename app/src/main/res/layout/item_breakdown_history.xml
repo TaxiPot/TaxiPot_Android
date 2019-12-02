@@ -15,14 +15,16 @@
 
         <TextView
             android:id="@+id/history_item_start_to_finish"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginEnd="12dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:text="출발지\n목적지"
             android:lineSpacingExtra="2dp"
+            android:text="출발지\n목적지"
             android:textColor="@color/barColor"
-            android:textSize="18sp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,12 +42,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="18dp"
-            android:src="@drawable/ic_warning_white_24dp"
             android:clickable="true"
             android:onClick="@{vh::onClick}"
+            android:src="@drawable/ic_warning_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

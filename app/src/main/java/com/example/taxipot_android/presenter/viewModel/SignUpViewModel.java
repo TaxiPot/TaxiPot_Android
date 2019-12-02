@@ -8,6 +8,7 @@ import com.example.taxipot_android.domain.entity.User;
 import com.example.taxipot_android.domain.usecase.SignUpUseCase;
 import com.example.taxipot_android.util.BaseSingle;
 import com.example.taxipot_android.util.BaseViewModel;
+import com.example.taxipot_android.util.Navigate;
 
 public class SignUpViewModel extends BaseViewModel {
 
@@ -19,8 +20,14 @@ public class SignUpViewModel extends BaseViewModel {
     public MutableLiveData<String> userPassword = new MutableLiveData<>();
     public MutableLiveData<String> userPasswordCheck = new MutableLiveData<>();
 
+    public Navigate navigate;
+
     public SignUpViewModel(SignUpUseCase useCase) {
         this.useCase = useCase;
+    }
+
+    public void setNavigate(Navigate navigate) {
+        this.navigate = navigate;
     }
 
     public void signIn(View v) {
@@ -53,6 +60,7 @@ public class SignUpViewModel extends BaseViewModel {
         @Override
         public void onSuccess(User user) {
             setToast("회원가입에 성공하였습니다.");
+            navigate.nextFragment();
         }
 
         @Override
