@@ -54,6 +54,14 @@ public class ChattingViewModel extends BaseViewModel {
         finisher.finish();
     }
 
+    public void confidenceUp(View v, int seatNum) {
+        ((ChattingUseCase)useCase).confidenceUp(seatNum);
+    }
+
+    public void confidenceDown(View v, int seatNum) {
+        ((ChattingUseCase)useCase).confidenceDown(seatNum);
+    }
+
     private class ChattingObserver extends BaseObservable<ChattingEntity> {
         @Override
         public void onNext(ChattingEntity chattingEntity) {

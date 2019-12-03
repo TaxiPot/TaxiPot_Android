@@ -12,4 +12,8 @@ public interface ChattingRepository {
 
     void disconnect();
 
+    void confidenceUp(int seatNum);
+
+    void confidenceDown(int seatNum);
+
 }

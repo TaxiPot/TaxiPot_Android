@@ -49,8 +49,8 @@ public class ChattingFragment extends BaseActivity implements ActivityFinish {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ChattingAdapter adapter = new ChattingAdapter(this);
         viewModel = ViewModelProviders.of(this,factory).get(ChattingViewModel.class);
+        ChattingAdapter adapter = new ChattingAdapter(this, viewModel);
         binding = DataBindingUtil.setContentView(this, R.layout.fragment_chatting);
         binding.setActivity(this);
         binding.setVm(viewModel);

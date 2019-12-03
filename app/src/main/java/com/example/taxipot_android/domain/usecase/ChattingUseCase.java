@@ -10,4 +10,8 @@ public abstract class ChattingUseCase extends UseCase {
     public abstract void send(String message);
 
     public abstract void disconnect();
+
+    public abstract void confidenceUp(int seatNum);
+
+    public abstract void confidenceDown(int seatNum);
 }

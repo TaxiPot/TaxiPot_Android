@@ -15,6 +15,7 @@ import com.example.taxipot_android.databinding.ItemChatNotifyBinding;
 import com.example.taxipot_android.domain.entity.ChattingContent;
 import com.example.taxipot_android.domain.entity.ChattingEntity;
 import com.example.taxipot_android.domain.entity.ChattingNotificate;
+import com.example.taxipot_android.presenter.viewModel.ChattingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,13 @@ import javax.inject.Inject;
 public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
+    ChattingViewModel viewModel;
 
     List<ChattingEntity> chatting = new ArrayList<>();
 
-    public ChattingAdapter(Context context) {
+    public ChattingAdapter(Context context, ChattingViewModel viewModel) {
         this.context = context;
+        this.viewModel = viewModel;
     }
 
     private final static int CHATTINGVIEWHOLDER = 0;
@@ -75,6 +78,7 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public void bind(ChattingEntity content) {
             binding.setData((ChattingContent)content);
+            binding.setVm(viewModel);
         }
     }
 

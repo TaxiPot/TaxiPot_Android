@@ -47,4 +47,13 @@ public class ChattingRepositoryImpl implements ChattingRepository {
         socket.close();
     }
 
+    @Override
+    public void confidenceUp(int seatNum) {
+        socket.send(roomId+",CONFIDENCE_UP,"+seatNum);
+    }
+
+    @Override
+    public void confidenceDown(int seatNum) {
+        socket.send(roomId+",CONFIDENCE_UP,"+seatNum);
+    }
 }

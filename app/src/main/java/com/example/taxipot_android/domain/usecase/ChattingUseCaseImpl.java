@@ -32,4 +32,14 @@ public class ChattingUseCaseImpl extends ChattingUseCase {
         repository.disconnect();
         subject.onComplete();
     }
+
+    @Override
+    public void confidenceUp(int seatNum) {
+        repository.confidenceUp(seatNum);
+    }
+
+    @Override
+    public void confidenceDown(int seatNum) {
+        repository.confidenceDown(seatNum);
+    }
 }
